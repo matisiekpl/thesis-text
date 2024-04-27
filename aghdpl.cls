@@ -1,14 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
-% File:     aghdpl.cls           (LaTeX Document class option "aghdpl")
-%          
-% Author:  Paweł Kłeczek      (pkleczek@agh.edu.pl)
-%          Grzegorz J. Nalepa (gjn@agh.edu.pl)
-%          Marcin Szpyrka     (mszpyrka@agh.edu.pl)
-%          AGH University of Science and Technology, Kraków, POLAND
-% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \message{*** [aghdpl.cls] ---  (PK, GJN, MSz)  v4.0 <2020-11-03>  ***}       
 
 \newif\ifpdflatex\pdflatexfalse
