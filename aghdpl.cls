@@ -1,4 +1,35 @@
-\message{*** [aghdpl.cls] ---  (PK, GJN, MSz)  v4.0 <2020-11-03>  ***}       
+\message{*** [aghdpl.cls] ---  (PK, GJN, MSz)  v4.0 <2020-11-03>  ***}
+
+\usepackage[cache=false]{minted}
+
+%\usepackage{xcolor}
+%\definecolor{commentgreen}{RGB}{2,112,10}
+%\definecolor{eminence}{RGB}{108,48,130}
+%\definecolor{weborange}{RGB}{255,165,0}
+%\definecolor{frenchplum}{RGB}{129,20,83}
+%
+%\usepackage{color}
+%\definecolor{deepblue}{rgb}{0,0,0.5}
+%\definecolor{deepred}{rgb}{0.6,0,0}
+%\definecolor{deepgreen}{rgb}{0,0.5,0}
+%
+%\usepackage{listings}
+%\lstset {
+%language=Python,
+%basicstyle=\ttm,
+%morekeywords={self},              % Add keywords here
+%keywordstyle=\ttb\color{deepblue},
+%emph={MyClass,__init__},          % Custom highlighting
+%emphstyle=\ttb\color{deepred},    % Custom highlighting style
+%stringstyle=\color{deepgreen},
+%frame=tb,                         % Any extra options here
+%showstringspaces=false
+%}
+%
+%
+%\newcommand{\code}[1]{\texttt{#1}} % inline code setting
+
+
 
 \newif\ifpdflatex\pdflatexfalse
 \NeedsTeXFormat{LaTeX2e} % 
@@ -425,3 +456,124 @@
 	\begin{description}[leftmargin=\eqwheremargin, itemsep=0cm, labelsep=0cm]
 }
 {\end{description}}
+
+\usepackage{xcolor}
+\definecolor{maroon}{cmyk}{0, 0.87, 0.68, 0.32}
+\definecolor{halfgray}{gray}{0.55}
+\definecolor{ipython_frame}{RGB}{207, 207, 207}
+\definecolor{ipython_bg}{RGB}{247, 247, 247}
+\definecolor{ipython_red}{RGB}{186, 33, 33}
+\definecolor{ipython_green}{RGB}{0, 128, 0}
+\definecolor{ipython_cyan}{RGB}{64, 128, 128}
+\definecolor{ipython_purple}{RGB}{170, 34, 255}
+
+\usepackage{listings}
+\lstset{
+breaklines=true,
+%
+extendedchars=true,
+%literate={ą}{{\k{a}}}1
+%{ć}{{\'c}}1
+%{ę}{{\k{e}}}1
+%{ó}{{\'o}}1
+%{ń}{{\'n}}1
+%{ł}{{\l{}}}1
+%{ś}{{\'s}}1
+%{ź}{{\'z}}1
+%{ż}{{\.z}}1
+%{Ą}{{\k{A}}}1
+%{Ć}{{\'C}}1
+%{Ę}{{\k{E}}}1
+%{Ó}{{\'O}}1
+%{Ń}{{\'N}}1
+%{Ł}{{\L{}}}1
+%{Ś}{{\'S}}1
+%{Ź}{{\'Z}}1
+%{Ż}{{\.Z}}1,
+basicstyle=\footnotesize\ttfamily,
+}
+
+%%
+%% Python definition (c) 1998 Michael Weber
+%% Additional definitions (2013) Alexis Dimitriadis
+%% modified by me (should not have empty lines)
+%%
+\lstdefinelanguage{iPython}{
+morekeywords={access,and,break,class,continue,def,del,elif,else,except,exec,finally,for,from,global,if,import,in,is,lambda,not,or,pass,print,raise,return,try,while},%
+%
+% Built-ins
+morekeywords=[2]{abs,all,any,basestring,bin,bool,bytearray,callable,chr,classmethod,cmp,compile,complex,delattr,dict,dir,divmod,enumerate,eval,execfile,file,filter,float,format,frozenset,getattr,globals,hasattr,hash,help,hex,id,input,int,isinstance,issubclass,iter,len,list,locals,long,map,max,memoryview,min,next,object,oct,open,ord,pow,property,range,raw_input,reduce,reload,repr,reversed,round,set,setattr,slice,sorted,staticmethod,str,sum,super,tuple,type,unichr,unicode,vars,xrange,zip,apply,buffer,coerce,intern},%
+%
+sensitive=true,%
+morecomment=[l]\#,%
+morestring=[b]',%
+morestring=[b]",%
+%
+morestring=[s]{'''}{'''},% used for documentation text (mulitiline strings)
+morestring=[s]{"""}{"""},% added by Philipp Matthias Hahn
+%
+morestring=[s]{r'}{'},% `raw' strings
+morestring=[s]{r"}{"},%
+morestring=[s]{r'''}{'''},%
+morestring=[s]{r"""}{"""},%
+morestring=[s]{u'}{'},% unicode strings
+morestring=[s]{u"}{"},%
+morestring=[s]{u'''}{'''},%
+morestring=[s]{u"""}{"""},%
+%
+% {replace}{replacement}{lenght of replace}
+% *{-}{-}{1} will not replace in comments and so on
+literate={ą}{{\k a}}1
+  		     {Ą}{{\k A}}1
+           {ż}{{\. z}}1
+           {Ż}{{\. Z}}1
+           {ź}{{\' z}}1
+           {Ź}{{\' Z}}1
+           {ć}{{\' c}}1
+           {Ć}{{\' C}}1
+           {ę}{{\k e}}1
+           {Ę}{{\k E}}1
+           {ó}{{\' o}}1
+           {Ó}{{\' O}}1
+           {ń}{{\' n}}1
+           {Ń}{{\' N}}1
+           {ś}{{\' s}}1
+           {Ś}{{\' S}}1
+           {ł}{{\l}}1
+           {Ł}{{\L}}1
+%
+{^}{{{\color{ipython_purple}\^{}}}}1
+{=}{{{\color{ipython_purple}=}}}1
+%
+{+}{{{\color{ipython_purple}+}}}1
+{*}{{{\color{ipython_purple}$^\ast$}}}1
+{/}{{{\color{ipython_purple}/}}}1
+%
+{+=}{{{+=}}}1
+{-=}{{{-=}}}1
+{*=}{{{$^\ast$=}}}1
+{/=}{{{/=}}}1,
+literate=
+*{-}{{{\color{ipython_purple}-}}}1
+{?}{{{\color{ipython_purple}?}}}1,
+%
+identifierstyle=\color{black}\ttfamily,
+commentstyle=\color{ipython_cyan}\ttfamily,
+stringstyle=\color{ipython_red}\ttfamily,
+keepspaces=true,
+showspaces=false,
+showstringspaces=false,
+%
+rulecolor=\color{ipython_frame},
+frame=single,
+frameround={t}{t}{t}{t},
+framexleftmargin=6mm,
+numbers=left,
+numberstyle=\tiny\color{halfgray},
+%
+%
+backgroundcolor=\color{ipython_bg},
+%   extendedchars=true,
+basicstyle=\scriptsize,
+keywordstyle=\color{ipython_green}\ttfamily,
+}

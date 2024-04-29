@@ -1,0 +1,2 @@
+pyg:
+	cp out/*.pyg .
