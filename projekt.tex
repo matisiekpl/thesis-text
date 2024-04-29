@@ -53,10 +53,10 @@ Przykładami są pakiety \textit{torchvision} lub \textit{torch.utils}. Cała bi
 
 \subsection{Biblioteka OpenCV}
 
-Biblioteka OpenCV dostarcza implementacje wielu konwencjonalnych algorytmów wizji komputerowej.
+Biblioteka OpenCV \cite{opencv} dostarcza implementacje wielu konwencjonalnych algorytmów wizji komputerowej.
 OpenCV eksponuje interfejs programistyczny, dzięki któremu programista Pythona może komunikować się z implementacją algorytmów w C++.
 To zapewnia szybkość wykonywania obliczeń, jednocześnie nie wymuszając na programiście pisania kodu w C++. Przykład wykorzystania biblioteki OpenCV widoczny jest na listingu \ref{lst:opencv_sample}
- - kod wylicza momenty Hu.
+- kod wylicza momenty Hu.
 
 OpenCV w niniejszej pracy jest wykorzystywane do automatycznej ekstrakcji kwadratów z komórkami na podstawie dużego zdjęcia spod mikroskopu.
 Więcej informacji na ten temat w rozdziale \ref{sec:automatyczny-licznik-limfoblastow}.
@@ -75,15 +75,105 @@ for i in range(0, 7):
 
 \subsection{Inne narzędzia}
 
-Kod źródłowy projektu był przechowywany w repozytorium na platformie GitHub. Wykresy były generowane za pomocą biblioteki \textit{matplotlib},
-a metryki liczone z użyciem funkcji pakietu \textit{scikit-learn}.
+Kod źródłowy projektu był przechowywany w repozytorium na platformie GitHub (dostępny pod adresem \url{https://github.com/matisiekpl/thesis}).
+Wykresy były generowane za pomocą biblioteki \textit{matplotlib} \cite{matplotlib},
+a metryki liczone z użyciem funkcji pakietu \textit{scikit-learn} \cite{scikit_learn}.
 
 \subsection{Sprzęt}
 
 Do prac badawczych został użyty Apple Macbook Pro 2020 (M1/16GB pamięci). Trenowanie sieci odbywało się na platformie \textit{kaggle.com}, która oferuje bezpłatne 30 godzin obliczeń co miesiąc z kartą graficzną \textit{NVIDIA P100}.
 
-\section{Źródło danych}
 
+\section{Zbiór danych}
+
+Wykorzystany w projekcie zbiór danych to kolekcja 170 tysięcy zdjęć komórek z rozmazów szpiku kostnego.
+Zdjęcia mają nadane etykiety przez diagnostów i przedstawiają różne komórki widziane pod mikroskopem.
+Próbki szpiku kostnego pochodzą z biopsji 945 pacjentów z Monachijskiego Labolatorium Białaczek (\textit{MLL Münchner Leukämielabor} \cite{mll}).
+Akwizycja obrazu polegała na wykonaniu zdjęcia mikroskopią Brightfield'a z 40-krotnym powiększeniem.
+Producentem mikroskopu było przedsiębiorstwo Fraunhofer IIS.
+
+Komórki były barwione metodą Maya-Grünwalda-Giemsa. Zbiór danych zawiera 21 klas. Tabela klas jest widoczna w tabeli \ref{tab:images_count},
+a wizualizacja ilościowa na rys. \ref{fig:images_count_vis}
+
+\begin{table}
+    \begin{center}
+        \caption{Klasy obrazów w zbiorze danych}
+        \label{tab:images_count}
+        \begin{tabular}{|l|l|l|}
+            \hline
+            Klasa & Nazwa & Liczba obrazów \\
+            \hline
+            NGS & Segmentowany neutrofil & 29001 \\
+            \hline
+            EBO & Erytroblast & 27396 \\
+            \hline
+            LYT & Limfocyt & 26242 \\
+            \hline
+            ART & Artefakt & 19630 \\
+            \hline
+            PMO & Promielocyt & 11994 \\
+            \hline
+            BLA & Blast & 11973 \\
+            \hline
+            NGB & Krwinka biała pałeczkowata & 9968 \\
+            \hline
+            PLM & Komórka plazmatyczna & 7630 \\
+            \hline
+            MYB & Mielocyt & 6558 \\
+            \hline
+            EOS & Eozynofil & 5883 \\
+            \hline
+            MON & Monocyte & 4040 \\
+            \hline
+            NIF & Brak rozpoznania & 3538 \\
+            \hline
+            MMZ & Metamielocyt & 3055 \\
+            \hline
+            PEB & Proerytroblast & 2740 \\
+            \hline
+            BAS & Bazofil & 441 \\
+            \hline
+            HAC & Włochata komórka & 409 \\
+            \hline
+            OTH & Inna komórka & 294 \\
+            \hline
+            LYI & Niedojrzały limfocyt & 65 \\
+            \hline
+            FGC & Fagocyt & 47 \\
+            \hline
+            KSC & Cienie komórkowe & 42 \\
+            \hline
+            ABE & Nieprawidłowy eozynofil & 8 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{images_count}\label{fig:images_count_vis}
+    \caption{Wizualizacja ilościowa rozkładu próbek w klasach w zbiorze danych}
+\end{figure}
+
+%\begin{itemize}
+%    \item Nieprawidłowy eozynofil
+%    \item Artefakt
+%    \item Bazofil
+%    \item Blast
+%    \item Erytroblast
+%    \item Eozynofil
+%    \item Fagocyt
+%    \item Włochata komórka
+%    \item Cienie komórkowe
+%    \item Niedojrzały limfocyt
+%    \item Metamielocyt
+%    \item Krwinka biała pałeczkowata
+%    \item Segmentowany neutrofil
+%    \item Brak rozpoznania
+%    \item Inna komórka
+%    \item Proerytroblast
+%    \item Komórka plazmatyczna
+%    \item Promielocyt
+%\end{itemize}
 
 
 \section{Struktura projektu}
