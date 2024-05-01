@@ -6,7 +6,7 @@
 \subsection{Język programowania Python}
 
 Kod projektu został napisany w języku Python. Wybór tego języka był spowodowany szeroką dostępnością bibliotek i
-narzędzi wspomagających uczenie maszynowe. W szczególności należy zwrócić uwagę na biblioteki \textit{Tensorflow} oraz \textit{PyTorch}.
+narzędzi wspomagających uczenie maszynowe. W szczególności należy zwrócić uwagę na biblioteki \textit{PyTorch} (użyta w projekcie) oraz \textit{Tensorflow} (alternatywa).
 Są to dwie najpopularniejsze biblioteki do operowania na tensorach (tensor to uogólnienie macierzy na wiele wymiarów).
 Obie pozwalają na przyśpieszanie obliczeń z użyciem zewnętrznych akceleratorów takich jak np. karty graficzne.
 
@@ -92,67 +92,77 @@ Próbki szpiku kostnego pochodzą z biopsji 945 pacjentów z Monachijskiego Labo
 Akwizycja obrazu polegała na wykonaniu zdjęcia mikroskopią Brightfield'a z 40-krotnym powiększeniem.
 Producentem mikroskopu było przedsiębiorstwo Fraunhofer IIS.
 
-Komórki były barwione metodą Maya-Grünwalda-Giemsa. Zbiór danych zawiera 21 klas. Tabela klas jest widoczna w tabeli \ref{tab:images_count},
-a wizualizacja ilościowa na rys. \ref{fig:images_count_vis}
-
-\begin{table}
-    \begin{center}
-        \caption{Klasy obrazów w zbiorze danych}
-        \label{tab:images_count}
-        \begin{tabular}{|l|l|l|}
-            \hline
-            Klasa & Nazwa & Liczba obrazów \\
-            \hline
-            NGS & Segmentowany neutrofil & 29001 \\
-            \hline
-            EBO & Erytroblast & 27396 \\
-            \hline
-            LYT & Limfocyt & 26242 \\
-            \hline
-            ART & Artefakt & 19630 \\
-            \hline
-            PMO & Promielocyt & 11994 \\
-            \hline
-            BLA & Blast & 11973 \\
-            \hline
-            NGB & Krwinka biała pałeczkowata & 9968 \\
-            \hline
-            PLM & Komórka plazmatyczna & 7630 \\
-            \hline
-            MYB & Mielocyt & 6558 \\
-            \hline
-            EOS & Eozynofil & 5883 \\
-            \hline
-            MON & Monocyte & 4040 \\
-            \hline
-            NIF & Brak rozpoznania & 3538 \\
-            \hline
-            MMZ & Metamielocyt & 3055 \\
-            \hline
-            PEB & Proerytroblast & 2740 \\
-            \hline
-            BAS & Bazofil & 441 \\
-            \hline
-            HAC & Włochata komórka & 409 \\
-            \hline
-            OTH & Inna komórka & 294 \\
-            \hline
-            LYI & Niedojrzały limfocyt & 65 \\
-            \hline
-            FGC & Fagocyt & 47 \\
-            \hline
-            KSC & Cienie komórkowe & 42 \\
-            \hline
-            ABE & Nieprawidłowy eozynofil & 8 \\
-            \hline
-        \end{tabular}
-    \end{center}
-\end{table}
+\begin{figure}
+    \includegraphics[width=\textwidth]{images_count}
+    \caption{Wizualizacja ilościowa rozkładu próbek w klasach w zbiorze danych}
+    \label{fig:images_count_vis}
+\end{figure}
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{images_count}\label{fig:images_count_vis}
-    \caption{Wizualizacja ilościowa rozkładu próbek w klasach w zbiorze danych}
+    \centering
+    \includegraphics[height=0.9\textheight]{images_examples}
+    \caption{Podgląd zdjęć komórek ze zbioru danych dla każdej z klas}
+    \label{fig:images_examples}
 \end{figure}
+
+Komórki były barwione metodą Maya-Grünwalda-Giemsa \cite{histology}. Zbiór danych zawiera 21 klas.
+Wizualizacja rozkładu klas jest widoczna na rys. \ref{fig:images_count_vis}.
+Zbiór danych jest niezbalansowany, ponieważ ilość obrazów w każdej klasie mocno się różni.
+Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
+
+%\begin{table}
+%    \begin{center}
+%        \caption{Klasy obrazów w zbiorze danych}
+%        \label{tab:images_count}
+%        \begin{tabular}{|l|l|l|}
+%            \hline
+%            Klasa & Nazwa & Liczba obrazów \\
+%            \hline
+%            NGS & Segmentowany neutrofil & 29001 \\
+%            \hline
+%            EBO & Erytroblast & 27396 \\
+%            \hline
+%            LYT & Limfocyt & 26242 \\
+%            \hline
+%            ART & Artefakt & 19630 \\
+%            \hline
+%            PMO & Promielocyt & 11994 \\
+%            \hline
+%            BLA & Blast & 11973 \\
+%            \hline
+%            NGB & Krwinka biała pałeczkowata & 9968 \\
+%            \hline
+%            PLM & Komórka plazmatyczna & 7630 \\
+%            \hline
+%            MYB & Mielocyt & 6558 \\
+%            \hline
+%            EOS & Eozynofil & 5883 \\
+%            \hline
+%            MON & Monocyte & 4040 \\
+%            \hline
+%            NIF & Brak rozpoznania & 3538 \\
+%            \hline
+%            MMZ & Metamielocyt & 3055 \\
+%            \hline
+%            PEB & Proerytroblast & 2740 \\
+%            \hline
+%            BAS & Bazofil & 441 \\
+%            \hline
+%            HAC & Włochata komórka & 409 \\
+%            \hline
+%            OTH & Inna komórka & 294 \\
+%            \hline
+%            LYI & Niedojrzały limfocyt & 65 \\
+%            \hline
+%            FGC & Fagocyt & 47 \\
+%            \hline
+%            KSC & Cienie komórkowe & 42 \\
+%            \hline
+%            ABE & Nieprawidłowy eozynofil & 8 \\
+%            \hline
+%        \end{tabular}
+%    \end{center}
+%\end{table}
 
 %\begin{itemize}
 %    \item Nieprawidłowy eozynofil
@@ -180,9 +190,73 @@ a wizualizacja ilościowa na rys. \ref{fig:images_count_vis}
 
 \subsection{Przygotowanie danych}
 
+Zbiór danych to katalog ze zdjęciami. Zdjęcia są pogrupowane w podkatalogach, gdzie jego nazwa oznacza typ komórki.
+Każdy podkatalog zawiera kolorowe zdjęcia w formacie \textit{.jpg} w rozmiarze \textit{250 pikseli x 250 pikseli}.
+Przed treningiem sieci neuronowej konieczna jest przetwarzanie wstępne zbioru danych (z ang. \textit{preprocessing}).
+
+\begin{lstlisting}[language=ipython,caption={Transformacja danych}, label={lst:transforms}]
+transform = transforms.Compose([
+    transforms.Resize((224, 224)), # przeskaluj obrazy
+    transforms.RandomEqualize(1), # wyrownaj histogram z prawdopodobienstwem 1, czyli dla kazdego obrazu
+    transforms.ToTensor(), # zamien na Tensor
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[
+        0.229, 0.224, 0.225]), # normalizuj wedlug mediany i odch. stand.
+])
+\end{lstlisting}
+
+Do realizacji przygotowania danych wykorzystano pakiet \textit{torchvision.transforms}.
+Kod transformacji jest przedstawiony na listingu \ref{lst:transforms}.
+Wykonuje on przeskalowanie obrazu wejściowego do rozmiaru \textit{224 piksele na 224 piksele}.
+Następnie wyrównuje histogram i normalizuje według średniej i odchylenia standardowego.
+
+Wyrównanie histogramu jest konieczne z powodu różnic w odcieniach barwienia Maya-Grünwalda-Giemsa.
+Przy każdym wykonaniu rozmazu intensywność kolorów komórek jest inna.
+Taka normalizacja zapobiega błędnemu nauczeniu się sieci neuronowej ze względu na odcień, a nie kształt i wygląd komórek.
+
+Po przetwarzaniu, zbiór danych został podzielony na zestaw treningowy i walidacyjny w proporcjach odpowiednio \textit{80:20}.
+Zestaw treningowy służy do optymalizacji parametrów sieci neuronowej.
+Zestaw walidacyjny natomiast jest używany do sprawdzania jakości modelu na obrazach, których sieć neuronowa "nigdy nie widziała".
+
 \subsection{Trening sieci neuronowej}
 
-\subsection{Ocena jakości modelu}
+Niniejsza praca ma za zadanie między innymi porównać różne architektury splotowych sieci neuronowych i ocenić,
+która z nich wypada najlepiej w zadaniu klasyfikacji komórek z rozmazów szpiku kostnego.
+Omówiony poniżej trening sieci neuronowej o architekturze \textit{EfficientNet B0} wygląda tak samo dla innych architektur, takich jak \textit{EfficientNet B5}, \textit{ResNet} i innych.
+
+Trenowanie sieci neuronowej z użyciem biblioteki PyTorch sprowadza się do iterowania po zbiorze wejściowym i wykonywania kroku optymalizacyjnego przy każdym przejściu.
+Kod głównej funkcji treningowej jest widoczny na listingu \ref{lst:training}.
+
+\begin{itemize}
+    \item na listingu wykorzystano architekturę \textit{EfficientNet B0}
+    \item jako funkcję straty użyto \textit{torch.nn.CrossEntropyLoss()}.
+    Jest to funkcja używana do klasyfikatorów wieloklasowych.
+    \item funkcja \textit{.to(device)} kopiuje tensory na urządzenie zewnętrzne, czyli kartę graficzną.
+    Jest to wymagane, ponieważ model i dane muszą znajdować się w tym samym miejscu.
+    Dzięki użyciu karty graficznej obliczenia są znacznie przyspieszone.
+    \item \textit{optimizer.zero\_grad()} zeruje gradienty.
+    Wywołanie tej funkcji jest konieczne z powodu domyślnego zachowania PyTorch, które akumuluje gradienty.
+    Chcąc tego uniknąć, kod resetuje gradienty w grafie obliczeniowym przy każdej iteracji danych treningowych.
+    \item \textit{loss.backward()} liczy gradienty w grafie obliczeniowym, zaś \textit{optimizer.step()} wykonuje krok optymalizacyjny.
+\end{itemize}
+
+
+%Poniżej opisano ważniejsze fragmenty kodu:
+%\begin{itemize}
+%    \item stworzenie obiektu ładującego dane (z ang. \textit{data loader}) - linijki 1 i 2.
+%    \item stworzenie obiektu modelu - w tym przypadku architektury \textit{EfficientNet B0}. Patrz linijki 4-6.
+%    \item określenie funkcji straty. W linijce 8 wykorzystano \textit{nn.CrossEntropyLoss()}, które służy do optymalizacji klasyfikatorów wieloklasowych.
+%    \item wybór optymalizatora. Linijka 9 tworzy obiekt \textit{torch.optim.Adam}. Jest to optymalizator bazujący na gradiencie funkcji. W argumentach ustawiane jest tempo uczenia się (w tym przypadku przyjmuje wartość stałej \textit{LR}).
+%    \item linijka 10 i 11 kopiuje model na urządzenie zewnętrzne - w tym przypadku kartę graficzną, która znacząco przyspiesza obliczenia.
+%    \item \textit{model.train()} w linijce 21 ustawia model w trybie uczenia się. Jest to konieczne, ponieważ niektóre warstwy sieci neuronowej zachowują się inaczej podczas treningu i ewaluacji.
+%    \item pętla \textit{for} w linijce 25 iteruje zbiór danych wejściowych, kopiując tensory na urządzenie zewnętrzne (model jak i dane muszą być w jednym miejscu).
+%    \item \textit{optimizer.zero\_grad()} resetuje wszystkie gradienty w grafie obliczeniowym.
+%    \item linijki 30-34 odpowiadają za wykonanie kroku optymalizacyjnego.
+%\end{itemize}
+
+\lstinputlisting[language=ipython,caption={Kod odpowiadający za trenowanie modelu \textit{EfficientNet B0}}, label={lst:training}]{train.py}
+\lstinputlisting[language=ipython,caption={Kod odpowiadający ewaluację metryk}, label={lst:metrics}]{metrics.py}
+
+\subsection{Ewaluacja jakości modelu}
 
 
 \section{Interfejs użytkownika}
