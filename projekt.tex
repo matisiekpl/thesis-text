@@ -59,7 +59,7 @@ To zapewnia szybkość wykonywania obliczeń, jednocześnie nie wymuszając na p
 - kod wylicza momenty Hu.
 
 OpenCV w niniejszej pracy jest wykorzystywane do automatycznej ekstrakcji kwadratów z komórkami na podstawie dużego zdjęcia spod mikroskopu.
-Więcej informacji na ten temat w rozdziale \ref{sec:automatyczny-licznik-limfoblastow}.
+Więcej informacji na ten temat w rozdziale \ref{sec:kwadraty}.
 
 \begin{lstlisting}[language=ipython,caption={Obliczenie momentów Hu z użyciem OpenCV}, label={lst:opencv_sample}]
 import cv2
@@ -207,11 +207,18 @@ transform = transforms.Compose([
 Do realizacji przygotowania danych wykorzystano pakiet \textit{torchvision.transforms}.
 Kod transformacji jest przedstawiony na listingu \ref{lst:transforms}.
 Wykonuje on przeskalowanie obrazu wejściowego do rozmiaru \textit{224 piksele na 224 piksele}.
-Następnie wyrównuje histogram i normalizuje według średniej i odchylenia standardowego.
+Następnie wyrównuje histogram i normalizuje według średniej i odchylenia standardowego (rys. \ref{fig:transformations_example}).
 
 Wyrównanie histogramu jest konieczne z powodu różnic w odcieniach barwienia Maya-Grünwalda-Giemsa.
 Przy każdym wykonaniu rozmazu intensywność kolorów komórek jest inna.
 Taka normalizacja zapobiega błędnemu nauczeniu się sieci neuronowej ze względu na odcień, a nie kształt i wygląd komórek.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{image_transform}
+    \caption{Porównanie obrazu wejściowego przed i po transformacji}
+    \label{fig:transformations_example}
+\end{figure}
 
 Po przetwarzaniu, zbiór danych został podzielony na zestaw treningowy i walidacyjny w proporcjach odpowiednio \textit{80:20}.
 Zestaw treningowy służy do optymalizacji parametrów sieci neuronowej.
@@ -261,6 +268,4 @@ Kod głównej funkcji treningowej jest widoczny na listingu \ref{lst:training}.
 
 \section{Interfejs użytkownika}
 
-
-\section{Automatyczny licznik limfoblastów}\label{sec:automatyczny-licznik-limfoblastow}
-
+\section{Algorytm ekstrakcji kwadratów komórek z dużego zdjęcia rozmazu}\label{sec:kwadraty}
