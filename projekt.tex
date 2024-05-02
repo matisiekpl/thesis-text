@@ -187,7 +187,7 @@ Kod głównej funkcji treningowej jest widoczny na listingu \ref{lst:training}.
 Do sprawdzenia jakości modelu uczenia maszynowego konieczny jest dobór właściwych metryk.
 Ze względu na to, że trenowany jest klasyfikator wieloklasowy, a zbiór danych nie jest zbalansowany, zwykłe metryki takie jak dokładność (z ang. \textit{accuracy}) nie wystarczą.
 Dla każdej klasy jest liczona precyzja (z ang. \textit{precision}) i czułość (z ang. \textit{recall}).
-Obie te metryki składają się do obliczenia wyniku F1 (z ang. \textit{F1-score}).
+Obie te metryki składają się do obliczenia wyniku F1 (z ang. \textit{F1-score}) \cite{geron}.
 Co ważne, wynik F1 jest liczony z uwzględnieniem wag poszczególnych klas.
 Z kolei funkcja \textit{confusion\_matrix} oblicza macierz pomyłek (czasem zwaną macierzą konfuzji).
 Informuje ona o tym, jakie klasy są najczęściej mylone z jakimi.
@@ -199,8 +199,8 @@ Kod odpowiadając za liczenie metryk znajduje się na listingu \ref{lst:metrics}
 
 W celu łatwego korzystania z modelu uczenia maszynowego przez diagnostów dostępna jest aplikacja internetowa do interakcji z nim.
 Zrzut ekranu interfejsu użytkownika jest widoczny na rys. \ref{fig:ui}.
-Została ona napisana z użyciem \textit{Vue} - biblioteki do tworzenia interaktywnych interfejsów użytkownika dla sieci web.
-Aplikacja łączy się z serwerem HTTP napisanym z użyciem biblioteki Flask.
+Została ona napisana z użyciem \textit{Vue} \cite{vue} - biblioteki do tworzenia interaktywnych interfejsów użytkownika dla sieci web.
+Aplikacja łączy się z serwerem HTTP napisanym z użyciem biblioteki Flask \cite{flask}.
 Ów serwer eksponuje interfejs REST API, który dla wysłanego zdjęcia zwraca rozkład prawdopodobieństwa (kod na listingu \ref{lst:serve}).
 Przed wywołaniem modelu, funkcja upewnia się, że przychodzący obrazek jest poprawnego formatu.
 Dopiero po zwalidowaniu poprawności danych, kod przystępuje do utworzenia rozkładu prawdopodobieństwa (zmienna \textit{result}).
@@ -225,9 +225,60 @@ Dopiero po zwalidowaniu poprawności danych, kod przystępuje do utworzenia rozk
 By skorzystać z aplikacji internetowej, należy przeciągnąć plik ze zdjęciem komórki do sekcji "Upuść tutaj rozmaz w PNG lub JPEG".
 Po wysłaniu obrazu, użytkownik może wybrać model i kliknąć przycisk "Rozpoznaj rodzaj komórki".
 Po chwili ukaże się tabela z rozkładem prawdopodobieństwa (po prawej stronie okna).
-Stylizowanie aplikacji zostało wykonane z użyciem biblioteki CSS o nazwie \textit{Tailwind.css}.
-Komunikacja klient-serwer jest zapewniona przez bibliotekę \textit{Axios}.
+Stylizowanie aplikacji zostało wykonane z użyciem biblioteki CSS o nazwie \textit{Tailwind.css} \cite{tailwind}.
+Komunikacja klient-serwer jest zapewniona przez bibliotekę \textit{Axios} \cite{axios}.
 Architekturę przedstawia rys. \ref{fig:arch}.
 
 
 \section{Algorytm ekstrakcji kwadratów komórek z dużego zdjęcia rozmazu}\label{sec:kwadraty}
+
+Zbiór danych użyty w trakcie trenowania splotowej sieci neuronowej przedstawia komórki, które stanowią większość obrazka.
+Innymi słowy, każdy obrazek stanowi wycinek dużego skanu z rozmazu.
+Często jednak istnieje potrzeba zautomatyzowania procesu wycinania kwadratów przedstawiających komórki z dużego skanu.
+Zaproponowano system korzystający z konwencjonalnych algorytmów wizji komputerowej do osiągnięcia tego zadania.
+
+Niniejszy algorytm przyjmuje ścieżkę do obrazu przedstawiającego kilkanaście komórek różnego rodzaju i eksportuje
+każdą komórkę do kwadratowego zdjęcia w oddzielnym katalogu wyjściowym.
+Kod przedstawiony jest na listingu \ref{lst:extract}.
+
+\lstinputlisting[language=ipython,caption={Algorytm ekstrakcji komórek z dużego skanu mikroskopowego}, label={lst:extract}]{extract.py}
+
+Algorytm wykonuje następujące kroki:
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Im060_1}
+    \caption{Wejście algorytmu}
+    \label{fig:extract_input}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Im060_1_thresh}
+    \caption{Obrazek po progowaniu}
+    \label{fig:extract_thresh}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Im060_1_contours}
+    \caption{Oznaczone kontury wraz z centroidami}
+    \label{fig:extract_contours}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{cells}
+    \caption{Wyekstraktowane kwadratowe obrazki}
+    \label{fig:extract_squares}
+\end{figure}
+
+\begin{enumerate}
+    \item Konwersja oryginalnego obrazu (rys. \ref{fig:extract_input}) na skalę szarości.
+    \item Progowanie z pomocą algorytmu Otsu.
+    Jest to algorytm adaptacyjnynego progowania, często stosowany do analizy obrazów medycznych.
+    Progowanie ma na celu wyodrębnienie ciemniejszych obszarów obrazu - cytoplazmy i jądra komórek (rys. \ref{fig:extract_thresh}).
+    \item Wyznaczenie konturów z pomocą funkcji \textit{cv2.findContours}.
+    \item Obliczanie centroidów konturów za pomocą momentów Hu. Każdy wyznaczony centroid jest traktowany jako środek nowej komórki (rys. \ref{fig:extract_contours}).
+    \item Wycięcie obszaru komórki za pomocą indeksów Python (rys. \ref{fig:extract_squares}).
+\end{enumerate}
