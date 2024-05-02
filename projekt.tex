@@ -110,6 +110,16 @@ Wizualizacja rozkładu klas jest widoczna na rys. \ref{fig:images_count_vis}.
 Zbiór danych jest niezbalansowany, ponieważ ilość obrazów w każdej klasie mocno się różni.
 Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
 
+
+\section{Architektury splotowych sieci neuronowych}
+
+\subsection{\textit{EfficientNet B0}}
+
+\subsection{\textit{EfficientNet B5}}
+
+\subsection{\textit{ResNet}}
+
+
 \section{Struktura projektu}
 
 \subsection{Przygotowanie danych}
@@ -184,7 +194,18 @@ Informuje ona o tym, jakie klasy są najczęściej mylone z jakimi.
 Metryki są zapisywane do pliku tekstowego za pomocą funkcji \textit{log} oraz do plików obrazów za pomocą biblioteki \textit{matplotlib}.
 Kod odpowiadając za liczenie metryk znajduje się na listingu \ref{lst:metrics}.
 
+
 \section{Interfejs użytkownika}
+
+W celu łatwego korzystania z modelu uczenia maszynowego przez diagnostów dostępna jest aplikacja internetowa do interakcji z nim.
+Zrzut ekranu interfejsu użytkownika jest widoczny na rys. \ref{fig:ui}.
+Została ona napisana z użyciem \textit{Vue} - biblioteki do tworzenia interaktywnych interfejsów użytkownika dla sieci web.
+Aplikacja łączy się z serwerem HTTP napisanym z użyciem biblioteki Flask.
+Ów serwer eksponuje interfejs REST API, który dla wysłanego zdjęcia zwraca rozkład prawdopodobieństwa (kod na listingu \ref{lst:serve}).
+Przed wywołaniem modelu, funkcja upewnia się, że przychodzący obrazek jest poprawnego formatu.
+Dopiero po zwalidowaniu poprawności danych, kod przystępuje do utworzenia rozkładu prawdopodobieństwa (zmienna \textit{result}).
+
+\lstinputlisting[language=ipython,caption={Funkcja języka Python, która obsługuje ścieżkę HTTP POST}, label={lst:serve}]{serve.py}
 
 \begin{figure}
     \centering
@@ -192,5 +213,21 @@ Kod odpowiadając za liczenie metryk znajduje się na listingu \ref{lst:metrics}
     \caption{Aplikacja internetowa do rozpoznawania komórek}
     \label{fig:ui}
 \end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{arch}
+    \caption{Architektura klient-serwer aplikacji internetowej i serwera Flask}
+    \label{fig:arch}
+\end{figure}
+
+By skorzystać z aplikacji internetowej, należy przeciągnąć plik ze zdjęciem komórki do sekcji "Upuść tutaj rozmaz w PNG lub JPEG".
+Po wysłaniu obrazu, użytkownik może wybrać model i kliknąć przycisk "Rozpoznaj rodzaj komórki".
+Po chwili ukaże się tabela z rozkładem prawdopodobieństwa (po prawej stronie okna).
+Stylizowanie aplikacji zostało wykonane z użyciem biblioteki CSS o nazwie \textit{Tailwind.css}.
+Komunikacja klient-serwer jest zapewniona przez bibliotekę \textit{Axios}.
+Architekturę przedstawia rys. \ref{fig:arch}.
+
 
 \section{Algorytm ekstrakcji kwadratów komórek z dużego zdjęcia rozmazu}\label{sec:kwadraty}
