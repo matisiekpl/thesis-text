@@ -110,82 +110,6 @@ Wizualizacja rozkładu klas jest widoczna na rys. \ref{fig:images_count_vis}.
 Zbiór danych jest niezbalansowany, ponieważ ilość obrazów w każdej klasie mocno się różni.
 Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
 
-%\begin{table}
-%    \begin{center}
-%        \caption{Klasy obrazów w zbiorze danych}
-%        \label{tab:images_count}
-%        \begin{tabular}{|l|l|l|}
-%            \hline
-%            Klasa & Nazwa & Liczba obrazów \\
-%            \hline
-%            NGS & Segmentowany neutrofil & 29001 \\
-%            \hline
-%            EBO & Erytroblast & 27396 \\
-%            \hline
-%            LYT & Limfocyt & 26242 \\
-%            \hline
-%            ART & Artefakt & 19630 \\
-%            \hline
-%            PMO & Promielocyt & 11994 \\
-%            \hline
-%            BLA & Blast & 11973 \\
-%            \hline
-%            NGB & Krwinka biała pałeczkowata & 9968 \\
-%            \hline
-%            PLM & Komórka plazmatyczna & 7630 \\
-%            \hline
-%            MYB & Mielocyt & 6558 \\
-%            \hline
-%            EOS & Eozynofil & 5883 \\
-%            \hline
-%            MON & Monocyte & 4040 \\
-%            \hline
-%            NIF & Brak rozpoznania & 3538 \\
-%            \hline
-%            MMZ & Metamielocyt & 3055 \\
-%            \hline
-%            PEB & Proerytroblast & 2740 \\
-%            \hline
-%            BAS & Bazofil & 441 \\
-%            \hline
-%            HAC & Włochata komórka & 409 \\
-%            \hline
-%            OTH & Inna komórka & 294 \\
-%            \hline
-%            LYI & Niedojrzały limfocyt & 65 \\
-%            \hline
-%            FGC & Fagocyt & 47 \\
-%            \hline
-%            KSC & Cienie komórkowe & 42 \\
-%            \hline
-%            ABE & Nieprawidłowy eozynofil & 8 \\
-%            \hline
-%        \end{tabular}
-%    \end{center}
-%\end{table}
-
-%\begin{itemize}
-%    \item Nieprawidłowy eozynofil
-%    \item Artefakt
-%    \item Bazofil
-%    \item Blast
-%    \item Erytroblast
-%    \item Eozynofil
-%    \item Fagocyt
-%    \item Włochata komórka
-%    \item Cienie komórkowe
-%    \item Niedojrzały limfocyt
-%    \item Metamielocyt
-%    \item Krwinka biała pałeczkowata
-%    \item Segmentowany neutrofil
-%    \item Brak rozpoznania
-%    \item Inna komórka
-%    \item Proerytroblast
-%    \item Komórka plazmatyczna
-%    \item Promielocyt
-%\end{itemize}
-
-
 \section{Struktura projektu}
 
 \subsection{Przygotowanie danych}
@@ -245,27 +169,28 @@ Kod głównej funkcji treningowej jest widoczny na listingu \ref{lst:training}.
     Chcąc tego uniknąć, kod resetuje gradienty w grafie obliczeniowym przy każdej iteracji danych treningowych.
     \item \textit{loss.backward()} liczy gradienty w grafie obliczeniowym, zaś \textit{optimizer.step()} wykonuje krok optymalizacyjny.
 \end{itemize}
-
-
-%Poniżej opisano ważniejsze fragmenty kodu:
-%\begin{itemize}
-%    \item stworzenie obiektu ładującego dane (z ang. \textit{data loader}) - linijki 1 i 2.
-%    \item stworzenie obiektu modelu - w tym przypadku architektury \textit{EfficientNet B0}. Patrz linijki 4-6.
-%    \item określenie funkcji straty. W linijce 8 wykorzystano \textit{nn.CrossEntropyLoss()}, które służy do optymalizacji klasyfikatorów wieloklasowych.
-%    \item wybór optymalizatora. Linijka 9 tworzy obiekt \textit{torch.optim.Adam}. Jest to optymalizator bazujący na gradiencie funkcji. W argumentach ustawiane jest tempo uczenia się (w tym przypadku przyjmuje wartość stałej \textit{LR}).
-%    \item linijka 10 i 11 kopiuje model na urządzenie zewnętrzne - w tym przypadku kartę graficzną, która znacząco przyspiesza obliczenia.
-%    \item \textit{model.train()} w linijce 21 ustawia model w trybie uczenia się. Jest to konieczne, ponieważ niektóre warstwy sieci neuronowej zachowują się inaczej podczas treningu i ewaluacji.
-%    \item pętla \textit{for} w linijce 25 iteruje zbiór danych wejściowych, kopiując tensory na urządzenie zewnętrzne (model jak i dane muszą być w jednym miejscu).
-%    \item \textit{optimizer.zero\_grad()} resetuje wszystkie gradienty w grafie obliczeniowym.
-%    \item linijki 30-34 odpowiadają za wykonanie kroku optymalizacyjnego.
-%\end{itemize}
-
 \lstinputlisting[language=ipython,caption={Kod odpowiadający za trenowanie modelu \textit{EfficientNet B0}}, label={lst:training}]{train.py}
 \lstinputlisting[language=ipython,caption={Kod odpowiadający ewaluację metryk}, label={lst:metrics}]{metrics.py}
 
 \subsection{Ewaluacja jakości modelu}
 
+Do sprawdzenia jakości modelu uczenia maszynowego konieczny jest dobór właściwych metryk.
+Ze względu na to, że trenowany jest klasyfikator wieloklasowy, a zbiór danych nie jest zbalansowany, zwykłe metryki takie jak dokładność (z ang. \textit{accuracy}) nie wystarczą.
+Dla każdej klasy jest liczona precyzja (z ang. \textit{precision}) i czułość (z ang. \textit{recall}).
+Obie te metryki składają się do obliczenia wyniku F1 (z ang. \textit{F1-score}).
+Co ważne, wynik F1 jest liczony z uwzględnieniem wag poszczególnych klas.
+Z kolei funkcja \textit{confusion\_matrix} oblicza macierz pomyłek (czasem zwaną macierzą konfuzji).
+Informuje ona o tym, jakie klasy są najczęściej mylone z jakimi.
+Metryki są zapisywane do pliku tekstowego za pomocą funkcji \textit{log} oraz do plików obrazów za pomocą biblioteki \textit{matplotlib}.
+Kod odpowiadając za liczenie metryk znajduje się na listingu \ref{lst:metrics}.
 
 \section{Interfejs użytkownika}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{app}
+    \caption{Aplikacja internetowa do rozpoznawania komórek}
+    \label{fig:ui}
+\end{figure}
 
 \section{Algorytm ekstrakcji kwadratów komórek z dużego zdjęcia rozmazu}\label{sec:kwadraty}
