@@ -1,6 +1,74 @@
 \chapter{Analiza wyników}
 
-\section{Ocena jakości modelu}
+\section{Ocena jakości różnych architektur sieci neuronowych}
+
+\begin{table}
+    \caption{Porównanie jakości predykcji różnych architektur splotowych sieci neuronowych}
+    \begin{center}
+        \begin{tabular}{|l|l|l|l|}
+            \hline
+            Architektura & Ilość parametrów & Czas treningu & F1 \\
+            \hline
+            EfficientNet B0 & 5.3M &  & 0.860 \\
+            \hline
+            EfficientNet B5 & 30M &  & - \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:comparison}
+\end{table}
+
+
+\begin{table}
+    \caption{Podsumowanie miary F1 dla poszczególnych klas}
+    \begin{center}
+        \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            Klasa & Precyzja & Czułość & F1 & Liczba próbek \\
+            \hline
+            BLA & 0.790 & 0.760 & 0.780 & 2446 \\
+            \hline
+            EBO & 0.960 & 0.940 & 0.950 & 5543 \\
+            \hline
+            EOS & 0.970 & 0.960 & 0.970 & 1196 \\
+            \hline
+            LYT & 0.870 & 0.950 & 0.910 & 5211 \\
+            \hline
+            MON & 0.650 & 0.680 & 0.660 & 812 \\
+            \hline
+            MYB & 0.850 & 0.450 & 0.580 & 1286 \\
+            \hline
+            NGB & 0.790 & 0.720 & 0.750 & 2084 \\
+            \hline
+            NGS & 0.900 & 0.930 & 0.920 & 5818 \\
+            \hline
+            PEB & 0.660 & 0.760 & 0.710 & 521 \\
+            \hline
+            PLM & 0.910 & 0.870 & 0.890 & 1494 \\
+            \hline
+            PMO & 0.770 & 0.850 & 0.810 & 2358 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \label{tab:f1_summary}
+\end{table}
+
+Niniejsza praca ma za zadanie porównać różne architektury sieci neuronowych i wskazać, która z nich daje najlepsze rezultaty.
+Tabela \ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególnych eksperymentów.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
+    \label{fig:plot}
+\end{figure}
+
+%TODO choose best architecture
+Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B0}. Ogólny ważony wynik F1 wynosi \textit{0.86}.
+Tabela \ref{tab:f1_summary} przedstawia metryki precyzji, czułości i F1 dla poszczególnych klas.
+Z kolei wykresy na rys. \ref{fig:plot} przedstawiają wykresy zależności funkcji straty i F1 od epoki trenowania.
+Można stwierdzić, że jakość modelu nie poprawia się zbyt znacząco wraz z kolejnymi iteracjami.
+
 
 \section{Porównanie z innymi algorytmami}
 
