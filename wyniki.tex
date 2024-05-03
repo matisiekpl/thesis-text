@@ -63,12 +63,19 @@ Tabela \ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególn
     \label{fig:plot}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
+    \caption{Macierz pomyłek dla najlepszego modelu}
+    \label{fig:confusion_matrix}
+\end{figure}
+
 %TODO choose best architecture
 Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B0}. Ogólny ważony wynik F1 wynosi \textit{0.86}.
 Tabela \ref{tab:f1_summary} przedstawia metryki precyzji, czułości i F1 dla poszczególnych klas.
 Z kolei wykresy na rys. \ref{fig:plot} przedstawiają wykresy zależności funkcji straty i F1 od epoki trenowania.
 Można stwierdzić, że jakość modelu nie poprawia się zbyt znacząco wraz z kolejnymi iteracjami.
-
+Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_matrix}.
 
 \section{Porównanie z innymi algorytmami}
 
