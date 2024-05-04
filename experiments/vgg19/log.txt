@@ -1,0 +1,64 @@
+Experiment: vgg19
+Classes: ['BLA', 'EBO', 'EOS', 'LYT', 'MON', 'MYB', 'NGB', 'NGS', 'PEB', 'PLM', 'PMO']
+Number of images: 143845
+Epoch 1/3, Training Loss: 2.1656176589815734
+              precision    recall  f1-score   support
+
+         BLA       0.00      0.00      0.00      2407
+         EBO       0.00      0.00      0.00      5399
+         EOS       0.00      0.00      0.00      1136
+         LYT       0.00      0.00      0.00      5259
+         MON       0.00      0.00      0.00       786
+         MYB       0.00      0.00      0.00      1326
+         NGB       0.00      0.00      0.00      2008
+         NGS       0.21      1.00      0.34      5975
+         PEB       0.00      0.00      0.00       529
+         PLM       0.00      0.00      0.00      1543
+         PMO       0.00      0.00      0.00      2401
+
+    accuracy                           0.21     28769
+   macro avg       0.02      0.09      0.03     28769
+weighted avg       0.04      0.21      0.07     28769
+
+Epoch 1/3, Validation Loss: 2.1511332354590653, Val Accuracy: 0.20768883172859676, F1: 0.0714333853084484
+Epoch 2/3, Training Loss: 2.157786977070687
+              precision    recall  f1-score   support
+
+         BLA       0.00      0.00      0.00      2407
+         EBO       0.00      0.00      0.00      5399
+         EOS       0.00      0.00      0.00      1136
+         LYT       0.00      0.00      0.00      5259
+         MON       0.00      0.00      0.00       786
+         MYB       0.00      0.00      0.00      1326
+         NGB       0.00      0.00      0.00      2008
+         NGS       0.21      1.00      0.34      5975
+         PEB       0.00      0.00      0.00       529
+         PLM       0.00      0.00      0.00      1543
+         PMO       0.00      0.00      0.00      2401
+
+    accuracy                           0.21     28769
+   macro avg       0.02      0.09      0.03     28769
+weighted avg       0.04      0.21      0.07     28769
+
+Epoch 2/3, Validation Loss: 2.1508253417192664, Val Accuracy: 0.20768883172859676, F1: 0.0714333853084484
+Epoch 3/3, Training Loss: 2.1571756567524782
+              precision    recall  f1-score   support
+
+         BLA       0.00      0.00      0.00      2407
+         EBO       0.00      0.00      0.00      5399
+         EOS       0.00      0.00      0.00      1136
+         LYT       0.00      0.00      0.00      5259
+         MON       0.00      0.00      0.00       786
+         MYB       0.00      0.00      0.00      1326
+         NGB       0.00      0.00      0.00      2008
+         NGS       0.21      1.00      0.34      5975
+         PEB       0.00      0.00      0.00       529
+         PLM       0.00      0.00      0.00      1543
+         PMO       0.00      0.00      0.00      2401
+
+    accuracy                           0.21     28769
+   macro avg       0.02      0.09      0.03     28769
+weighted avg       0.04      0.21      0.07     28769
+
+Epoch 3/3, Validation Loss: 2.1511117431307714, Val Accuracy: 0.20768883172859676, F1: 0.0714333853084484
+3908.3777236938477
