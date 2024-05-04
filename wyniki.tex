@@ -57,7 +57,7 @@
 
 Niniejsza praca ma za zadanie porównać różne architektury splotowych sieci neuronowych i wskazać, która z nich daje najlepsze rezultaty.
 Tabela \ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególnych eksperymentów.
-Dla każdej architektury wskazano jej wielkość (ilość parametrów trenowalnych), czas nauki na \textit{Nvidia P100} oraz ważony wynik F1.
+Dla każdej architektury wskazano jej wielkość (ilość parametrów trenowalnych), czas nauki na \textit{NVIDIA P100} oraz ważony wynik F1.
 Większy wynik F1 informuje o lepszym zachowaniu modelu w rozpoznawaniu typów komórek.
 
 Warto spostrzec, że często wielkość sieci neuronowej nie koreluje bezpośrednio z jakością uzyskiwanych predykcji.
@@ -86,6 +86,18 @@ Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_matrix}.
 Informuje ona, które klasy są najczęściej mylone z którymi.
 
 \section{Porównanie z innymi algorytmami}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{resnext_confusion_matrix}
+    \caption{Macierz pomyłek dla modelu ResNeXt}
+    \label{fig:resnext_confusion_matrix}
+\end{figure}
+
+Dostawca zbioru danych, w artykule \textit{Highly accurate differentiation of bone marrow cell morphologies using deep neural networks on a large image dataset} \cite{resnext} wykorzystuje architekturę \textit{ResNetXt-50}.
+Model zawierający ponad 23 miliony parametrów był trenowany na \textit{NVIDIA TESLA V100} przez ok. 48 godzin.
+Podobnie jak w niniejszej pracy, autorzy artykułu wykonali normalizację intensywności kolorów przed trenowaniem sieci neuronowej (z powodu różnic w kontraście barwienia Maya-Grünwalda-Giemsa).
+Uzyskany ważony wynik F1 dla architektury \textit{ResNeXt-50} wyniósł \textit{0.822}. Macierz pomyłek dostarczona przed autorów pracy jest widoczny na rys. \ref{fig:resnext_confusion_matrix}.
 
 \section{Analiza błędów}
 
