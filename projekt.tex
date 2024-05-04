@@ -113,12 +113,48 @@ Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
 
 \section{Architektury splotowych sieci neuronowych}
 
-\subsection{\textit{EfficientNet B0}}
+Jednym z ważniejszych wyborów w trakcie projektowania systemu uczenia maszynowego opartego na sieciach neuronowych jest wybór architektury.
+Niektóre architektury skupiają się szczególnie na zdolności do ekstrakcji charakterystycznych cech z obrazów, inne zaś preferują efektywność obliczeń nad jakością predykcji.
+Ten rozdział porównuje użyte w trakcie badań architektury, wskazując główne elementy, które je rozróżniają.
 
-\subsection{\textit{EfficientNet B5}}
+\subsection{\textit{EfficientNet}}
+
+EfficientNet to rodzina modeli sieci neuronowych, która została zaprojektoana przez zespół \textit{Google Brain} \cite{efficientnet}.
+Głównym celem opracowania tej rodziny architektur było zmaksymalizowanie efektywności obliczeń przy ograniczonych zasobach pamięci.
+Naukowcy zamiast zwiększać rozmiar modelu, zastosowali takie techniki jak skalowanie głębokości (z ang. \textit{depth scaling}), szerokości (z ang. \textit{width scaling}) oraz rozdzielczości (z ang. \textit{resolution scaling}) (rys. \ref{fig:scaling}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{scaling}
+    \caption{Porównanie rodzajów skalowania sieci neuronowych}
+    \label{fig:scaling}
+\end{figure}
 
 \subsection{\textit{ResNet}}
 
+ResNet to rodzina modeli, którą wyróżnia obecność tzw. połączeń rezydualnych \cite{resnet}. Te połączenia pomagają przekazywać informacje bezpośrednio między warstwami. To pomaga zapobiegać problemowi zanikających gradientów.
+Architekturę przedstawiaj rys. \ref{fig:resnet}.
+Oprócz tego, architektura ResNet zawiera zazwyczaj bardzo dużą ilość wartsw.
+Duże modele oparte o tą architekturę zawierają ponad 100 warstw.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{resnet}
+    \caption{Architektura ResNet - widoczne połączenia rezydualne}
+    \label{fig:resnet}
+\end{figure}
+
+\subsection{\textit{DenseNet}}
+
+Architektura DenseNet łączy cechy architektury ResNet i mechanizmu ponownego wykorzystania cech (z ang. \textit{feature reuse}) \cite{densenet}.
+Kluczym elementem tego modelu są bloki gęste, które składają się z wielu warstw splotowych \ref{fig:denseblock}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{denseblock}
+    \caption{Blok gęsty ze współczynnikiem wzrostu $k = 4$}
+    \label{fig:denseblock}
+\end{figure}
 
 \section{Struktura projektu}
 
