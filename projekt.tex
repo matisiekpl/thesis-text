@@ -244,7 +244,7 @@ Kod przedstawiony jest na listingu \ref{lst:extract}.
 
 \lstinputlisting[language=ipython,caption={Algorytm ekstrakcji komórek z dużego skanu mikroskopowego}, label={lst:extract}]{extract.py}
 
-Algorytm wykonuje następujące kroki:
+Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
 
 \begin{figure}
     \centering
@@ -276,10 +276,20 @@ Algorytm wykonuje następujące kroki:
 
 \begin{enumerate}
     \item Konwersja oryginalnego obrazu (rys. \ref{fig:extract_input}) na skalę szarości.
+    Jest to wymagane, ponieważ progowanie w kroku drugim nie może odbywać się na obrazie kolorowym.
+    Do konwersji zastosowano funkcję \textit{cv2.cvtColor} - pozwala ona konwertować obraz z jednej przestrzeni kolorów do innej.
     \item Progowanie z pomocą algorytmu Otsu.
     Jest to algorytm adaptacyjnynego progowania, często stosowany do analizy obrazów medycznych.
-    Progowanie ma na celu wyodrębnienie ciemniejszych obszarów obrazu - cytoplazmy i jądra komórek (rys. \ref{fig:extract_thresh}).
-    \item Wyznaczenie konturów z pomocą funkcji \textit{cv2.findContours}.
-    \item Obliczanie centroidów konturów za pomocą momentów Hu. Każdy wyznaczony centroid jest traktowany jako środek nowej komórki (rys. \ref{fig:extract_contours}).
-    \item Wycięcie obszaru komórki za pomocą indeksów Python (rys. \ref{fig:extract_squares}).
+    Progowanie ma na celu wyodrębnienie ciemniejszych obszarów obrazu - cytoplazmy i jądra komórek (rys. \ref{fig:extract_thresh}). Otsu jest algorytmem progowania globalnego i opiera się na analizie histogramu.
+    Dąży on do maksymalizacji wariancji międzyklasowej.
+    \item Wyznaczenie konturów z pomocą funkcji \textit{cv2.findContours}. Kontur jest definiowany jako pewna ciągła krzywa, która łączy punkty o tej samej intensywności.
+    W opisanym algorytmie, kontury informować o granicach komórki. Argumentem funkcji jest flaga \textit{cv2.RETR\_EXTERNAL}, która powoduje, że zwrócone zostają jedynie najbardziej zewnętrzne kontury - kontury wewnętrzne są ignorowane.
+    \item Obliczanie centroidów konturów za pomocą momentów Hu. Każdy wyznaczony centroid jest traktowany jako środek komórki (rys. \ref{fig:extract_contours}). Współrzedne centroidów można wyznaczyć na podstawie momentów Hu, korzystając ze wzorów \ref{eq:hu_x} i \ref{eq:hu_y}.
+    \begin{equation}
+        cX = \dfrac{M_{10}}{M_{00}}\label{eq:hu_x}
+    \end{equation}
+    \begin{equation}
+        cY = \dfrac{M_{01}}{M_{00}}\label{eq:hu_y}
+    \end{equation}
+    \item Wycięcie obszaru komórki za pomocą indeksów Python (rys. \ref{fig:extract_squares}). Obraz każdej znalezionej komórki trafia do osobnego pliku w folderze wyjściowym. Do zapisu na dysk wykorzystano funkcję \textit{matplotlib.pyplot.imsave()}.
 \end{enumerate}

@@ -9,9 +9,11 @@
             \hline
             Architektura & Ilość parametrów & Czas treningu & F1 \\
             \hline
-            EfficientNet B0 & 5.3M &  & 0.860 \\
+            EfficientNet B0 & 5.3M & - & 0.860 \\
             \hline
-            EfficientNet B5 & 30M &  & - \\
+            EfficientNet B5 & 30M & 92 min. & 0.860 \\
+            \hline
+            ResNet18 & 11M & 17 min. & 0.827 \\
             \hline
         \end{tabular}
     \end{center}
@@ -53,8 +55,13 @@
     \label{tab:f1_summary}
 \end{table}
 
-Niniejsza praca ma za zadanie porównać różne architektury sieci neuronowych i wskazać, która z nich daje najlepsze rezultaty.
+Niniejsza praca ma za zadanie porównać różne architektury splotowych sieci neuronowych i wskazać, która z nich daje najlepsze rezultaty.
 Tabela \ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególnych eksperymentów.
+Dla każdej architektury wskazano jej wielkość (ilość parametrów trenowalnych), czas nauki na \textit{Nvidia P100} oraz ważony wynik F1.
+Większy wynik F1 informuje o lepszym zachowaniu modelu w rozpoznawaniu typów komórek.
+
+Warto spostrzec, że często wielkość sieci neuronowej nie koreluje bezpośrednio z jakością uzyskiwanych predykcji.
+Dzieje się tak ze względu na to, że pojemność zachowania informacji w nawet mniejszej sieci jest wystarczająca, by móc rozpoznawać rodzaje komórek.
 
 \begin{figure}
     \centering
@@ -71,15 +78,18 @@ Tabela \ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególn
 \end{figure}
 
 %TODO choose best architecture
-Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B0}. Ogólny ważony wynik F1 wynosi \textit{0.86}.
-Tabela \ref{tab:f1_summary} przedstawia metryki precyzji, czułości i F1 dla poszczególnych klas.
-Z kolei wykresy na rys. \ref{fig:plot} przedstawiają wykresy zależności funkcji straty i F1 od epoki trenowania.
+Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B0}. Ważony wynik F1 w jej przypadku wynosi \textit{0.86}.
+Tabela \ref{tab:f1_summary} przedstawia zestawienie precyzji, czułości i F1 dla poszczególnych klas.
+Z kolei wykresy na rys. \ref{fig:plot} przedstawiają zależności funkcji straty i F1 od epoki trenowania.
 Można stwierdzić, że jakość modelu nie poprawia się zbyt znacząco wraz z kolejnymi iteracjami.
 Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_matrix}.
+Informuje ona, które klasy są najczęściej mylone z którymi.
 
 \section{Porównanie z innymi algorytmami}
 
 \section{Analiza błędów}
+
+
 
 \section{Wnioski}
 
