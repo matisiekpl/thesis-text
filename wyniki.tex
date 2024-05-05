@@ -96,13 +96,22 @@ Informuje ona, które klasy są najczęściej mylone z którymi.
 
 Dostawca zbioru danych, w artykule \textit{Highly accurate differentiation of bone marrow cell morphologies using deep neural networks on a large image dataset} \cite{resnext} wykorzystuje architekturę \textit{ResNetXt-50}.
 Model zawierający ponad 23 miliony parametrów był trenowany na \textit{NVIDIA TESLA V100} przez ok. 48 godzin.
-Podobnie jak w niniejszej pracy, autorzy artykułu wykonali normalizację intensywności kolorów przed trenowaniem sieci neuronowej (z powodu różnic w kontraście barwienia Maya-Grünwalda-Giemsa).
-Uzyskany ważony wynik F1 dla architektury \textit{ResNeXt-50} wyniósł \textit{0.822}. Macierz pomyłek dostarczona przed autorów pracy jest widoczny na rys. \ref{fig:resnext_confusion_matrix}.
+Podobnie jak w niniejszej pracy, autorzy artykułu wykonali normalizację intensywności kolorów przed trenowaniem sieci neuronowej (z powodu różnic w barwieniu Maya-Grünwalda-Giemsa).
+Uzyskany ważony wynik F1 dla architektury \textit{ResNeXt-50} wyniósł \textit{0.822}. Macierz pomyłek dostarczona przed autorów pracy jest widoczna na rys. \ref{fig:resnext_confusion_matrix}.
 
-\section{Analiza błędów}
+\section{Wyzwania}
 
-
+Głównym wyzwaniem napotkanym w projekcie było wytrenowanie dużych sieci neuronowych. Niestety, ich trening na lokalnym sprzęcie takim jak komputer osobisty jest bardzo czasochłonne.
+W związku z tym konieczne było uruchamianie ich na platformie \textit{kaggle.com}, która oferuje 30 godzin czasu procesora graficznego miesięcznie.
+Ten górny limit wymuszał przemyślane zarządzanie tym, która sieć neuronowa powinna być wytrenowana priorytetowo.
 
 \section{Wnioski}
 
+%TODO net
+Zaprezentowane porównanie różnych splotowych sieci neuronowych informuje, że najlepszym modelem do zadania klasyfikacji rodzajów komórek w szpiku kostnym jest \textit{EfficientNet B0}.
+Ta sieć neuronowa uzyskuje najlepszy ważony wynik F1 równy \textit{0.866}.
+Warto też zwrócić uwagę na to, że sieci neuronowe znacznie większe od \textit{EfficientNet B0} nie dawały dużo lepszych rezultatów.
+
 \section{Perspektywy rozwoju projektu}
+
+Jedną z możliwości poprawienia jakości modelu jest zrównoważenie zbioru danych, by każda z klas zawierała podobną, dużą ilość próbek.
