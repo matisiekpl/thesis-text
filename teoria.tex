@@ -2,6 +2,26 @@
 
 \section{Sieci neuronowe}
 
+Sieci neuronowe stanowią jedną z najpopularniejszych technik uczenia maszynowego. Są one inspirowane działaniem ludzkiego mózgu. Sieci składają się z neuronowów, pogrupowanych w połączone ze sobą warstwy.
+
+Ogólna architektura sieci neuronowej:
+\begin{itemize}
+    \item Warstwa wejściowa - ta warstwa przyjmuje dane początkowe w formie tensora liczb rzeczywistych. Danymi wejściowymi mogą być poziomy jasności obrazu, dane o cenach lub sygnale (w przypadku prognozowania serii czasowych) lub osadzenia (z ang \textit{embeddings}) dla modeli językowych.
+    \item Warstwy ukryte - te warstwy przetwarzają dane wejściowe przez sekwencję transformacji matematyczncyh. Neurony są połączone z poprzednią warstwą, a siła ich połączenia jest wyrażana przez tak zwane wagi. Wartość, którą przyjmie dany neuron jest liczona na podstawie ważonej sumy wartości neuronów z poprzedniej warstw. Po obliczeniu sumy, stosowana jest funkcja aktywacji. Ma ona za zadanie wprowadzić nieliniowość obliczeń, która jest wymagana do rozpoznawania zaawansowanych wzorców.
+    \item Warstwa wyjściowa - warstwa, która generuje końcowy tensor. Tensor może zawierać informacje takie jak rozkład prawdopodobieństwa przyporządkowania do poszczególnych klas. Może również zawierać prognozowaną liczbę, w przypadku modeli regresyjnych.
+\end{itemize}
+
+Proces trenowania sieci neuronowej polega na modyfikowaniu wag pomiędzy połączeniami poszczególnych neuronów tak, by minimalizować różnicę między tensorem wyjściowym, a tensorem oczekiwanym.
+Najczęściej stosuje się do tego zadania algorytmy optymalizacyjne oparte na pochodnych i gradientach. Przykładem może być \textit{algorytm spadku wzdłuż gradientu}.
+W rzeczywistych zadaniach stosuje się jednak bardziej wyszukane algorytmy takie jak \textit{algorytm stochastycznego spadku wzdłuż gradientu} albo \textit{algorytm Adam}.
+
+Sieci neuronowe okazały się dużym sukcesem w wielu trudnych zadaniach uczenia maszynowego.
+Są z powodzeniem stosowane w takich branżach jak medycyna, rozrywka, cyberbezpieczeństwo czy motoryzacja. Na przykład zespół Tesla Vision trenuje duże sieci neuronowe by stworzyć pojazd autonomiczny, zdolny poruszać się bezpiecznie bez kierowcy.
+Sieci neuronowe coraz częściej będą wykonywać określone zadania szybciej i skuteczniej niż człowiek.
+Czas reakcji systemu autopilot samochodu autonomicznego jest znacznie krótszy niż czas reakcji kierowcy, co w długiej perspektywie może przyczynić się do zwiększenia bezpieczeństwa na drogach i szlakach komunikacyjnych.
+Innym bardzo ważnym zastosowaniem sieci neuronowych jest medycyna. Naukowcy z Google DeepMind stworzyli model \textit{AlphaFold}, który jest w stanie przewidywać molekularną strukturę białek.
+Postęp informatyki w naukach biologicznych i chemicznych otwiera perspektywę na leczenie chorób, które dotychczas były nieuleczalne i umożliwia lepsze zrozumienie organizmu człowieka.
+
 \section{Splotowe sieci neuronowe}
 
 \section{Architektury sieci neuronowych}
