@@ -14,7 +14,7 @@ Ogólna architektura sieci neuronowej:
 
 Proces trenowania sieci neuronowej polega na modyfikowaniu wag pomiędzy połączeniami poszczególnych neuronów tak, by minimalizować różnicę między tensorem wyjściowym, a tensorem oczekiwanym.
 Najczęściej stosuje się do tego zadania algorytmy optymalizacyjne oparte na pochodnych i gradientach. Przykładem może być \textit{algorytm spadku wzdłuż gradientu}.
-W rzeczywistych zadaniach stosuje się jednak bardziej wyszukane algorytmy takie jak \textit{algorytm stochastycznego spadku wzdłuż gradientu} albo \textit{algorytm Adam}.
+W rzeczywistych zadaniach stosuje się jednak bardziej wyszukane algorytmy takie jak algorytm stochastycznego spadku wzdłuż gradientu albo algorytm \textit{Adam}.
 
 Sieci neuronowe okazały się dużym sukcesem w wielu trudnych zadaniach uczenia maszynowego.
 Są z powodzeniem stosowane w takich branżach jak medycyna, rozrywka, cyberbezpieczeństwo czy motoryzacja. Na przykład zespół Tesla Vision trenuje duże sieci neuronowe by stworzyć pojazd autonomiczny, zdolny poruszać się bezpiecznie bez kierowcy.
@@ -23,9 +23,53 @@ Czas reakcji systemu autopilot samochodu autonomicznego jest znacznie krótszy n
 Innym bardzo ważnym zastosowaniem sieci neuronowych jest medycyna. Naukowcy z Google DeepMind stworzyli model \textit{AlphaFold}, który jest w stanie przewidywać molekularną strukturę białek.
 Postęp informatyki w naukach biologicznych i chemicznych otwiera perspektywę na leczenie chorób, które dotychczas były nieuleczalne i umożliwia lepsze zrozumienie organizmu człowieka.
 
-\section{Propagacja wsteczna}
 
-%TODO backprop
+\section{Algorytm propagacji wstecznej}
+
+Algorytm propagacji wstecznej to podstawowy algorytm używany do trenowania sieci neuronowych.
+Trenowanie sieci neuronowej to nic innego jak aktualizacja wag neuronów w taki sposób, by minimalizować tak zwany błąd (z ang. \textit{loss}) w predykcjach.
+
+Zasada działania algorytmu:
+\begin{itemize}
+    \item Inicjalizacja - wagi neuronów są ustawiane na losowe wartości. Często wartości są losowane z rozkładu prawdopodobieństwa Glorota.
+    Użycie takiego rozkładu pozwala uodpornić proces treningu na problem zanikających i eksplodujących gradientów.
+    \item Przejście w przód - dane wejściowe są przekazywane do sieci neuronowej i liczone są wartości neuronów w kolejnych warstwach.
+    Ostatnia warstwa stanowi wyjście modelu.
+    \item Obliczenie błędu (inaczej straty) - wyliczone wyjście modelu jest porównywanie z oczekiwanym wyjściem (pochodzi ono z danych wejściowych w przypadku uczenia nadzorowanego).
+    Używając różnych funkcji matematycznych, algorytm oblicza błąd, który informuje, jak bardzo predykcje odbiegają od docelowego wyjścia modelu.
+    Najpopularniejsze funkcje błędu to błąd średniokwadratowy (z ang. \textit{Mean-Square Error} albo \textit{MSE}) bądź entropia krzyżowa (z ang. \textit{Cross Entropy}).
+    Dla zadań klasyfikacji wieloklasowej często stosuje się entropię krzyżową, zaś dla regresji liniowej (np.
+    przewidywanie ceny nieruchomości) można zastosować błąd średniokwadratowy.
+
+    Błąd średniokwadratowy dany jest wzorem \ref{eq:mse}, gdzie $n$ to liczba obserwacji, $y_i$ to rzeczywista wartość dla $i$-tej obserwacji $\hat{y}_i$ to przewidywana wartość dla $i$-tej obserwacji.
+    \begin{equation}
+        \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2\label{eq:mse}
+    \end{equation}
+
+    Z kolei funkcja błędu entropii krzyżowej dana jest wzorem \ref{eq:cross_entropy}, gdzie $N$ to liczba wszystkich próbek, a $K$ to liczba klas. $y_{i,k}$ to prawdziwa etykieta dla próbki $i$ i klasy $k$, a $\hat{y}_{i,k}$ to przewidywane prawdopodobieństwo, że próbka $i$ należy do klasy $k$.
+    \begin{equation}
+        \mathcal{L}_{CE} = -\frac{1}{N} \sum_{i=1}^{N} \sum_{k=1}^{K} y_{i,k} \log(\hat{y}_{i,k})\label{eq:cross_entropy}
+    \end{equation}
+
+    \item Propagacja błędu - błąd jest przekazywany wstecz od warstwy wyjściowej, przez warstwy ukryte aż do warstwy wejściowej.
+    Przy przekazywaniu, liczone są pochodne cząstkowe funkcji błędu względem każdej z wag.
+    \item Aktualizacja wag - wagi neuronów są aktualizowane za pomocą różnych algorytmów optymalizacyjnych.
+    Jednym z najprostszych algorytmów jest metoda najszybszego spadku wzdłuż gradientu, która sprowadza się wyliczenia następnej wartości za pomocą równania \ref{eq:fastest_gradient_descent}.
+    Warto zwrócić uwagę na hiperparametr $\alpha_k$ - jest to współczynnik uczenia.
+    Informuje on algorytm o tempie optymalizacji.
+    Gdy współczynnik będzie zbyt niski, proces trenowania będzie trwał bardzo długo i może dojść do sytuacji, gdzie model nigdy nie zdąży się wytrenować.
+    Z kolei zbyt wysoka wartość współczynnika uczenia może spodować trudności ze znalezieniem minimum globalnego i brak poprawy jakości modelu.
+    \begin{equation}
+        x_{k+1} = x_k - \alpha_k \nabla f(x_k)\label{eq:fastest_gradient_descent}
+    \end{equation}
+    \item Iteracja - kroki (oprócz inicjalizacji) są powtarzane tak długo, aż sieć neuronowa będzie dawała jakościowe predykcje.
+\end{itemize}
+
+Zagadnienie propagacji wstecznej jest bardzo szerokie - pomimo niezbyt skomplikowanego algorytmu, w trakcie trenowanie sieci mogą pojawiać się problemy z tak zwanymi zanikającymi bądź eksplodującymi gradientami.
+Wartość współczynnika uczenia nie musi być z góry ustalona, lecz może być wyliczana na bieżąco.
+Przykładowo, wraz z czasem treningu współczynnik może być zmniejszany (nazwa metody w j. ang. to \textit{learning rate decay}).
+Podsumowując, propagacja wsteczna jest bardzo przydatna w zagadnieniu trenowania sieci neuronowych i uczeniu głębokim, pomimo korzystania z prostych pojęć analizy matematycznej takich jak pochodna cząstkowa.
+
 
 \section{Splotowe sieci neuronowe}
 
@@ -48,18 +92,10 @@ Struktura splotowych sieci neuronowych sprowadza się do:
     \item Warstwy gęste - po kilku warstwach splotowych, zaawansowane rozumowanie jest przeprowadzane przez warstwy gęste, czyli neurony połączone w sposób "każdy z każdym".
 \end{itemize}
 
-Główne zastosowanie splotowych sieci neuronowych:
-\begin{itemize}
-    \item wykrywanie przedmiotów i ludzi na obrazach i nagraniach wideo
-    \item analiza i wykrywanie anomalii w skanach medycznych
-    \item pojazdy autonomiczne - analiza sytuacji na drodze
-\end{itemize}
-
-W niniejszej
-
+Główne zastosowanie splotowych sieci neuronowych to wykrywanie przedmiotów i ludzi na obrazach i nagraniach wideo,
+opisywanie i wykrywanie anomalii w skanach medycznych oraz analiza sytuacji na drodze dla pojazdów autonomicznych.
 
 \section{Architektury sieci neuronowych}
-
 
 
 \section{Problem klasyfikacji komórek krwi w rozmazach szpiku kostnego}
