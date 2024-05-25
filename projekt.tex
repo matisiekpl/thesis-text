@@ -94,20 +94,20 @@ Producentem mikroskopu było przedsiębiorstwo Fraunhofer IIS.
 
 \begin{figure}
     \includegraphics[width=\textwidth]{images_count}
-    \caption{Wizualizacja ilościowa rozkładu próbek w klasach w zbiorze danych}
+    \caption{Histogram rozkładu próbek w klasach w zbiorze danych}
     \label{fig:images_count_vis}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[height=0.9\textheight]{images_examples}
-    \caption{Podgląd zdjęć komórek ze zbioru danych dla każdej z klas}
+    \caption{Przykładowe zdjęcia komórek ze zbioru danych dla każdej z klas}
     \label{fig:images_examples}
 \end{figure}
 
 Komórki były barwione metodą Maya-Grünwalda-Giemsa \cite{histology}. Zbiór danych zawiera 21 klas.
-Wizualizacja rozkładu klas jest widoczna na rys. \ref{fig:images_count_vis}.
-Zbiór danych jest niezbalansowany, ponieważ ilość obrazów w każdej klasie mocno się różni.
+Histogram rozkładu klas jest widoczna na rys. \ref{fig:images_count_vis}.
+Zbiór danych jest niezbalansowany, ponieważ ilość obrazów w każdej klasie znacząco się różni.
 Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
 
 
@@ -160,7 +160,7 @@ Kluczym elementem tego modelu są bloki gęste, które składają się z wielu w
 
 \textit{InceptionV3} to architektura sieci neuronowych opracowana przez naukowców z Google.
 Jest znana z szybkości generowania predykcji oraz ich skuteczności.
-Nazwa \textit{Inception} pochodzi od bloku incepcji. Bloki te używają wielu warstw filtrów splotowych o różnych rozmiarach w obrębie tej samej warstwy. Pozwala to uchwycić bardziej zaawansowane cechy obrazów w różnych skalach.
+Nazwa \textit{Inception} pochodzi od bloku incepcji. Bloki te używają wielu warstw filtrów splotowych o różnych rozmiarach w obrębie tej samej warstwy. Pozwala to uchwycić bardziej złożone cechy obrazów w różnych skalach.
 Oryginalnie, \textit{InceptionV3} został wytrenowany do rozpoznawania obiektów w zbiorze danych \textit{ImageNet} i jest często spotykany w rozwiązaniach rozpoznawania obrazów.
 
 \subsection{\textit{AlexNet}}
@@ -208,15 +208,19 @@ Zestaw walidacyjny natomiast jest używany do sprawdzania jakości modelu na obr
 Niniejsza praca ma za zadanie między innymi porównać różne architektury splotowych sieci neuronowych i ocenić,
 która z nich wypada najlepiej w zadaniu klasyfikacji komórek z rozmazów szpiku kostnego.
 Omówiony poniżej trening sieci neuronowej o architekturze \textit{EfficientNet B0} wygląda tak samo dla innych architektur, takich jak \textit{EfficientNet B5}, \textit{ResNet} i innych.
-Tempo uczenia wynosiło \textit{0.001}, a ilość epok była równa 3.
+Współczynnik uczenia wynosił \textit{0.001}, a ilość epok była równa 3.
 
 Trenowanie sieci neuronowej z użyciem biblioteki PyTorch sprowadza się do iterowania po zbiorze wejściowym i wykonywania kroku optymalizacyjnego przy każdym przejściu.
 Kod głównej funkcji treningowej jest widoczny na listingu \ref{lst:training}.
 
 \begin{itemize}
     \item na listingu wykorzystano architekturę \textit{EfficientNet B0}
-    \item jako funkcję straty użyto \textit{torch.nn.CrossEntropyLoss()}.
+    \item jako funkcję straty użyto entropię krzyżową (\textit{torch.nn.CrossEntropyLoss()}).
     Jest to funkcja używana do klasyfikatorów wieloklasowych.
+%    TODO entropia
+    \begin{equation}
+        cY = \dfrac{M_{01}}{M_{00}}\label{eq:crossentropy}
+    \end{equation}
     \item funkcja \textit{.to(device)} kopiuje tensory na urządzenie zewnętrzne, czyli kartę graficzną.
     Jest to wymagane, ponieważ model i dane muszą znajdować się w tym samym miejscu.
     Dzięki użyciu karty graficznej obliczenia są znacznie przyspieszone.
@@ -235,7 +239,7 @@ Ze względu na to, że trenowany jest klasyfikator wieloklasowy, a zbiór danych
 Dla każdej klasy jest liczona precyzja (z ang. \textit{precision}) i czułość (z ang. \textit{recall}).
 Obie te metryki składają się do obliczenia wyniku F1 (z ang. \textit{F1-score}) \cite{geron}.
 Co ważne, wynik F1 jest liczony z uwzględnieniem wag poszczególnych klas.
-Z kolei funkcja \textit{confusion\_matrix} oblicza macierz pomyłek (czasem zwaną macierzą konfuzji).
+Z kolei funkcja \textit{confusion\_matrix} oblicza macierz pomyłek.
 Informuje ona o tym, jakie klasy są najczęściej mylone z jakimi.
 Metryki są zapisywane do pliku tekstowego za pomocą funkcji \textit{log} oraz do plików obrazów za pomocą biblioteki \textit{matplotlib}.
 Kod odpowiadając za liczenie metryk znajduje się na listingu \ref{lst:metrics}.
@@ -275,15 +279,15 @@ Komunikacja klient-serwer jest zapewniona przez bibliotekę \textit{Axios} \cite
 Architekturę przedstawia rys. \ref{fig:arch}.
 
 
-\section{Algorytm ekstrakcji kwadratów komórek z dużego zdjęcia rozmazu}\label{sec:kwadraty}
+\section{Algorytm ekstrakcji obrazów komórek z dużego zdjęcia rozmazu}\label{sec:kwadraty}
 
-Zbiór danych użyty w trakcie trenowania splotowej sieci neuronowej przedstawia komórki, które stanowią większość obrazka.
+Zbiór danych użyty w trakcie trenowania splotowej sieci neuronowej przedstawia komórki, które zajmują prawie całą cześć obrazu.
 Innymi słowy, każdy obrazek stanowi wycinek dużego skanu z rozmazu.
-Często jednak istnieje potrzeba zautomatyzowania procesu wycinania kwadratów przedstawiających komórki z dużego skanu.
-Zaproponowano system korzystający z konwencjonalnych algorytmów wizji komputerowej do osiągnięcia tego zadania.
+Często jednak istnieje potrzeba zautomatyzowania procesu wycinania kwadratowych obrazów przedstawiających komórki z dużego skanu.
+Zaproponowano algorytm korzystający z różnych metod wizji komputerowej do osiągnięcia tego zadania.
 
-Niniejszy algorytm przyjmuje ścieżkę do obrazu przedstawiającego kilkanaście komórek różnego rodzaju i eksportuje
-każdą komórkę do kwadratowego zdjęcia w oddzielnym katalogu wyjściowym.
+Niniejszy algorytm przyjmuje obraz przedstawiający kilkanaście komórek różnego rodzaju i eksportuje
+każdą komórkę do kwadratowego zdjęcia.
 Kod przedstawiony jest na listingu \ref{lst:extract}.
 
 \lstinputlisting[language=ipython,caption={Algorytm ekstrakcji komórek z dużego skanu mikroskopowego}, label={lst:extract}]{extract.py}
