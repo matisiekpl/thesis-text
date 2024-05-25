@@ -229,8 +229,9 @@ Kod głównej funkcji treningowej jest widoczny na listingu \ref{lst:training}.
     Chcąc tego uniknąć, kod resetuje gradienty w grafie obliczeniowym przy każdej iteracji danych treningowych.
     \item \textit{loss.backward()} liczy gradienty w grafie obliczeniowym, zaś \textit{optimizer.step()} wykonuje krok optymalizacyjny.
 \end{itemize}
-\lstinputlisting[language=ipython,caption={Kod odpowiadający za trenowanie modelu \textit{EfficientNet B0}}, label={lst:training}]{train.py}
-\lstinputlisting[language=ipython,caption={Kod odpowiadający ewaluację metryk}, label={lst:metrics}]{metrics.py}
+%TODO code
+%\lstinputlisting[language=ipython,caption={Kod odpowiadający za trenowanie modelu \textit{EfficientNet B0}}, label={lst:training}]{train.py}
+%\lstinputlisting[language=ipython,caption={Kod odpowiadający ewaluację metryk}, label={lst:metrics}]{metrics.py}
 
 \subsection{Ewaluacja jakości modelu}
 
@@ -253,8 +254,8 @@ Aplikacja łączy się z serwerem HTTP napisanym z użyciem biblioteki Flask \ci
 Ów serwer eksponuje interfejs REST API, który dla wysłanego zdjęcia zwraca rozkład prawdopodobieństwa (kod na listingu \ref{lst:serve}).
 Przed wywołaniem modelu, funkcja upewnia się, że przychodzący obrazek jest poprawnego formatu.
 Dopiero po zwalidowaniu poprawności danych, kod przystępuje do utworzenia rozkładu prawdopodobieństwa (zmienna \textit{result}).
-
-\lstinputlisting[language=ipython,caption={Funkcja języka Python, która obsługuje ścieżkę HTTP POST}, label={lst:serve}]{serve.py}
+%TODO code
+%\lstinputlisting[language=ipython,caption={Funkcja języka Python, która obsługuje ścieżkę HTTP POST}, label={lst:serve}]{serve.py}
 
 \begin{figure}
     \centering
@@ -289,8 +290,8 @@ Zaproponowano algorytm korzystający z różnych metod wizji komputerowej do osi
 Niniejszy algorytm przyjmuje obraz przedstawiający kilkanaście komórek różnego rodzaju i eksportuje
 każdą komórkę do kwadratowego zdjęcia.
 Kod przedstawiony jest na listingu \ref{lst:extract}.
-
-\lstinputlisting[language=ipython,caption={Algorytm ekstrakcji komórek z dużego skanu mikroskopowego}, label={lst:extract}]{extract.py}
+%TODO code
+%\lstinputlisting[language=ipython,caption={Algorytm ekstrakcji komórek z dużego skanu mikroskopowego}, label={lst:extract}]{extract.py}
 
 Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
 
