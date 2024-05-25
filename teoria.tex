@@ -1,5 +1,6 @@
 \chapter{Zagadnienia teoretyczne}
 
+
 \section{Sieci neuronowe}
 
 Sieci neuronowe stanowią jedną z najpopularniejszych technik uczenia maszynowego. Są one inspirowane działaniem ludzkiego mózgu. Sieci składają się z neuronowów, pogrupowanych w połączone ze sobą warstwy.
@@ -22,12 +23,49 @@ Czas reakcji systemu autopilot samochodu autonomicznego jest znacznie krótszy n
 Innym bardzo ważnym zastosowaniem sieci neuronowych jest medycyna. Naukowcy z Google DeepMind stworzyli model \textit{AlphaFold}, który jest w stanie przewidywać molekularną strukturę białek.
 Postęp informatyki w naukach biologicznych i chemicznych otwiera perspektywę na leczenie chorób, które dotychczas były nieuleczalne i umożliwia lepsze zrozumienie organizmu człowieka.
 
+\section{Propagacja wsteczna}
+
+%TODO backprop
+
 \section{Splotowe sieci neuronowe}
+
+Splotowe sieci neuronowe to rodzaj sieci neuronowych dedykowany do rozpoznawania przede wszystkim cech obrazów.
+Znajdują one zastosowanie w zadaniach takich jak klasyfikacja obrazów, rozpoznawanie obiektów lub segmentacja.
+Czasem są one używane do analizy wideo lub analizy sygnału w czasie.
+
+Struktura splotowych sieci neuronowych sprowadza się do:
+\begin{itemize}
+    \item Warstwa wejściowa - ta warstwa przyjmuje zazwyczaj obraz jako tensor jasności poszczególnych pikseli.
+    Obraz wejściowy może być w skali szarości (pojedynczy kanał) lub kolorowy - najczęściej składowe RGB pojedynczego piksela są kodowane przez 3 neurony.
+    \item Warstwy splotowe - te warstwy wykorzystują matematyczną operację splotu.
+    Taka warstwa zawiera pewną macierz, zwaną filtrem o pewnym ustalonym rozmiarze (najczęściej \textit{3x3} lub \textit{5x5}).
+    Macierz ta jes przesuwana od lewej do prawej, z góry do dołu po obrazie.
+    Odpowiednie wartości filtra są w stanie wzmocnić lub osłabić pewne cechy obrazu takie jak ostre krawędzie bądź rogi.
+    Wartości macierzy są dobierane w procesie trenowania modelu.
+    \item Warstwy łączące - warstwy te mają za zadanie zmniejszyć wymiarowość danych z poprzedniej warstwy.
+    Popularną funkcją łączącą jest uśrednianie - dla zadanego otoczenia pikseli (najczęściej \textit{2x2} lub \textit{3x3}) wybierana jest średnia wartość.
+    Inną funkcją łączącą jest maksimum - z otoczenia wybierana jest wartość maksymalna.
+    \item Warstwy gęste - po kilku warstwach splotowych, zaawansowane rozumowanie jest przeprowadzane przez warstwy gęste, czyli neurony połączone w sposób "każdy z każdym".
+\end{itemize}
+
+Główne zastosowanie splotowych sieci neuronowych:
+\begin{itemize}
+    \item wykrywanie przedmiotów i ludzi na obrazach i nagraniach wideo
+    \item analiza i wykrywanie anomalii w skanach medycznych
+    \item pojazdy autonomiczne - analiza sytuacji na drodze
+\end{itemize}
+
+W niniejszej
+
 
 \section{Architektury sieci neuronowych}
 
+
+
 \section{Problem klasyfikacji komórek krwi w rozmazach szpiku kostnego}
 
+
 \section{Konwencjonalne algorytmy widzenia komputerowego}
+
 
 \section{GradCAM - wytłumaczalne uczenie maszynowe}
