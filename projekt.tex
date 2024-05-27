@@ -111,59 +111,59 @@ Zbiór danych jest niezbalansowany, ponieważ ilość obrazów w każdej klasie 
 Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
 
 
-\section{Architektury splotowych sieci neuronowych}
-
-Jednym z ważniejszych wyborów w trakcie projektowania systemu uczenia maszynowego opartego na sieciach neuronowych jest wybór architektury.
-Niektóre architektury skupiają się szczególnie na zdolności do ekstrakcji charakterystycznych cech z obrazów, inne zaś preferują efektywność obliczeń nad jakością predykcji.
-Ten rozdział porównuje użyte w trakcie badań architektury, wskazując główne elementy, które je rozróżniają.
-
-\subsection{\textit{EfficientNet}}
-
-EfficientNet to rodzina modeli sieci neuronowych, która została zaprojektoana przez zespół \textit{Google Brain} \cite{efficientnet}.
-Głównym celem opracowania tej rodziny architektur było zmaksymalizowanie efektywności obliczeń przy ograniczonych zasobach pamięci.
-Naukowcy zamiast zwiększać rozmiar modelu, zastosowali takie techniki jak skalowanie głębokości (z ang. \textit{depth scaling}), szerokości (z ang. \textit{width scaling}) oraz rozdzielczości (z ang. \textit{resolution scaling}) (rys. \ref{fig:scaling}).
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{scaling}
-    \caption{Porównanie rodzajów skalowania sieci neuronowych}
-    \label{fig:scaling}
-\end{figure}
-
-\subsection{\textit{ResNet}}
-
-ResNet to rodzina modeli, którą wyróżnia obecność tzw. połączeń rezydualnych \cite{resnet}. Te połączenia pomagają przekazywać informacje bezpośrednio między warstwami. To pomaga zapobiegać problemowi zanikających gradientów.
-Architekturę przedstawiaj rys. \ref{fig:resnet}.
-Oprócz tego, architektura ResNet zawiera zazwyczaj bardzo dużą ilość wartsw.
-Duże modele oparte o tą architekturę zawierają ponad 100 warstw.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth]{resnet}
-    \caption{Architektura ResNet - widoczne połączenia rezydualne}
-    \label{fig:resnet}
-\end{figure}
-
-\subsection{\textit{DenseNet}}
-
-Architektura DenseNet łączy cechy architektury ResNet i mechanizmu ponownego wykorzystania cech (z ang. \textit{feature reuse}) \cite{densenet}.
-Kluczym elementem tego modelu są bloki gęste, które składają się z wielu warstw splotowych \ref{fig:denseblock}.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth]{denseblock}
-    \caption{Blok gęsty ze współczynnikiem wzrostu $k = 4$}
-    \label{fig:denseblock}
-\end{figure}
-
-\subsection{\textit{InceptionV3}}
-
-\textit{InceptionV3} to architektura sieci neuronowych opracowana przez naukowców z Google.
-Jest znana z szybkości generowania predykcji oraz ich skuteczności.
-Nazwa \textit{Inception} pochodzi od bloku incepcji. Bloki te używają wielu warstw filtrów splotowych o różnych rozmiarach w obrębie tej samej warstwy. Pozwala to uchwycić bardziej złożone cechy obrazów w różnych skalach.
-Oryginalnie, \textit{InceptionV3} został wytrenowany do rozpoznawania obiektów w zbiorze danych \textit{ImageNet} i jest często spotykany w rozwiązaniach rozpoznawania obrazów.
-
-\subsection{\textit{AlexNet}}
+%\section{Architektury splotowych sieci neuronowych}
+%
+%Jednym z ważniejszych wyborów w trakcie projektowania systemu uczenia maszynowego opartego na sieciach neuronowych jest wybór architektury.
+%Niektóre architektury skupiają się szczególnie na zdolności do ekstrakcji charakterystycznych cech z obrazów, inne zaś preferują efektywność obliczeń nad jakością predykcji.
+%Ten rozdział porównuje użyte w trakcie badań architektury, wskazując główne elementy, które je rozróżniają.
+%
+%\subsection{\textit{EfficientNet}}
+%
+%EfficientNet to rodzina modeli sieci neuronowych, która została zaprojektoana przez zespół \textit{Google Brain} \cite{efficientnet}.
+%Głównym celem opracowania tej rodziny architektur było zmaksymalizowanie efektywności obliczeń przy ograniczonych zasobach pamięci.
+%Naukowcy zamiast zwiększać rozmiar modelu, zastosowali takie techniki jak skalowanie głębokości (z ang. \textit{depth scaling}), szerokości (z ang. \textit{width scaling}) oraz rozdzielczości (z ang. \textit{resolution scaling}) (rys. \ref{fig:scaling}).
+%
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=\textwidth]{scaling}
+%    \caption{Porównanie rodzajów skalowania sieci neuronowych}
+%    \label{fig:scaling}
+%\end{figure}
+%
+%\subsection{\textit{ResNet}}
+%
+%ResNet to rodzina modeli, którą wyróżnia obecność tzw. połączeń rezydualnych \cite{resnet}. Te połączenia pomagają przekazywać informacje bezpośrednio między warstwami. To pomaga zapobiegać problemowi zanikających gradientów.
+%Architekturę przedstawiaj rys. \ref{fig:resnet}.
+%Oprócz tego, architektura ResNet zawiera zazwyczaj bardzo dużą ilość wartsw.
+%Duże modele oparte o tą architekturę zawierają ponad 100 warstw.
+%
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.6\textwidth]{resnet}
+%    \caption{Architektura ResNet - widoczne połączenia rezydualne}
+%    \label{fig:resnet}
+%\end{figure}
+%
+%\subsection{\textit{DenseNet}}
+%
+%Architektura DenseNet łączy cechy architektury ResNet i mechanizmu ponownego wykorzystania cech (z ang. \textit{feature reuse}) \cite{densenet}.
+%Kluczym elementem tego modelu są bloki gęste, które składają się z wielu warstw splotowych \ref{fig:denseblock}.
+%
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.6\textwidth]{denseblock}
+%    \caption{Blok gęsty ze współczynnikiem wzrostu $k = 4$}
+%    \label{fig:denseblock}
+%\end{figure}
+%
+%\subsection{\textit{InceptionV3}}
+%
+%\textit{InceptionV3} to architektura sieci neuronowych opracowana przez naukowców z Google.
+%Jest znana z szybkości generowania predykcji oraz ich skuteczności.
+%Nazwa \textit{Inception} pochodzi od bloku incepcji. Bloki te używają wielu warstw filtrów splotowych o różnych rozmiarach w obrębie tej samej warstwy. Pozwala to uchwycić bardziej złożone cechy obrazów w różnych skalach.
+%Oryginalnie, \textit{InceptionV3} został wytrenowany do rozpoznawania obiektów w zbiorze danych \textit{ImageNet} i jest często spotykany w rozwiązaniach rozpoznawania obrazów.
+%
+%\subsection{\textit{AlexNet}}
 
 \section{Struktura projektu}
 
@@ -230,7 +230,7 @@ Kod głównej funkcji treningowej jest widoczny na listingu \ref{lst:training}.
     \item \textit{loss.backward()} liczy gradienty w grafie obliczeniowym, zaś \textit{optimizer.step()} wykonuje krok optymalizacyjny.
 \end{itemize}
 %TODO code
-%\lstinputlisting[language=ipython,caption={Kod odpowiadający za trenowanie modelu \textit{EfficientNet B0}}, label={lst:training}]{train.py}
+\lstinputlisting[language=ipython,caption={Kod odpowiadający za trenowanie modelu \textit{EfficientNet B0}}, label={lst:training}]{train.py}
 %\lstinputlisting[language=ipython,caption={Kod odpowiadający ewaluację metryk}, label={lst:metrics}]{metrics.py}
 
 \subsection{Ewaluacja jakości modelu}
@@ -243,7 +243,7 @@ Co ważne, wynik F1 jest liczony z uwzględnieniem wag poszczególnych klas.
 Z kolei funkcja \textit{confusion\_matrix} oblicza macierz pomyłek.
 Informuje ona o tym, jakie klasy są najczęściej mylone z jakimi.
 Metryki są zapisywane do pliku tekstowego za pomocą funkcji \textit{log} oraz do plików obrazów za pomocą biblioteki \textit{matplotlib}.
-Kod odpowiadając za liczenie metryk znajduje się na listingu \ref{lst:metrics}.
+%Kod odpowiadając za liczenie metryk znajduje się na listingu \ref{lst:metrics}.
 
 \section{Interfejs użytkownika}
 
@@ -251,9 +251,10 @@ W celu łatwego korzystania z modelu uczenia maszynowego przez diagnostów dost�
 Zrzut ekranu interfejsu użytkownika jest widoczny na rys. \ref{fig:ui}.
 Została ona napisana z użyciem \textit{Vue} \cite{vue} - biblioteki do tworzenia interaktywnych interfejsów użytkownika dla sieci web.
 Aplikacja łączy się z serwerem HTTP napisanym z użyciem biblioteki Flask \cite{flask}.
-Ów serwer eksponuje interfejs REST API, który dla wysłanego zdjęcia zwraca rozkład prawdopodobieństwa (kod na listingu \ref{lst:serve}).
+Serwer eksponuje interfejs REST API, który dla wysłanego zdjęcia zwraca rozkład prawdopodobieństwa (kod na listingu \ref{lst:serve}).
 Przed wywołaniem modelu, funkcja upewnia się, że przychodzący obrazek jest poprawnego formatu.
 Dopiero po zwalidowaniu poprawności danych, kod przystępuje do utworzenia rozkładu prawdopodobieństwa (zmienna \textit{result}).
+Renderowana jest również mapa cieplna GradCAM informująca użytkownika o regionach obrazu, które były kluczowe dla modelu w trakcie wykonywania predykcji.
 %TODO code
 %\lstinputlisting[language=ipython,caption={Funkcja języka Python, która obsługuje ścieżkę HTTP POST}, label={lst:serve}]{serve.py}
 
@@ -289,7 +290,7 @@ Zaproponowano algorytm korzystający z różnych metod wizji komputerowej do osi
 
 Niniejszy algorytm przyjmuje obraz przedstawiający kilkanaście komórek różnego rodzaju i eksportuje
 każdą komórkę do kwadratowego zdjęcia.
-Kod przedstawiony jest na listingu \ref{lst:extract}.
+%Kod przedstawiony jest na listingu \ref{lst:extract}.
 %TODO code
 %\lstinputlisting[language=ipython,caption={Algorytm ekstrakcji komórek z dużego skanu mikroskopowego}, label={lst:extract}]{extract.py}
 
