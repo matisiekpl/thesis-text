@@ -1,6 +1,7 @@
 \message{*** [aghdpl.cls] ---  (PK, GJN, MSz)  v4.0 <2020-11-03>  ***}
 
 \usepackage[cache=false]{minted}
+\usepackage[thinc]{esdiff}
 
 %\usepackage{xcolor}
 %\definecolor{commentgreen}{RGB}{2,112,10}
@@ -29,7 +30,7 @@
 %
 %\newcommand{\code}[1]{\texttt{#1}} % inline code setting
 
-
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
 
 \newif\ifpdflatex\pdflatexfalse
 \NeedsTeXFormat{LaTeX2e} % 
