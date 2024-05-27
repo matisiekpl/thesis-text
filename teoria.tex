@@ -26,7 +26,7 @@ Postęp informatyki w naukach biologicznych i chemicznych otwiera perspektywę n
 
 \section{Algorytm propagacji wstecznej}
 
-Algorytm propagacji wstecznej to podstawowy algorytm używany do trenowania sieci neuronowych.
+Algorytm propagacji wstecznej to podstawowy algorytm używany do trenowania sieci neuronowych \cite{geron}.
 Trenowanie sieci neuronowej to nic innego jak aktualizacja wag neuronów w taki sposób, by minimalizować tak zwany błąd (z ang. \textit{loss}) w predykcjach.
 
 Zasada działania algorytmu:
@@ -73,7 +73,7 @@ Podsumowując, propagacja wsteczna jest bardzo przydatna w zagadnieniu trenowani
 
 \section{Splotowe sieci neuronowe}
 
-Splotowe sieci neuronowe to rodzaj sieci neuronowych dedykowany do rozpoznawania przede wszystkim cech obrazów.
+Splotowe sieci neuronowe to rodzaj sieci neuronowych dedykowany do rozpoznawania przede wszystkim cech obrazów \cite{geron}.
 Znajdują one zastosowanie w zadaniach takich jak klasyfikacja obrazów, rozpoznawanie obiektów lub segmentacja.
 Czasem są one używane do analizy wideo lub analizy sygnału w czasie.
 
@@ -95,13 +95,68 @@ Struktura splotowych sieci neuronowych sprowadza się do:
 Główne zastosowanie splotowych sieci neuronowych to wykrywanie przedmiotów i ludzi na obrazach i nagraniach wideo,
 opisywanie i wykrywanie anomalii w skanach medycznych oraz analiza sytuacji na drodze dla pojazdów autonomicznych.
 
-\section{Architektury sieci neuronowych}
-
 
 \section{Problem klasyfikacji komórek krwi w rozmazach szpiku kostnego}
 
+Problem opisu komórek na rozmazach krwi i szpiku kostnego jest bardzo ważny z perspektywy diagnostyki wielu chorób takich jak np.
+nowotwory.
+Po wykonaniu mikroskopowej fotografii rozmazu lekarz diagnosta musi policzyć ilość każdego typu komórek w próbce.
+Ilość komórek danego rodzaju może być przesłanką do zdiagnozowania nieprawidłowości w organiźmie.
+Przykładowo, do stwierdzenia białaczki lekarz zlicza ilość limfoblastów w próbce w stosunku do wszystkich komórek.
+Gdy ten stosunek przekracza pewien próg, jest to przesłanka o obecności nowotworu.
+Limfoblasty to forma niedojrzała limfocytów.
+Ich zwiększone występowanie sugeruje nieprawidłowości w procesie rozwoju tych komórek do docelowej postaci.
 
-\section{Konwencjonalne algorytmy widzenia komputerowego}
+Rodzaj komórki można stwierdzić przede wszystkim na podstawie jej wyglądu po barwieniu.
+Zwraca się uwagę na wielkość jądra w stosunku do cytoplazmy, występowanie jąderek oraz ziarnistości \cite{histology}.
+
+Elementy morfotyczne krwi przedstawia rys. \ref{fig:electron_microscope}.
+Górna część rysunku przedstawia obraz z mikroskopu optycznego, zaś dolna - z mikroskopu elektronowego, gdzie widoczne jest więcej szczegółów.
+Objaśnienie: A - erytrocyt (widok z góry i widok przekroju), B - neutrofil, C - eozynofil, D - bazofil, E - limfocyt, F - monocyt. “za“ - ziarna azurochłonne, “zs“
+- ziarna swoiste.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{morfotyczne}
+    \caption{Elementy morfotyczne krwi w obrazie optycznego i elektronowego. Rysunek pochodzi z “Kompendium histologii“ autorstwa Tadeusza Cichockiego, Jana Litwina i Jadwigi Mireckiej \cite{histology}.}
+    \label{fig:electron_microscope}
+\end{figure}
+
+Rozwój metod komputerowej klasyfikacji komórek jest bardzo istotny, ponieważ potencjalne zautomatyzowanie procesu zliczania komórek pozwoliłoby szybsze stawianie diagnozy i zaoszczędzenie wielu godzin pracy diagnostów.
+%TODO check if this is truth
+Obecne rozwiązania służące do opisu komórek w krwi lub szpiku kostnym bazują cytometrii przepływowej (czyli analizie kąta odbicia fali światła).
+Warto natomiast zwrócić uwagę na to, że zdjęcie komórki (to znaczy obrazowanie w zakresie światła widzialnego) jest wystarczające do rozpoznania typu komórki przez człowieka, a więc niesie dostateczną ilość informacji.
+To oznacza, że odpowiednio zaawansowany model sztucznej inteligencji byłby w stanie klasyfikować komórki jedynie na podstawie wizji komputerowej, bez potrzeby analizy widma falowego lub kątów odbicia światła.
+
+
+\section{Algorytmy widzenia komputerowego}
+
+W niniejszym projekcie, oprócz widzenia komputerowego realizowanego przez splotowe sieci neuronowe, wykorzystano również inne algorytmy do analizy obrazów.
+Jednym z nich jest mechanizm \textbf{progowania obrazu} (z ang. \textit{thresholding}).
+Operacja ta przyporządkowuje wartość maksymalną piksela na obrazie wyjściowym, gdy poziom jasności na obrazie wejściowym jest większy od zadanego progu $k$.
+Analogicznie, wyjściowy piksel przyjmuje wartość minimalną (najczęściej $0$), gdy piksel wejściowy jest poniżej progu $k$ lub wartość jest równa (zob. równanie \ref{eq:thresholding}).
+
+\begin{equation}
+    T(x, y) =
+\begin{cases}
+0 & \text{jeśli } I(x, y) < k \\
+1 & \text{jeśli } I(x, y) \geq k
+\end{cases}\label{eq:thresholding}
+\end{equation}
+
+Inną ważną metodą widzenia komputerowego są \textbf{momenty Hu} (zwane też momentami obrazów).
+Momenty Hu to zestaw metryk służących do opis kształtu i właściwości pewnego regionu obrazu \cite{vision}.
+Korzystają one z analizy rozkładu jasności pikseli w obrazie.
+W algorytmie ekstrakcji obrazów komórek z dużego zdjęcia rozmazu wykorzystywane są momenty centralne do wyznaczania punktów centralnych komórek.
+Wzór na tak zwany moment centralny $\mu_{ij}$ przedstawia równanie \ref{eq:central_moment}, zaś współrzędne punktu centralnego można wyznaczyć korzystając z równań \ref{eq:centroid}.
+
+\begin{equation}
+    \mu_{ij} = \sum_x \sum_y x^i y^j I(x, y)\label{eq:central_moment}
+\end{equation}
+
+\begin{equation}
+    \bar{x} = \frac{M_{10}}{M_{00}}, \quad \bar{y} = \frac{M_{01}}{M_{00}}\label{eq:centroid}
+\end{equation}
 
 
 \section{GradCAM - wytłumaczalne uczenie maszynowe}

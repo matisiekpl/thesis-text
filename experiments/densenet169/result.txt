@@ -1,17 +1,27 @@
                                   precision    recall  f1-score   support
 
-                     Blast (BLA)       0.75      0.80      0.77      2396
-               Erytroblast (EBO)       0.95      0.93      0.94      5487
-                 Eozynofil (EOS)       0.97      0.95      0.96      1197
-                  Limfocyt (LYT)       0.86      0.93      0.89      5209
-                   Monocyt (MON)       0.77      0.56      0.65       846
-                  Mielocyt (MYB)       0.62      0.74      0.67      1293
-Krwinka biała pałeczkowata (NGB)       0.65      0.85      0.74      2051
-    Segmentowany neutrofil (NGS)       0.94      0.85      0.89      5861
-            Proerytroblast (PEB)       0.66      0.74      0.70       551
-      Komórka plazmatyczna (PLM)       0.91      0.83      0.87      1525
-               Promielocyt (PMO)       0.87      0.68      0.76      2353
+   Nieprawidłowy eozynofil (ABE)       0.00      0.00      0.00         2
+                  Artefakt (ART)       0.80      0.89      0.84      3908
+                   Bazofil (BAS)       1.00      0.12      0.22        96
+                     Blast (BLA)       0.76      0.74      0.75      2427
+               Erytroblast (EBO)       0.94      0.91      0.92      5425
+                 Eozynofil (EOS)       0.96      0.95      0.95      1203
+                   Fagocyt (FGC)       0.00      0.00      0.00        12
+          Włochata komórka (HAC)       0.67      0.47      0.55        85
+          Cienie komórkowe (KSC)       0.00      0.00      0.00         4
+      Niedojrzały limfocyt (LYI)       0.00      0.00      0.00        19
+                  Limfocyt (LYT)       0.85      0.90      0.87      5259
+              Metamielocyt (MMZ)       0.50      0.41      0.45       638
+                   Monocyt (MON)       0.58      0.66      0.62       805
+                  Mielocyt (MYB)       0.59      0.72      0.65      1302
+Krwinka biała pałeczkowata (NGB)       0.79      0.54      0.64      2000
+    Segmentowany neutrofil (NGS)       0.87      0.93      0.90      5866
+          Brak rozpoznania (NIF)       0.67      0.36      0.47       728
+              Inna komórka (OTH)       0.88      0.33      0.48        63
+            Proerytroblast (PEB)       0.64      0.82      0.72       558
+      Komórka plazmatyczna (PLM)       0.86      0.84      0.85      1506
+               Promielocyt (PMO)       0.82      0.76      0.79      2369
 
-                        accuracy                           0.85     28769
-                       macro avg       0.81      0.81      0.80     28769
-                    weighted avg       0.86      0.85      0.85     28769
+                        accuracy                           0.82     34275
+                       macro avg       0.63      0.54      0.56     34275
+                    weighted avg       0.82      0.82      0.82     34275
