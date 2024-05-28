@@ -1,57 +1,70 @@
 \chapter{Analiza wyników}
 
+
 \section{Ocena jakości różnych architektur sieci neuronowych}
 
 \begin{table}
-    \caption{Porównanie jakości predykcji różnych architektur splotowych sieci neuronowych}
     \begin{center}
-        \begin{tabular}{|l|l|l|l|}
+        \begin{tabular}{|l|l|l|}
             \hline
-            Architektura & Ilość parametrów & Czas treningu & F1 \\
+            Architektura & Ilość parametrów & F1    \\
             \hline
-            EfficientNet B0 & 5.3M & - & 0.860 \\
+            EfficientNet B0 & 5.3M             &       \\
             \hline
-            EfficientNet B5 & 30M & 92 min. & 0.860 \\
+            EfficientNet B1 & 7.8M             &       \\
             \hline
-            ResNet18 & 11M & 17 min. & 0.827 \\
+            EfficientNet B2 & 9.2M             &       \\
+            \hline
+            EfficientNet B3 & 12.0M            & 0.870 \\
+            \hline
+            EfficientNet B4 & 19.0M            &       \\
+            \hline
+            EfficientNet B5 & 30.0M            & 0.860 \\
+            \hline
+            DenseNet121     & 8.0M             & 0.850 \\
+            \hline
+            DenseNet169     & 14.1M            & 0.840 \\
+            \hline
+            DenseNet201     & 20.0M            & 0.850 \\
+            \hline
+            ResNet18        & 11.7M            & 0.840 \\
             \hline
         \end{tabular}
     \end{center}
+    \caption{Porównanie jakości predykcji różnych architektur splotowych sieci neuronowych}
     \label{tab:comparison}
 \end{table}
-
-
 \begin{table}
-    \caption{Podsumowanie miary F1 dla poszczególnych klas}
     \begin{center}
         \begin{tabular}{|l|l|l|l|l|}
             \hline
-            Klasa & Precyzja & Czułość & F1 & Liczba próbek \\
+            Klasa & Precyzja & Czułość & F1    & Liczba próbek \\
             \hline
-            BLA & 0.790 & 0.760 & 0.780 & 2446 \\
+            BLA      & 0.790    & 0.760   & 0.780 & 2446          \\
             \hline
-            EBO & 0.960 & 0.940 & 0.950 & 5543 \\
+            EBO      & 0.960    & 0.940   & 0.950 & 5543          \\
             \hline
-            EOS & 0.970 & 0.960 & 0.970 & 1196 \\
+            EOS      & 0.970    & 0.960   & 0.970 & 1196          \\
             \hline
-            LYT & 0.870 & 0.950 & 0.910 & 5211 \\
+            LYT      & 0.870    & 0.950   & 0.910 & 5211          \\
             \hline
-            MON & 0.650 & 0.680 & 0.660 & 812 \\
+            MON      & 0.650    & 0.680   & 0.660 & 812           \\
             \hline
-            MYB & 0.850 & 0.450 & 0.580 & 1286 \\
+            MYB      & 0.850    & 0.450   & 0.580 & 1286          \\
             \hline
-            NGB & 0.790 & 0.720 & 0.750 & 2084 \\
+            NGB      & 0.790    & 0.720   & 0.750 & 2084          \\
             \hline
-            NGS & 0.900 & 0.930 & 0.920 & 5818 \\
+            NGS      & 0.900    & 0.930   & 0.920 & 5818          \\
             \hline
-            PEB & 0.660 & 0.760 & 0.710 & 521 \\
+            PEB      & 0.660    & 0.760   & 0.710 & 521           \\
             \hline
-            PLM & 0.910 & 0.870 & 0.890 & 1494 \\
+            PLM      & 0.910    & 0.870   & 0.890 & 1494          \\
             \hline
-            PMO & 0.770 & 0.850 & 0.810 & 2358 \\
+            PMO      & 0.770    & 0.850   & 0.810 & 2358          \\
             \hline
         \end{tabular}
     \end{center}
+    \caption{Podsumowanie miary F1 dla poszczególnych klas}
     \label{tab:f1_summary}
 \end{table}
 
@@ -63,128 +76,136 @@ Większy wynik F1 informuje o lepszym zachowaniu modelu w rozpoznawaniu typów k
 Warto spostrzec, że często wielkość sieci neuronowej nie koreluje bezpośrednio z jakością uzyskiwanych predykcji.
 Dzieje się tak ze względu na to, że pojemność zachowania informacji w nawet mniejszej sieci jest wystarczająca, by móc rozpoznawać rodzaje komórek.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
-    \label{fig:plot}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
-    \label{fig:confusion_matrix}
-\end{figure}
-
 %TODO start 9 listings
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (EfficientNet B0)}
+    \label{fig:plot_efficientnet_b0}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/efficientnet_b0/confusion_matrix}
+    \caption{Macierz pomyłek modelu EfficientNet B0}
+    \label{fig:confusion_efficientnet_b0}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
+    \includegraphics[width=\textwidth]{experiments/efficientnet_b1/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (EfficientNet B1)}
+    \label{fig:plot_efficientnet_b1}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/efficientnet_b1/confusion_matrix}
+    \caption{Macierz pomyłek modelu EfficientNet B1}
+    \label{fig:confusion_efficientnet_b1}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
+    \includegraphics[width=\textwidth]{experiments/efficientnet_b2/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (EfficientNet B2)}
+    \label{fig:plot_efficientnet_b2}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/efficientnet_b2/confusion_matrix}
+    \caption{Macierz pomyłek modelu EfficientNet B2}
+    \label{fig:confusion_efficientnet_b2}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
+    \includegraphics[width=\textwidth]{experiments/efficientnet_b3/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (EfficientNet B3)}
+    \label{fig:plot_efficientnet_b3}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/efficientnet_b3/confusion_matrix}
+    \caption{Macierz pomyłek modelu EfficientNet B3}
+    \label{fig:confusion_efficientnet_b3}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
+    \includegraphics[width=\textwidth]{experiments/efficientnet_b4/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (EfficientNet B4)}
+    \label{fig:plot_efficientnet_b4}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/efficientnet_b4/confusion_matrix}
+    \caption{Macierz pomyłek modelu EfficientNet B4}
+    \label{fig:confusion_efficientnet_b4}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
+    \includegraphics[width=\textwidth]{experiments/efficientnet_b5/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (EfficientNet B5)}
+    \label{fig:plot_efficientnet_b5}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/efficientnet_b5/confusion_matrix}
+    \caption{Macierz pomyłek modelu EfficientNet B5}
+    \label{fig:confusion_efficientnet_b5}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
+    \includegraphics[width=\textwidth]{experiments/densenet121/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (DenseNet121)}
+    \label{fig:plot_densenet121}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/densenet121/confusion_matrix}
+    \caption{Macierz pomyłek modelu DenseNet121}
+    \label{fig:confusion_densenet121}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
+    \includegraphics[width=\textwidth]{experiments/densenet169/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (DenseNet169)}
+    \label{fig:plot_densenet169}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/densenet169/confusion_matrix}
+    \caption{Macierz pomyłek modelu DenseNet169}
+    \label{fig:confusion_densenet169}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
+    \includegraphics[width=\textwidth]{experiments/densenet201/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (DenseNet201)}
+    \label{fig:plot_densenet201}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/densenet201/confusion_matrix}
+    \caption{Macierz pomyłek modelu DenseNet201}
+    \label{fig:confusion_densenet201}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
+    \includegraphics[width=\textwidth]{experiments/resnet18/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (ResNet18)}
+    \label{fig:plot_resnet18}
 \end{figure}
-
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/combined}
-    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{experiments/efficientnet_b0/confusion_matrix}
-    \caption{Macierz pomyłek dla najlepszego modelu}
+    \includegraphics[width=0.8\textwidth]{experiments/resnet18/confusion_matrix}
+    \caption{Macierz pomyłek modelu ResNet18}
+    \label{fig:confusion_resnet18}
 \end{figure}
 
 %TODO end 9 listings
@@ -197,6 +218,7 @@ Z kolei wykresy na rys. \ref{fig:plot} przedstawiają zależności funkcji strat
 Można stwierdzić, że jakość modelu nie poprawia się zbyt znacząco wraz z kolejnymi iteracjami.
 Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_matrix}.
 Informuje ona, które klasy są najczęściej mylone z którymi.
+
 
 \section{Porównanie z innymi algorytmami}
 
@@ -212,11 +234,13 @@ Model zawierający ponad 23 miliony parametrów był trenowany na \textit{NVIDIA
 Podobnie jak w niniejszej pracy, autorzy artykułu wykonali normalizację intensywności kolorów przed trenowaniem sieci neuronowej (z powodu różnic w barwieniu Maya-Grünwalda-Giemsa).
 Uzyskany ważony wynik F1 dla architektury \textit{ResNeXt-50} wyniósł \textit{0.822}. Macierz pomyłek dostarczona przed autorów pracy jest widoczna na rys. \ref{fig:resnext_confusion_matrix}.
 
+
 \section{Wyzwania}
 
 Głównym wyzwaniem napotkanym w projekcie było wytrenowanie dużych sieci neuronowych. Niestety, ich trening na lokalnym sprzęcie takim jak komputer osobisty jest bardzo czasochłonne.
 W związku z tym konieczne było uruchamianie ich na platformie \textit{kaggle.com}, która oferuje 30 godzin czasu procesora graficznego miesięcznie.
 Ten górny limit wymuszał przemyślane zarządzanie tym, która sieć neuronowa powinna być wytrenowana priorytetowo.
+
 
 \section{Wnioski}
 
@@ -224,6 +248,7 @@ Ten górny limit wymuszał przemyślane zarządzanie tym, która sieć neuronowa
 Zaprezentowane porównanie różnych splotowych sieci neuronowych informuje, że najlepszym modelem do zadania klasyfikacji rodzajów komórek w szpiku kostnym jest \textit{EfficientNet B0}.
 Ta sieć neuronowa uzyskuje najlepszy ważony wynik F1 równy \textit{0.866}.
 Warto też zwrócić uwagę na to, że sieci neuronowe znacznie większe od \textit{EfficientNet B0} nie dawały dużo lepszych rezultatów.
+
 
 \section{Perspektywy rozwoju projektu}
 
