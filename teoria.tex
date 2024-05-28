@@ -84,6 +84,53 @@ Przykładowo, wraz z czasem treningu współczynnik może być zmniejszany (nazw
 Podsumowując, propagacja wsteczna jest bardzo przydatna w zagadnieniu trenowania sieci neuronowych i uczeniu głębokim, pomimo korzystania z prostych pojęć analizy matematycznej takich jak pochodna cząstkowa.
 
 
+\section{Metryki}
+
+Do stwierdzenia, który model uczenia maszynowego jest najlepszej jakości, wymagane są pewne metryki.
+Dobór tych metryk zależy od zadania, jak i zbioru danych.
+Jednymi z podstawowych metryk jest dokładność (z ang. \textit{accuracy}) - równanie~\ref{eq:accuracy}.
+
+\begin{equation}
+    \text{Dokładność} = \frac{TP + TN}{TP + TN + FP + FN}\label{eq:accuracy}
+\end{equation}
+
+Czasem jednak metryka taka jak dokładność jest niewystarczająca.
+W przypadku niezrównoważonych zbiorów danych najczęściej korzysta się z zestawu trzech metryk - precyzji, czułości i miary F1.
+
+Precyzja jest definiowana jako:
+
+\begin{equation}
+    \text{Precyzja} = \frac{TP}{TP + FP}\label{eq:precision}
+\end{equation}
+
+Z kolei czułość dana jest wzorem:
+
+\begin{equation}
+    \text{Czułość} = \frac{TP}{TP + FN}\label{eq:recall}
+\end{equation}
+
+Metryką obejmującą precyzję i czułość predykcji dla danej klasy jest miara F1.
+Jest to ich średnia harmoniczna (zob.
+równanie ~\ref{eq:f1}).
+
+\begin{equation}
+    F1 = 2 \cdot \frac{\text{Precyzja} \cdot \text{Czułość}}{\text{Precyzja} + \text{Czułość}}\label{eq:f1}
+\end{equation}
+
+W omawianych wzorach \textit{TP}, \textit{FP}, \textit{TN}, \textit{FN} to ilość próbek prawidłowo lub nieprawidłowo zakwalifikowanych jako przypadki pozytywne lub negatywne (zob. tabelę ~\ref{tab:cases}).
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        & \textbf{Przewidywane Pozytywne} & \textbf{Przewidywane Negatywne} \\ \hline
+        \textbf{Rzeczywiste Pozytywne} & TP                              & FN                              \\ \hline
+        \textbf{Rzeczywiste Negatywne} & FP                              & TN                              \\ \hline
+    \end{tabular}
+    \caption{Macierz pomyłek}\label{tab:cases}
+\end{table}
+
+
 \section{Splotowe sieci neuronowe}
 
 Splotowe sieci neuronowe to rodzaj sieci neuronowych dedykowany do rozpoznawania przede wszystkim cech obrazów~\cite{geron}.

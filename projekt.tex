@@ -272,10 +272,10 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
     \item Obliczanie punktów centralnych konturów za pomocą momentów Hu. Każdy wyznaczony punkt centralny jest traktowany jako środek komórki (rys.~\ref{fig:extract_contours}).
     Współrzędne punktów centralnych można wyznaczyć na podstawie momentów Hu, korzystając ze wzorów~\ref{eq:hu_x} i~\ref{eq:hu_y}.
     \begin{equation}
-        \hat{x} = \dfrac{M_{10}}{M_{00}}\label{eq:hu_x}
+        \bar{x} = \dfrac{M_{10}}{M_{00}}\label{eq:hu_x}
     \end{equation}
     \begin{equation}
-        \hat{y} = \dfrac{M_{01}}{M_{00}}\label{eq:hu_y}
+        \bar{y} = \dfrac{M_{01}}{M_{00}}\label{eq:hu_y}
     \end{equation}
     \item Wycięcie obszaru komórki za pomocą indeksów Python (rys.~\ref{fig:extract_squares}). Obraz każdej znalezionej komórki trafia do osobnego pliku w folderze wyjściowym.
     Do zapisu na dysk wykorzystano funkcję \textit{matplotlib.pyplot.imsave()}.
