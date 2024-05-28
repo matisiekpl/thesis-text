@@ -206,7 +206,7 @@
 	
 	\vspace*{15cm} \vfill
 	\begin{flushright} 
-		\begin{minipage}[!h]{10cm}
+		\begin{minipage}[!h]{13cm}
 			{\Large\itshape \@acknowledgements}
 		\end{minipage}
 	\end{flushright}
