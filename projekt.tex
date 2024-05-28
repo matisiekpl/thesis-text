@@ -53,13 +53,13 @@ Przykładami są pakiety \textit{torchvision} lub \textit{torch.utils}. Cała bi
 
 \subsection{Biblioteka OpenCV}
 
-Biblioteka OpenCV \cite{opencv} dostarcza implementacje wielu konwencjonalnych algorytmów wizji komputerowej.
+Biblioteka OpenCV \cite{opencv} dostarcza implementacje wielu algorytmów wizji komputerowej.
 OpenCV eksponuje interfejs programistyczny, dzięki któremu programista Pythona może komunikować się z implementacją algorytmów w C++.
 To zapewnia szybkość wykonywania obliczeń, jednocześnie nie wymuszając na programiście pisania kodu w C++. Przykład wykorzystania biblioteki OpenCV widoczny jest na listingu \ref{lst:opencv_sample}
 - kod wylicza momenty Hu.
 
-OpenCV w niniejszym projekcie jest wykorzystywane do automatycznej ekstrakcji kwadratów z komórkami na podstawie dużego zdjęcia spod mikroskopu.
-Więcej informacji na ten temat w rozdziale \ref{sec:kwadraty}.
+OpenCV w niniejszym projekcie jest wykorzystywane do automatycznej ekstrakcji obrazów z komórkami na podstawie dużego zdjęcia spod mikroskopu.
+Więcej informacji na ten temat znajduje się w rozdziale \ref{sec:kwadraty}.
 
 \begin{lstlisting}[language=ipython,caption={Obliczenie momentów Hu z użyciem OpenCV}, label={lst:opencv_sample}]
 import cv2
@@ -105,71 +105,19 @@ Producentem mikroskopu było przedsiębiorstwo Fraunhofer IIS.
     \label{fig:images_examples}
 \end{figure}
 
-Komórki były barwione metodą Maya-Grünwalda-Giemsa \cite{histology}. Zbiór danych zawiera 21 klas.
+Komórki były barwione metodą Maya-Grünwalda-Giemsa \cite{histology}.
+Zbiór danych zawiera 21 klas, lecz w trakcie trenowania sieci neuronowych wykorzystano jedynie 11 (odrzucone klasy posiadały bardzo małą ilość próbek).
 Histogram rozkładu klas jest widoczna na rys. \ref{fig:images_count_vis}.
 Zbiór danych jest niezbalansowany, ponieważ ilość obrazów w każdej klasie znacząco się różni.
 Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
 
 
-%\section{Architektury splotowych sieci neuronowych}
-%
-%Jednym z ważniejszych wyborów w trakcie projektowania systemu uczenia maszynowego opartego na sieciach neuronowych jest wybór architektury.
-%Niektóre architektury skupiają się szczególnie na zdolności do ekstrakcji charakterystycznych cech z obrazów, inne zaś preferują efektywność obliczeń nad jakością predykcji.
-%Ten rozdział porównuje użyte w trakcie badań architektury, wskazując główne elementy, które je rozróżniają.
-%
-%\subsection{\textit{EfficientNet}}
-%
-%EfficientNet to rodzina modeli sieci neuronowych, która została zaprojektoana przez zespół \textit{Google Brain} \cite{efficientnet}.
-%Głównym celem opracowania tej rodziny architektur było zmaksymalizowanie efektywności obliczeń przy ograniczonych zasobach pamięci.
-%Naukowcy zamiast zwiększać rozmiar modelu, zastosowali takie techniki jak skalowanie głębokości (z ang. \textit{depth scaling}), szerokości (z ang. \textit{width scaling}) oraz rozdzielczości (z ang. \textit{resolution scaling}) (rys. \ref{fig:scaling}).
-%
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=\textwidth]{scaling}
-%    \caption{Porównanie rodzajów skalowania sieci neuronowych}
-%    \label{fig:scaling}
-%\end{figure}
-%
-%\subsection{\textit{ResNet}}
-%
-%ResNet to rodzina modeli, którą wyróżnia obecność tzw. połączeń rezydualnych \cite{resnet}. Te połączenia pomagają przekazywać informacje bezpośrednio między warstwami. To pomaga zapobiegać problemowi zanikających gradientów.
-%Architekturę przedstawiaj rys. \ref{fig:resnet}.
-%Oprócz tego, architektura ResNet zawiera zazwyczaj bardzo dużą ilość wartsw.
-%Duże modele oparte o tą architekturę zawierają ponad 100 warstw.
-%
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=0.6\textwidth]{resnet}
-%    \caption{Architektura ResNet - widoczne połączenia rezydualne}
-%    \label{fig:resnet}
-%\end{figure}
-%
-%\subsection{\textit{DenseNet}}
-%
-%Architektura DenseNet łączy cechy architektury ResNet i mechanizmu ponownego wykorzystania cech (z ang. \textit{feature reuse}) \cite{densenet}.
-%Kluczym elementem tego modelu są bloki gęste, które składają się z wielu warstw splotowych \ref{fig:denseblock}.
-%
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=0.6\textwidth]{denseblock}
-%    \caption{Blok gęsty ze współczynnikiem wzrostu $k = 4$}
-%    \label{fig:denseblock}
-%\end{figure}
-%
-%\subsection{\textit{InceptionV3}}
-%
-%\textit{InceptionV3} to architektura sieci neuronowych opracowana przez naukowców z Google.
-%Jest znana z szybkości generowania predykcji oraz ich skuteczności.
-%Nazwa \textit{Inception} pochodzi od bloku incepcji. Bloki te używają wielu warstw filtrów splotowych o różnych rozmiarach w obrębie tej samej warstwy. Pozwala to uchwycić bardziej złożone cechy obrazów w różnych skalach.
-%Oryginalnie, \textit{InceptionV3} został wytrenowany do rozpoznawania obiektów w zbiorze danych \textit{ImageNet} i jest często spotykany w rozwiązaniach rozpoznawania obrazów.
-%
-%\subsection{\textit{AlexNet}}
-
 \section{Struktura projektu}
 
 \subsection{Przygotowanie danych}
 
-Zbiór danych to katalog ze zdjęciami. Zdjęcia są pogrupowane w podkatalogach, gdzie jego nazwa oznacza typ komórki.
+Zbiór danych to katalog ze zdjęciami.
+Zdjęcia są pogrupowane w podkatalogach, gdzie jego nazwa oznacza typ komórki.
 Każdy podkatalog zawiera kolorowe zdjęcia w formacie \textit{.jpg} w rozmiarze \textit{250 pikseli x 250 pikseli}.
 Przed treningiem sieci neuronowej konieczna jest przetwarzanie wstępne zbioru danych (z ang. \textit{preprocessing}).
 
@@ -184,9 +132,9 @@ transform = transforms.Compose([
 \end{lstlisting}
 
 Do realizacji przygotowania danych wykorzystano pakiet \textit{torchvision.transforms}.
-Kod transformacji jest przedstawiony na listingu \ref{lst:transforms}.
+Kod transformacji jest przedstawiony na listingu~\ref{lst:transforms}.
 Wykonuje on przeskalowanie obrazu wejściowego do rozmiaru \textit{224 piksele na 224 piksele}.
-Następnie wyrównuje histogram i normalizuje według średniej i odchylenia standardowego (rys. \ref{fig:transformations_example}).
+Następnie wyrównuje histogram i normalizuje według średniej i odchylenia standardowego (rys.~\ref{fig:transformations_example}).
 
 Wyrównanie histogramu jest konieczne z powodu różnic w odcieniach barwienia Maya-Grünwalda-Giemsa.
 Przy każdym wykonaniu rozmazu intensywność kolorów komórek jest inna.
@@ -199,7 +147,7 @@ Taka normalizacja zapobiega błędnemu nauczeniu się sieci neuronowej ze wzglę
     \label{fig:transformations_example}
 \end{figure}
 
-Po przetwarzaniu, zbiór danych został podzielony na zestaw treningowy i walidacyjny w proporcjach odpowiednio \textit{80:20}.
+Po przetwarzaniu zbiór danych został podzielony na zestaw treningowy i walidacyjny w proporcjach odpowiednio \textit{80:20}.
 Zestaw treningowy służy do optymalizacji parametrów sieci neuronowej.
 Zestaw walidacyjny natomiast jest używany do sprawdzania jakości modelu na obrazach, których sieć neuronowa "nigdy nie widziała".
 
@@ -211,52 +159,41 @@ Omówiony poniżej trening sieci neuronowej o architekturze \textit{EfficientNet
 Współczynnik uczenia wynosił \textit{0.001}, a ilość epok była równa 3.
 
 Trenowanie sieci neuronowej z użyciem biblioteki PyTorch sprowadza się do iterowania po zbiorze wejściowym i wykonywania kroku optymalizacyjnego przy każdym przejściu.
-Kod głównej funkcji treningowej jest widoczny na listingu \ref{lst:training}.
+Uproszczony schemat działania głównej pętli treningowej:
 
-\begin{itemize}
-    \item na listingu wykorzystano architekturę \textit{EfficientNet B0}
-    \item jako funkcję straty użyto entropię krzyżową (\textit{torch.nn.CrossEntropyLoss()}).
-    Jest to funkcja używana do klasyfikatorów wieloklasowych.
-%    TODO entropia
-    \begin{equation}
-        cY = \dfrac{M_{01}}{M_{00}}\label{eq:crossentropy}
-    \end{equation}
-    \item funkcja \textit{.to(device)} kopiuje tensory na urządzenie zewnętrzne, czyli kartę graficzną.
-    Jest to wymagane, ponieważ model i dane muszą znajdować się w tym samym miejscu.
-    Dzięki użyciu karty graficznej obliczenia są znacznie przyspieszone.
-    \item \textit{optimizer.zero\_grad()} zeruje gradienty.
-    Wywołanie tej funkcji jest konieczne z powodu domyślnego zachowania PyTorch, które akumuluje gradienty.
-    Chcąc tego uniknąć, kod resetuje gradienty w grafie obliczeniowym przy każdej iteracji danych treningowych.
-    \item \textit{loss.backward()} liczy gradienty w grafie obliczeniowym, zaś \textit{optimizer.step()} wykonuje krok optymalizacyjny.
-\end{itemize}
-%TODO code
-%\lstinputlisting[language=ipython,caption={Kod odpowiadający za trenowanie modelu \textit{EfficientNet B0}}, label={lst:training}]{train.py}
-%\lstinputlisting[language=ipython,caption={Kod odpowiadający ewaluację metryk}, label={lst:metrics}]{metrics.py}
+\begin{enumerate}
+    \item Pobranie miniwsadu z próbkami treningowymi i skopiowanie ich na urządzenie zewnętrzne, czyli kartę graficzną.
+    \item Wykonanie przejścia w przód sieci neuronowej.
+    Oznacza to obliczenie wartości neuron na warstwie wyjściowej na bazie uprzednio pobranych próbek.
+    \item Porównanie wyjścia sieci neuronowej z oczekiwanymi predykcjami i obliczenie błędu sieci.
+    \item Obliczenie gradientów za pomocą algorytmu propagacji wstecznej.
+    \item Wykonanie kroku optymalizacyjnego z użyciem optymalizatora \textit{Adam}.
+    \item Obliczenie metryk dla zbioru walidacyjnego i zapisanie ich.
+\end{enumerate}
 
 \subsection{Ewaluacja jakości modelu}
 
 Do sprawdzenia jakości modelu uczenia maszynowego konieczny jest dobór właściwych metryk.
 Ze względu na to, że trenowany jest klasyfikator wieloklasowy, a zbiór danych nie jest zbalansowany, zwykłe metryki takie jak dokładność (z ang. \textit{accuracy}) nie wystarczą.
 Dla każdej klasy jest liczona precyzja (z ang. \textit{precision}) i czułość (z ang. \textit{recall}).
-Obie te metryki składają się do obliczenia wyniku F1 (z ang. \textit{F1-score}) \cite{geron}.
+Obie te metryki składają się do obliczenia wyniku F1 (z ang. \textit{F1-score})~\cite{geron}.
 Co ważne, wynik F1 jest liczony z uwzględnieniem wag poszczególnych klas.
-Z kolei funkcja \textit{confusion\_matrix} oblicza macierz pomyłek.
+Obliczana jest również macierz pomyłek.
 Informuje ona o tym, jakie klasy są najczęściej mylone z jakimi.
-Metryki są zapisywane do pliku tekstowego za pomocą funkcji \textit{log} oraz do plików obrazów za pomocą biblioteki \textit{matplotlib}.
-%Kod odpowiadając za liczenie metryk znajduje się na listingu \ref{lst:metrics}.
+Metryki są zapisywane do pliku tekstowego oraz do plików obrazów w celu późniejszej analizy.
+
 
 \section{Interfejs użytkownika}
 
 W celu łatwego korzystania z modelu uczenia maszynowego przez diagnostów dostępna jest aplikacja internetowa do interakcji z nim.
-Zrzut ekranu interfejsu użytkownika jest widoczny na rys. \ref{fig:ui}.
-Została ona napisana z użyciem \textit{Vue} \cite{vue} - biblioteki do tworzenia interaktywnych interfejsów użytkownika dla sieci web.
-Aplikacja łączy się z serwerem HTTP napisanym z użyciem biblioteki Flask \cite{flask}.
-Serwer eksponuje interfejs REST API, który dla wysłanego zdjęcia zwraca rozkład prawdopodobieństwa (kod na listingu \ref{lst:serve}).
+Zrzut ekranu interfejsu użytkownika jest widoczny na rys.~\ref{fig:ui}.
+Została ona napisana z użyciem \textit{Vue}~\cite{vue} - biblioteki do tworzenia interaktywnych interfejsów użytkownika dla sieci web.
+Aplikacja łączy się z serwerem HTTP napisanym z użyciem biblioteki Flask~\cite{flask}.
+Serwer eksponuje interfejs REST API, który dla wysłanego zdjęcia zwraca rozkład prawdopodobieństwa.
 Przed wywołaniem modelu, funkcja upewnia się, że przychodzący obrazek jest poprawnego formatu.
 Dopiero po zwalidowaniu poprawności danych, kod przystępuje do utworzenia rozkładu prawdopodobieństwa (zmienna \textit{result}).
 Renderowana jest również mapa cieplna GradCAM informująca użytkownika o regionach obrazu, które były kluczowe dla modelu w trakcie wykonywania predykcji.
-%TODO code
-%\lstinputlisting[language=ipython,caption={Funkcja języka Python, która obsługuje ścieżkę HTTP POST}, label={lst:serve}]{serve.py}
+
 
 \begin{figure}
     \centering
@@ -274,11 +211,11 @@ Renderowana jest również mapa cieplna GradCAM informująca użytkownika o regi
 \end{figure}
 
 By skorzystać z aplikacji internetowej, należy przeciągnąć plik ze zdjęciem komórki do sekcji "Upuść tutaj rozmaz w PNG lub JPEG".
-Po wysłaniu obrazu, użytkownik może wybrać model i kliknąć przycisk "Rozpoznaj rodzaj komórki".
-Po chwili ukaże się tabela z rozkładem prawdopodobieństwa (po prawej stronie okna).
-Stylizowanie aplikacji zostało wykonane z użyciem biblioteki CSS o nazwie \textit{Tailwind.css} \cite{tailwind}.
-Komunikacja klient-serwer jest zapewniona przez bibliotekę \textit{Axios} \cite{axios}.
-Architekturę przedstawia rys. \ref{fig:arch}.
+Po wysłaniu obrazu użytkownik może wybrać model i kliknąć przycisk "Rozpoznaj rodzaj komórki".
+Następnie ukaże się tabela z rozkładem prawdopodobieństwa (po prawej stronie okna).
+Stylizowanie aplikacji zostało wykonane z użyciem biblioteki CSS o nazwie \textit{Tailwind.css}~\cite{tailwind}.
+Komunikacja klient-serwer jest zapewniona przez bibliotekę \textit{Axios}~\cite{axios}.
+Architekturę przedstawia rys.~\ref{fig:arch}.
 
 
 \section{Algorytm ekstrakcji obrazów komórek z dużego zdjęcia rozmazu}\label{sec:kwadraty}
@@ -290,10 +227,6 @@ Zaproponowano algorytm korzystający z różnych metod wizji komputerowej do osi
 
 Niniejszy algorytm przyjmuje obraz przedstawiający kilkanaście komórek różnego rodzaju i eksportuje
 każdą komórkę do kwadratowego zdjęcia.
-%Kod przedstawiony jest na listingu \ref{lst:extract}.
-%TODO code
-%\lstinputlisting[language=ipython,caption={Algorytm ekstrakcji komórek z dużego skanu mikroskopowego}, label={lst:extract}]{extract.py}
-
 Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
 
 \begin{figure}
@@ -313,7 +246,7 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{Im060_1_contours}
-    \caption{Oznaczone kontury wraz z centroidami}
+    \caption{Oznaczone kontury wraz z punktami centralnymi}
     \label{fig:extract_contours}
 \end{figure}
 
@@ -325,21 +258,25 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
 \end{figure}
 
 \begin{enumerate}
-    \item Konwersja oryginalnego obrazu (rys. \ref{fig:extract_input}) na skalę szarości.
+    \item Konwersja oryginalnego obrazu (rys.~\ref{fig:extract_input}) na skalę szarości.
     Jest to wymagane, ponieważ progowanie w kroku drugim nie może odbywać się na obrazie kolorowym.
     Do konwersji zastosowano funkcję \textit{cv2.cvtColor} - pozwala ona konwertować obraz z jednej przestrzeni kolorów do innej.
     \item Progowanie z pomocą algorytmu Otsu.
-    Jest to algorytm adaptacyjnynego progowania, często stosowany do analizy obrazów medycznych.
-    Progowanie ma na celu wyodrębnienie ciemniejszych obszarów obrazu - cytoplazmy i jądra komórek (rys. \ref{fig:extract_thresh}). Otsu jest algorytmem progowania globalnego i opiera się na analizie histogramu.
+    Jest to algorytm adaptacyjnego progowania, często stosowany do analizy obrazów medycznych.
+    Progowanie ma na celu wyodrębnienie ciemniejszych obszarów obrazu - cytoplazmy i jądra komórek (rys.~\ref{fig:extract_thresh}). Otsu jest algorytmem progowania globalnego i opiera się na analizie histogramu.
     Dąży on do maksymalizacji wariancji międzyklasowej.
-    \item Wyznaczenie konturów z pomocą funkcji \textit{cv2.findContours}. Kontur jest definiowany jako pewna ciągła krzywa, która łączy punkty o tej samej intensywności.
-    W opisanym algorytmie, kontury informować o granicach komórki. Argumentem funkcji jest flaga \textit{cv2.RETR\_EXTERNAL}, która powoduje, że zwrócone zostają jedynie najbardziej zewnętrzne kontury - kontury wewnętrzne są ignorowane.
-    \item Obliczanie centroidów konturów za pomocą momentów Hu. Każdy wyznaczony centroid jest traktowany jako środek komórki (rys. \ref{fig:extract_contours}). Współrzedne centroidów można wyznaczyć na podstawie momentów Hu, korzystając ze wzorów \ref{eq:hu_x} i \ref{eq:hu_y}.
+    \item Wyznaczenie konturów z pomocą funkcji \textit{cv2.findContours}.
+    Kontur jest definiowany jako pewna ciągła krzywa, która łączy punkty o tej samej intensywności.
+    W opisanym algorytmie, kontury informować o granicach komórki.
+    Argumentem funkcji jest flaga \textit{cv2.RETR\_EXTERNAL}, która powoduje, że zwrócone zostają jedynie najbardziej zewnętrzne kontury - kontury wewnętrzne są ignorowane.
+    \item Obliczanie punktów centralnych konturów za pomocą momentów Hu. Każdy wyznaczony punkt centralny jest traktowany jako środek komórki (rys.~\ref{fig:extract_contours}).
+    Współrzedne punktów centralnych można wyznaczyć na podstawie momentów Hu, korzystając ze wzorów~\ref{eq:hu_x} i~\ref{eq:hu_y}.
     \begin{equation}
         cX = \dfrac{M_{10}}{M_{00}}\label{eq:hu_x}
     \end{equation}
     \begin{equation}
         cY = \dfrac{M_{01}}{M_{00}}\label{eq:hu_y}
     \end{equation}
-    \item Wycięcie obszaru komórki za pomocą indeksów Python (rys. \ref{fig:extract_squares}). Obraz każdej znalezionej komórki trafia do osobnego pliku w folderze wyjściowym. Do zapisu na dysk wykorzystano funkcję \textit{matplotlib.pyplot.imsave()}.
+    \item Wycięcie obszaru komórki za pomocą indeksów Python (rys.~\ref{fig:extract_squares}). Obraz każdej znalezionej komórki trafia do osobnego pliku w folderze wyjściowym.
+    Do zapisu na dysk wykorzystano funkcję \textit{matplotlib.pyplot.imsave()}.
 \end{enumerate}

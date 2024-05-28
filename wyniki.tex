@@ -5,29 +5,29 @@
 
 \begin{table}
     \begin{center}
-        \begin{tabular}{|l|l|l|}
+        \begin{tabular}{|l|l|l|l|l|}
             \hline
-            Architektura & Ilość parametrów & F1    \\
+            Architektura    & Ilość parametrów & F1    & Wykresy funkcji błędu i F1     & Macierz pomyłek                     \\
             \hline
-            EfficientNet B0 & 5.3M             &       \\
+            EfficientNet B0 & 5.3M             &       & \ref{fig:plot_efficientnet_b0} & \ref{fig:confusion_efficientnet_b0} \\
             \hline
-            EfficientNet B1 & 7.8M             &       \\
+            EfficientNet B1 & 7.8M             &       & \ref{fig:plot_efficientnet_b1} & \ref{fig:confusion_efficientnet_b1} \\
             \hline
-            EfficientNet B2 & 9.2M             &       \\
+            EfficientNet B2 & 9.2M             &       & \ref{fig:plot_efficientnet_b2} & \ref{fig:confusion_efficientnet_b2} \\
             \hline
-            EfficientNet B3 & 12.0M            & 0.870 \\
+            EfficientNet B3 & 12.0M            & 0.870 & \ref{fig:plot_efficientnet_b3} & \ref{fig:confusion_efficientnet_b3} \\
             \hline
-            EfficientNet B4 & 19.0M            &       \\
+            EfficientNet B4 & 19.0M            &       & \ref{fig:plot_efficientnet_b4} & \ref{fig:confusion_efficientnet_b4} \\
             \hline
-            EfficientNet B5 & 30.0M            & 0.860 \\
+            EfficientNet B5 & 30.0M            & 0.860 & \ref{fig:plot_efficientnet_b5} & \ref{fig:confusion_efficientnet_b5} \\
             \hline
-            DenseNet121     & 8.0M             & 0.850 \\
+            DenseNet121     & 8.0M             & 0.850 & \ref{fig:plot_densenet121}     & \ref{fig:confusion_densenet121}     \\
             \hline
-            DenseNet169     & 14.1M            & 0.840 \\
+            DenseNet169     & 14.1M            & 0.840 & \ref{fig:plot_densenet169}     & \ref{fig:confusion_densenet169}     \\
             \hline
-            DenseNet201     & 20.0M            & 0.850 \\
+            DenseNet201     & 20.0M            & 0.850 & \ref{fig:plot_densenet201}     & \ref{fig:confusion_densenet201}     \\
             \hline
-            ResNet18        & 11.7M            & 0.840 \\
+            ResNet18        & 11.7M            & 0.840 & \ref{fig:plot_resnet18}        & \ref{fig:confusion_resnet18}        \\
             \hline
         \end{tabular}
     \end{center}
@@ -40,43 +40,41 @@
             \hline
             Klasa & Precyzja & Czułość & F1    & Liczba próbek \\
             \hline
-            BLA      & 0.790    & 0.760   & 0.780 & 2446          \\
+            BLA   & 0.790    & 0.820   & 0.810 & 2350          \\
             \hline
-            EBO      & 0.960    & 0.940   & 0.950 & 5543          \\
+            EBO   & 0.910    & 0.970   & 0.940 & 5568          \\
             \hline
-            EOS      & 0.970    & 0.960   & 0.970 & 1196          \\
+            EOS   & 0.980    & 0.970   & 0.970 & 1180          \\
             \hline
-            LYT      & 0.870    & 0.950   & 0.910 & 5211          \\
+            LYT   & 0.900    & 0.920   & 0.910 & 5273          \\
             \hline
-            MON      & 0.650    & 0.680   & 0.660 & 812           \\
+            MON   & 0.840    & 0.570   & 0.680 & 796           \\
             \hline
-            MYB      & 0.850    & 0.450   & 0.580 & 1286          \\
+            MYB   & 0.780    & 0.620   & 0.690 & 1301          \\
             \hline
-            NGB      & 0.790    & 0.720   & 0.750 & 2084          \\
+            NGB   & 0.740    & 0.780   & 0.760 & 1983          \\
             \hline
-            NGS      & 0.900    & 0.930   & 0.920 & 5818          \\
+            NGS   & 0.910    & 0.920   & 0.910 & 5823          \\
             \hline
-            PEB      & 0.660    & 0.760   & 0.710 & 521           \\
+            PEB   & 0.870    & 0.470   & 0.610 & 549           \\
             \hline
-            PLM      & 0.910    & 0.870   & 0.890 & 1494          \\
+            PLM   & 0.960    & 0.790   & 0.870 & 1545          \\
             \hline
-            PMO      & 0.770    & 0.850   & 0.810 & 2358          \\
+            PMO   & 0.790    & 0.890   & 0.840 & 2401          \\
             \hline
         \end{tabular}
     \end{center}
-    \caption{Podsumowanie miary F1 dla poszczególnych klas}
+    \caption{Podsumowanie miary F1 dla poszczególnych klas (EfficientNet B3)}
     \label{tab:f1_summary}
 \end{table}
 
 Niniejsza praca ma za zadanie porównać różne architektury splotowych sieci neuronowych i wskazać, która z nich daje najlepsze rezultaty.
 Tabela \ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególnych eksperymentów.
-Dla każdej architektury wskazano jej wielkość (ilość parametrów trenowalnych), czas nauki na \textit{NVIDIA P100} oraz ważony wynik F1.
+Dla każdej architektury wskazano jej wielkość (ilość parametrów trenowalnych) oraz ważony wynik F1.
 Większy wynik F1 informuje o lepszym zachowaniu modelu w rozpoznawaniu typów komórek.
 
 Warto spostrzec, że często wielkość sieci neuronowej nie koreluje bezpośrednio z jakością uzyskiwanych predykcji.
 Dzieje się tak ze względu na to, że pojemność zachowania informacji w nawet mniejszej sieci jest wystarczająca, by móc rozpoznawać rodzaje komórek.
-
-%TODO start 9 listings
 
 \begin{figure}
     \centering
@@ -208,15 +206,14 @@ Dzieje się tak ze względu na to, że pojemność zachowania informacji w nawet
     \label{fig:confusion_resnet18}
 \end{figure}
 
-%TODO end 9 listings
 
-
-%TODO choose best architecture
-Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B0}. Ważony wynik F1 w jej przypadku wynosi \textit{0.86}.
+%TODO net
+Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B3}.
+Ważony wynik F1 w jej przypadku wynosi \textit{0.87}.
 Tabela \ref{tab:f1_summary} przedstawia zestawienie precyzji, czułości i F1 dla poszczególnych klas.
-Z kolei wykresy na rys. \ref{fig:plot} przedstawiają zależności funkcji straty i F1 od epoki trenowania.
+Z kolei wykresy na rys. \ref{fig:plot_efficientnet_b3} przedstawiają zależności funkcji straty i F1 od epoki trenowania.
 Można stwierdzić, że jakość modelu nie poprawia się zbyt znacząco wraz z kolejnymi iteracjami.
-Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_matrix}.
+Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_efficientnet_b3}.
 Informuje ona, które klasy są najczęściej mylone z którymi.
 
 
@@ -224,20 +221,21 @@ Informuje ona, które klasy są najczęściej mylone z którymi.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{resnext_confusion_matrix}
-    \caption{Macierz pomyłek dla modelu ResNeXt}
+    \includegraphics[width=0.6\textwidth]{resnext_confusion_matrix}
+    \caption{Macierz pomyłek dla modelu ResNeXt \cite{resnext}}
     \label{fig:resnext_confusion_matrix}
 \end{figure}
 
 Dostawca zbioru danych, w artykule \textit{Highly accurate differentiation of bone marrow cell morphologies using deep neural networks on a large image dataset} \cite{resnext} wykorzystuje architekturę \textit{ResNetXt-50}.
 Model zawierający ponad 23 miliony parametrów był trenowany na \textit{NVIDIA TESLA V100} przez ok. 48 godzin.
-Podobnie jak w niniejszej pracy, autorzy artykułu wykonali normalizację intensywności kolorów przed trenowaniem sieci neuronowej (z powodu różnic w barwieniu Maya-Grünwalda-Giemsa).
+Podobnie jak w niniejszym projekcie, autorzy artykułu wykonali normalizację intensywności kolorów przed trenowaniem sieci neuronowej (z powodu różnic w barwieniu Maya-Grünwalda-Giemsa).
 Uzyskany ważony wynik F1 dla architektury \textit{ResNeXt-50} wyniósł \textit{0.822}. Macierz pomyłek dostarczona przed autorów pracy jest widoczna na rys. \ref{fig:resnext_confusion_matrix}.
 
 
 \section{Wyzwania}
 
-Głównym wyzwaniem napotkanym w projekcie było wytrenowanie dużych sieci neuronowych. Niestety, ich trening na lokalnym sprzęcie takim jak komputer osobisty jest bardzo czasochłonne.
+Głównym wyzwaniem napotkanym w projekcie było wytrenowanie dużych sieci neuronowych.
+Niestety, ich trening na lokalnym sprzęcie takim jak komputer osobisty jest bardzo czasochłonne.
 W związku z tym konieczne było uruchamianie ich na platformie \textit{kaggle.com}, która oferuje 30 godzin czasu procesora graficznego miesięcznie.
 Ten górny limit wymuszał przemyślane zarządzanie tym, która sieć neuronowa powinna być wytrenowana priorytetowo.
 
@@ -245,12 +243,7 @@ Ten górny limit wymuszał przemyślane zarządzanie tym, która sieć neuronowa
 \section{Wnioski}
 
 %TODO net
-Zaprezentowane porównanie różnych splotowych sieci neuronowych informuje, że najlepszym modelem do zadania klasyfikacji rodzajów komórek w szpiku kostnym jest \textit{EfficientNet B0}.
-Ta sieć neuronowa uzyskuje najlepszy ważony wynik F1 równy \textit{0.866}.
-Warto też zwrócić uwagę na to, że sieci neuronowe znacznie większe od \textit{EfficientNet B0} nie dawały dużo lepszych rezultatów.
-
-
-\section{Perspektywy rozwoju projektu}
-
-Jedną z możliwości poprawienia jakości modelu jest zrównoważenie zbioru danych, by każda z klas zawierała podobną, dużą ilość próbek.
+Zaprezentowane porównanie różnych splotowych sieci neuronowych informuje, że najlepszym modelem do zadania klasyfikacji rodzajów komórek w szpiku kostnym jest \textit{EfficientNet B3}.
+Ta sieć neuronowa uzyskuje najlepszy ważony wynik F1 równy \textit{0.87}.
+Warto też zwrócić uwagę na to, że sieci neuronowe znacznie większe od \textit{EfficientNet B3} nie dawały dużo lepszych rezultatów.
 
