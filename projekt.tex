@@ -147,7 +147,7 @@ Taka normalizacja zapobiega błędnemu nauczeniu się sieci neuronowej ze wzglę
     \label{fig:transformations_example}
 \end{figure}
 
-Po przetwarzaniu zbiór danych został podzielony na zestaw treningowy i walidacyjny w proporcjach odpowiednio \textit{80:20}.
+Po przetwarzaniu zbiór danych został podzielony losowo na zestaw treningowy i walidacyjny w proporcjach odpowiednio \textit{80:20}.
 Zestaw treningowy służy do optymalizacji parametrów sieci neuronowej.
 Zestaw walidacyjny natomiast jest używany do sprawdzania jakości modelu na obrazach, których sieć neuronowa "nigdy nie widziała".
 
@@ -270,12 +270,12 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
     W opisanym algorytmie, kontury informować o granicach komórki.
     Argumentem funkcji jest flaga \textit{cv2.RETR\_EXTERNAL}, która powoduje, że zwrócone zostają jedynie najbardziej zewnętrzne kontury - kontury wewnętrzne są ignorowane.
     \item Obliczanie punktów centralnych konturów za pomocą momentów Hu. Każdy wyznaczony punkt centralny jest traktowany jako środek komórki (rys.~\ref{fig:extract_contours}).
-    Współrzedne punktów centralnych można wyznaczyć na podstawie momentów Hu, korzystając ze wzorów~\ref{eq:hu_x} i~\ref{eq:hu_y}.
+    Współrzędne punktów centralnych można wyznaczyć na podstawie momentów Hu, korzystając ze wzorów~\ref{eq:hu_x} i~\ref{eq:hu_y}.
     \begin{equation}
-        cX = \dfrac{M_{10}}{M_{00}}\label{eq:hu_x}
+        \hat{x} = \dfrac{M_{10}}{M_{00}}\label{eq:hu_x}
     \end{equation}
     \begin{equation}
-        cY = \dfrac{M_{01}}{M_{00}}\label{eq:hu_y}
+        \hat{y} = \dfrac{M_{01}}{M_{00}}\label{eq:hu_y}
     \end{equation}
     \item Wycięcie obszaru komórki za pomocą indeksów Python (rys.~\ref{fig:extract_squares}). Obraz każdej znalezionej komórki trafia do osobnego pliku w folderze wyjściowym.
     Do zapisu na dysk wykorzystano funkcję \textit{matplotlib.pyplot.imsave()}.
