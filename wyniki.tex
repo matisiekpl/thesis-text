@@ -7,27 +7,27 @@
     \begin{center}
         \begin{tabular}{|l|l|l|l|l|}
             \hline
-            Architektura    & Ilość parametrów & F1    & Wykresy funkcji błędu i F1     & Macierz pomyłek                     \\
+            Architektura             & Ilość parametrów & F1             & Wykresy funkcji błędu i F1     & Macierz pomyłek                     \\
             \hline
-            EfficientNet B0 & 5.3M             &       & \ref{fig:plot_efficientnet_b0} & \ref{fig:confusion_efficientnet_b0} \\
+            EfficientNet B0          & 5.3M             & 0.860          & rys. \ref{fig:plot_efficientnet_b0} & rys. \ref{fig:confusion_efficientnet_b0} \\
             \hline
-            EfficientNet B1 & 7.8M             &       & \ref{fig:plot_efficientnet_b1} & \ref{fig:confusion_efficientnet_b1} \\
+            EfficientNet B1          & 7.8M             & 0.850          & rys. \ref{fig:plot_efficientnet_b1} & rys. \ref{fig:confusion_efficientnet_b1} \\
             \hline
-            EfficientNet B2 & 9.2M             &       & \ref{fig:plot_efficientnet_b2} & \ref{fig:confusion_efficientnet_b2} \\
+            EfficientNet B2          & 9.2M             & 0.860          & rys. \ref{fig:plot_efficientnet_b2} & rys. \ref{fig:confusion_efficientnet_b2} \\
             \hline
-            EfficientNet B3 & 12.0M            & 0.870 & \ref{fig:plot_efficientnet_b3} & \ref{fig:confusion_efficientnet_b3} \\
+            EfficientNet B3          & 12.0M            & 0.870          & rys. \ref{fig:plot_efficientnet_b3} & rys. \ref{fig:confusion_efficientnet_b3} \\
             \hline
-            EfficientNet B4 & 19.0M            &       & \ref{fig:plot_efficientnet_b4} & \ref{fig:confusion_efficientnet_b4} \\
+            \textbf{EfficientNet B4} & \textbf{19.0M}   & \textbf{0.880} & rys. \ref{fig:plot_efficientnet_b4} & rys. \ref{fig:confusion_efficientnet_b4} \\
             \hline
-            EfficientNet B5 & 30.0M            & 0.860 & \ref{fig:plot_efficientnet_b5} & \ref{fig:confusion_efficientnet_b5} \\
+            EfficientNet B5          & 30.0M            & 0.860          & rys. \ref{fig:plot_efficientnet_b5} & rys. \ref{fig:confusion_efficientnet_b5} \\
             \hline
-            DenseNet121     & 8.0M             & 0.850 & \ref{fig:plot_densenet121}     & \ref{fig:confusion_densenet121}     \\
+            DenseNet121              & 8.0M             & 0.850          & rys. \ref{fig:plot_densenet121}     & rys. \ref{fig:confusion_densenet121}     \\
             \hline
-            DenseNet169     & 14.1M            & 0.840 & \ref{fig:plot_densenet169}     & \ref{fig:confusion_densenet169}     \\
+            DenseNet169              & 14.1M            & 0.840          & rys. \ref{fig:plot_densenet169}     & rys. \ref{fig:confusion_densenet169}     \\
             \hline
-            DenseNet201     & 20.0M            & 0.850 & \ref{fig:plot_densenet201}     & \ref{fig:confusion_densenet201}     \\
+            DenseNet201              & 20.0M            & 0.850          & rys. \ref{fig:plot_densenet201}     & rys. \ref{fig:confusion_densenet201}     \\
             \hline
-            ResNet18        & 11.7M            & 0.840 & \ref{fig:plot_resnet18}        & \ref{fig:confusion_resnet18}        \\
+            ResNet18                 & 11.7M            & 0.840          & rys. \ref{fig:plot_resnet18}        & rys. \ref{fig:confusion_resnet18}        \\
             \hline
         \end{tabular}
     \end{center}
@@ -40,31 +40,31 @@
             \hline
             Klasa & Precyzja & Czułość & F1    & Liczba próbek \\
             \hline
-            BLA   & 0.790    & 0.820   & 0.810 & 2350          \\
+            BLA   & 0.780    & 0.840   & 0.810 & 2311          \\
             \hline
-            EBO   & 0.910    & 0.970   & 0.940 & 5568          \\
+            EBO   & 0.940    & 0.960   & 0.950 & 5532          \\
             \hline
-            EOS   & 0.980    & 0.970   & 0.970 & 1180          \\
+            EOS   & 0.980    & 0.980   & 0.980 & 1192          \\
             \hline
-            LYT   & 0.900    & 0.920   & 0.910 & 5273          \\
+            LYT   & 0.910    & 0.930   & 0.920 & 5193          \\
             \hline
-            MON   & 0.840    & 0.570   & 0.680 & 796           \\
+            MON   & 0.720    & 0.730   & 0.720 & 825           \\
             \hline
-            MYB   & 0.780    & 0.620   & 0.690 & 1301          \\
+            MYB   & 0.780    & 0.660   & 0.710 & 1323          \\
             \hline
-            NGB   & 0.740    & 0.780   & 0.760 & 1983          \\
+            NGB   & 0.780    & 0.790   & 0.790 & 1962          \\
             \hline
-            NGS   & 0.910    & 0.920   & 0.910 & 5823          \\
+            NGS   & 0.930    & 0.930   & 0.930 & 5984          \\
             \hline
-            PEB   & 0.870    & 0.470   & 0.610 & 549           \\
+            PEB   & 0.780    & 0.650   & 0.710 & 552           \\
             \hline
-            PLM   & 0.960    & 0.790   & 0.870 & 1545          \\
+            PLM   & 0.940    & 0.860   & 0.900 & 1466          \\
             \hline
-            PMO   & 0.790    & 0.890   & 0.840 & 2401          \\
+            PMO   & 0.830    & 0.840   & 0.840 & 2429          \\
             \hline
         \end{tabular}
     \end{center}
-    \caption{Podsumowanie miary F1 dla poszczególnych klas (EfficientNet B3)}
+    \caption{Podsumowanie miary F1 dla poszczególnych klas (EfficientNet B4)}
     \label{tab:f1_summary}
 \end{table}
 
@@ -208,12 +208,12 @@ Dzieje się tak ze względu na to, że pojemność zachowania informacji w nawet
 
 
 %TODO net
-Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B3}.
-Ważony wynik F1 w jej przypadku wynosi \textit{0.87}.
-Tabela \ref{tab:f1_summary} przedstawia zestawienie precyzji, czułości i F1 dla poszczególnych klas.
-Z kolei wykresy na rys. \ref{fig:plot_efficientnet_b3} przedstawiają zależności funkcji straty i F1 od epoki trenowania.
+Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B4}.
+Ważony wynik F1 w jej przypadku wynosi \textit{0.88}.
+Tabela ~\ref{tab:f1_summary} przedstawia zestawienie precyzji, czułości i F1 dla poszczególnych klas.
+Z kolei wykresy na rys. \ref{fig:plot_efficientnet_b4} przedstawiają zależności funkcji straty i F1 od epoki trenowania.
 Można stwierdzić, że jakość modelu nie poprawia się zbyt znacząco wraz z kolejnymi iteracjami.
-Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_efficientnet_b3}.
+Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_efficientnet_b4}.
 Informuje ona, które klasy są najczęściej mylone z którymi.
 
 
@@ -229,7 +229,8 @@ Informuje ona, które klasy są najczęściej mylone z którymi.
 Dostawca zbioru danych, w artykule \textit{Highly accurate differentiation of bone marrow cell morphologies using deep neural networks on a large image dataset} \cite{resnext} wykorzystuje architekturę \textit{ResNetXt-50}.
 Model zawierający ponad 23 miliony parametrów był trenowany na \textit{NVIDIA TESLA V100} przez ok. 48 godzin.
 Podobnie jak w niniejszym projekcie, autorzy artykułu wykonali normalizację intensywności kolorów przed trenowaniem sieci neuronowej (z powodu różnic w barwieniu Maya-Grünwalda-Giemsa).
-Uzyskany ważony wynik F1 dla architektury \textit{ResNeXt-50} wyniósł \textit{0.822}. Macierz pomyłek dostarczona przed autorów pracy jest widoczna na rys. \ref{fig:resnext_confusion_matrix}.
+Uzyskany ważony wynik F1 dla architektury \textit{ResNeXt-50} wyniósł \textit{0.822}.
+Macierz pomyłek dostarczona przed autorów pracy jest widoczna na rys. \ref{fig:resnext_confusion_matrix}.
 
 
 \section{Wyzwania}
@@ -243,7 +244,7 @@ Ten górny limit wymuszał przemyślane zarządzanie tym, która sieć neuronowa
 \section{Wnioski}
 
 %TODO net
-Zaprezentowane porównanie różnych splotowych sieci neuronowych informuje, że najlepszym modelem do zadania klasyfikacji rodzajów komórek w szpiku kostnym jest \textit{EfficientNet B3}.
-Ta sieć neuronowa uzyskuje najlepszy ważony wynik F1 równy \textit{0.87}.
-Warto też zwrócić uwagę na to, że sieci neuronowe znacznie większe od \textit{EfficientNet B3} nie dawały dużo lepszych rezultatów.
+Zaprezentowane porównanie różnych splotowych sieci neuronowych informuje, że najlepszym modelem do zadania klasyfikacji rodzajów komórek w szpiku kostnym jest \textit{EfficientNet B4}.
+Ta sieć neuronowa uzyskuje najlepszy ważony wynik F1 równy \textit{0.88}.
+Warto też zwrócić uwagę na to, że sieci neuronowe znacznie większe od \textit{EfficientNet B4} nie dawały dużo lepszych rezultatów.
 
