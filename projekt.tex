@@ -49,7 +49,7 @@ class PyTorchNetwork(nn.Module):
 \end{lstlisting}
 
 PyTorch oferuje również zestaw narzędzi do przetwarzania danych, dostarcza również gotowe, pretrenowane modele dla najpopularniejszych architektur.
-Przykładami są pakiety \textit{torchvision} lub \textit{torch.utils}. Cała biblioteka jest w stanie wykorzystywać karty graficzne (z ang. \textit{graphical processing unit, GPU}) do przyspieszania obliczeń.
+Przykładami są pakiety \textit{torchvision} lub \textit{torch.utils}. Biblioteka jest w stanie wykorzystywać karty graficzne (z ang. \textit{graphical processing unit, GPU}) do przyspieszania obliczeń.
 
 \subsection{Biblioteka OpenCV}
 
@@ -108,7 +108,7 @@ Producentem mikroskopu było przedsiębiorstwo Fraunhofer IIS.
 Komórki były barwione metodą Maya-Grünwalda-Giemsa \cite{histology}.
 Zbiór danych zawiera 21 klas, lecz w trakcie trenowania sieci neuronowych wykorzystano jedynie 11 (odrzucone klasy posiadały bardzo małą ilość próbek).
 Histogram rozkładu klas jest widoczna na rys. \ref{fig:images_count_vis}.
-Zbiór danych jest niezbalansowany, ponieważ ilość obrazów w każdej klasie znacząco się różni.
+Zbiór danych jest niezrównoważony, ponieważ ilość obrazów w każdej klasie znacząco się różni.
 Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
 
 
@@ -174,7 +174,7 @@ Uproszczony schemat działania głównej pętli treningowej:
 \subsection{Ewaluacja jakości modelu}
 
 Do sprawdzenia jakości modelu uczenia maszynowego konieczny jest dobór właściwych metryk.
-Ze względu na to, że trenowany jest klasyfikator wieloklasowy, a zbiór danych nie jest zbalansowany, zwykłe metryki takie jak dokładność (z ang. \textit{accuracy}) nie wystarczą.
+Ze względu na to, że trenowany jest klasyfikator wieloklasowy, a zbiór danych nie jest zrównoważony, zwykłe metryki takie jak dokładność (z ang. \textit{accuracy}) nie wystarczą.
 Dla każdej klasy jest liczona precyzja (z ang. \textit{precision}) i czułość (z ang. \textit{recall}).
 Obie te metryki składają się do obliczenia wyniku F1 (z ang. \textit{F1-score})~\cite{geron}.
 Co ważne, wynik F1 jest liczony z uwzględnieniem wag poszczególnych klas.
