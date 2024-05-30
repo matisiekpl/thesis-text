@@ -75,13 +75,14 @@ for i in range(0, 7):
 
 \subsection{Inne narzędzia}
 
-Kod źródłowy projektu był przechowywany w repozytorium na platformie GitHub (dostępny pod adresem \url{https://github.com/matisiekpl/thesis}).
+Kod źródłowy projektu jest przechowywany w repozytorium na platformie GitHub (dostępny pod adresem \url{https://github.com/matisiekpl/thesis}).
 Wykresy były generowane za pomocą biblioteki \textit{matplotlib} \cite{matplotlib},
 a metryki liczone z użyciem funkcji pakietu \textit{scikit-learn} \cite{scikit_learn}.
 
 \subsection{Sprzęt}
 
-Do prac badawczych został użyty Apple Macbook Pro 2020 (M1/16GB pamięci). Trenowanie sieci odbywało się na platformie \textit{kaggle.com}, która oferuje bezpłatne 30 godzin obliczeń co miesiąc z kartą graficzną \textit{NVIDIA P100}.
+Do prac badawczych został użyty Apple Macbook Pro 2020 (M1/16GB pamięci).
+Trenowanie sieci odbywało się na platformie \textit{kaggle.com}, która oferuje bezpłatne 30 godzin obliczeń co miesiąc z kartą graficzną \textit{NVIDIA P100}.
 
 
 \section{Zbiór danych}
@@ -107,7 +108,7 @@ Producentem mikroskopu było przedsiębiorstwo Fraunhofer IIS.
 
 Komórki były barwione metodą Maya-Grünwalda-Giemsa \cite{histology}.
 Zbiór danych zawiera 21 klas, lecz w trakcie trenowania sieci neuronowych wykorzystano jedynie 11 (odrzucone klasy posiadały bardzo małą ilość próbek).
-Histogram rozkładu klas jest widoczna na rys. \ref{fig:images_count_vis}.
+Histogram rozkładu klas jest widoczny na rys. \ref{fig:images_count_vis}.
 Zbiór danych jest niezrównoważony, ponieważ ilość obrazów w każdej klasie znacząco się różni.
 Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
 
@@ -119,7 +120,7 @@ Przykładowe zdjęcia są widoczne na rys \ref{fig:images_examples}.
 Zbiór danych to katalog ze zdjęciami.
 Zdjęcia są pogrupowane w podkatalogach, gdzie jego nazwa oznacza typ komórki.
 Każdy podkatalog zawiera kolorowe zdjęcia w formacie \textit{.jpg} w rozmiarze \textit{250 pikseli x 250 pikseli}.
-Przed treningiem sieci neuronowej konieczna jest przetwarzanie wstępne zbioru danych (z ang. \textit{preprocessing}).
+Przed treningiem sieci neuronowej konieczne jest przetwarzanie wstępne zbioru danych (z ang. \textit{preprocessing}).
 
 \begin{lstlisting}[language=ipython,caption={Transformacja danych}, label={lst:transforms}]
 transform = transforms.Compose([
@@ -179,7 +180,7 @@ Dla każdej klasy jest liczona precyzja (z ang. \textit{precision}) i czułość
 Obie te metryki składają się do obliczenia wyniku F1 (z ang. \textit{F1-score})~\cite{geron}.
 Co ważne, wynik F1 jest liczony z uwzględnieniem wag poszczególnych klas.
 Obliczana jest również macierz pomyłek.
-Informuje ona o tym, jakie klasy są najczęściej mylone z jakimi.
+Informuje ona o tym, które klasy są najczęściej mylone między sobą.
 Metryki są zapisywane do pliku tekstowego oraz do plików obrazów w celu późniejszej analizy.
 
 
@@ -187,8 +188,8 @@ Metryki są zapisywane do pliku tekstowego oraz do plików obrazów w celu póź
 
 W celu łatwego korzystania z modelu uczenia maszynowego przez diagnostów dostępna jest aplikacja internetowa do interakcji z nim.
 Zrzut ekranu interfejsu użytkownika jest widoczny na rys.~\ref{fig:ui}.
-Została ona napisana z użyciem \textit{Vue}~\cite{vue} - biblioteki do tworzenia interaktywnych interfejsów użytkownika dla sieci web.
-Aplikacja łączy się z serwerem HTTP napisanym z użyciem biblioteki Flask~\cite{flask}.
+Aplikacja została ona napisana z użyciem \textit{Vue}~\cite{vue} - biblioteki do tworzenia interaktywnych interfejsów użytkownika dla sieci web.
+Łączy się ona z serwerem HTTP napisanym z użyciem biblioteki Flask~\cite{flask}.
 Serwer eksponuje interfejs REST API, który dla wysłanego zdjęcia zwraca rozkład prawdopodobieństwa.
 Przed wywołaniem modelu, funkcja upewnia się, że przychodzący obrazek jest poprawnego formatu.
 Dopiero po zwalidowaniu poprawności danych, kod przystępuje do utworzenia rozkładu prawdopodobieństwa (zmienna \textit{result}).
@@ -259,7 +260,7 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
 
 \begin{enumerate}
     \item Konwersja oryginalnego obrazu (rys.~\ref{fig:extract_input}) na skalę szarości.
-    Jest to wymagane, ponieważ progowanie w kroku drugim nie może odbywać się na obrazie kolorowym.
+    Jest to konieczne, ponieważ progowanie w kroku drugim nie może odbywać się na obrazie kolorowym.
     Do konwersji zastosowano funkcję \textit{cv2.cvtColor} - pozwala ona konwertować obraz z jednej przestrzeni kolorów do innej.
     \item Progowanie z pomocą algorytmu Otsu.
     Jest to algorytm adaptacyjnego progowania, często stosowany do analizy obrazów medycznych.
@@ -267,7 +268,7 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
     Dąży on do maksymalizacji wariancji międzyklasowej.
     \item Wyznaczenie konturów z pomocą funkcji \textit{cv2.findContours}.
     Kontur jest definiowany jako pewna ciągła krzywa, która łączy punkty o tej samej intensywności.
-    W opisanym algorytmie, kontury informować o granicach komórki.
+    W opisanym algorytmie kontury mają za zadanie informować o granicach komórki.
     Argumentem funkcji jest flaga \textit{cv2.RETR\_EXTERNAL}, która powoduje, że zwrócone zostają jedynie najbardziej zewnętrzne kontury - kontury wewnętrzne są ignorowane.
     \item Obliczanie punktów centralnych konturów za pomocą momentów Hu. Każdy wyznaczony punkt centralny jest traktowany jako środek komórki (rys.~\ref{fig:extract_contours}).
     Współrzędne punktów centralnych można wyznaczyć na podstawie momentów Hu, korzystając ze wzorów~\ref{eq:hu_x} i~\ref{eq:hu_y}.

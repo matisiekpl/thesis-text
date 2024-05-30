@@ -68,13 +68,13 @@
     \label{tab:f1_summary}
 \end{table}
 
-Niniejsza praca ma za zadanie porównać różne architektury splotowych sieci neuronowych i wskazać, która z nich daje najlepsze rezultaty.
-Tabela \ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególnych eksperymentów.
+Niniejszy projekt ma za zadanie porównać różne architektury splotowych sieci neuronowych i wskazać, która z nich daje najlepsze rezultaty.
+Tabela~\ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególnych eksperymentów.
 Dla każdej architektury wskazano jej wielkość (ilość parametrów trenowalnych) oraz ważony wynik F1.
 Większy wynik F1 informuje o lepszym zachowaniu modelu w rozpoznawaniu typów komórek.
 
-Warto spostrzec, że często wielkość sieci neuronowej nie koreluje bezpośrednio z jakością uzyskiwanych predykcji.
-Dzieje się tak ze względu na to, że pojemność zachowania informacji w nawet mniejszej sieci jest wystarczająca, by móc rozpoznawać rodzaje komórek.
+Warto zauważyć, że często wielkość sieci neuronowej nie koreluje bezpośrednio z jakością uzyskiwanych predykcji.
+Dzieje się tak ze względu na to, że pojemność zachowania informacji nawet w mniejszej sieci jest wystarczająca, by móc rozpoznawać rodzaje komórek.
 
 \begin{figure}
     \centering
@@ -212,9 +212,9 @@ Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B4
 Ważony wynik F1 w jej przypadku wynosi \textit{0.88}.
 Tabela ~\ref{tab:f1_summary} przedstawia zestawienie precyzji, czułości i F1 dla poszczególnych klas.
 Z kolei wykresy na rys. \ref{fig:plot_efficientnet_b4} przedstawiają zależności funkcji straty i F1 od epoki trenowania.
-Można stwierdzić, że jakość modelu nie poprawia się zbyt znacząco wraz z kolejnymi iteracjami.
+Można stwierdzić, że jakość modelu nie poprawia się znacząco wraz z kolejnymi iteracjami.
 Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_efficientnet_b4}.
-Informuje ona, które klasy są najczęściej mylone z którymi.
+Informuje ona, które klasy są najczęściej mylone między sobą.
 
 
 \section{Porównanie z innymi algorytmami}
@@ -235,16 +235,16 @@ Macierz pomyłek dostarczona przed autorów pracy jest widoczna na rys. \ref{fig
 
 \section{Wyzwania}
 
-Głównym wyzwaniem napotkanym w projekcie było wytrenowanie dużych sieci neuronowych.
-Niestety, ich trening na lokalnym sprzęcie takim jak komputer osobisty jest bardzo czasochłonne.
+Głównym wyzwaniem w trakcie realizacji projektu było wytrenowanie dużych sieci neuronowych.
+Niestety, ich trening na lokalnym sprzęcie takim jak komputer osobisty jest bardzo czasochłonny.
 W związku z tym konieczne było uruchamianie ich na platformie \textit{kaggle.com}, która oferuje 30 godzin czasu procesora graficznego miesięcznie.
-Ten górny limit wymuszał przemyślane zarządzanie tym, która sieć neuronowa powinna być wytrenowana priorytetowo.
+Nieodpłatna możliwość pracy na platformie pozwoliła na pomyślną realizację projektu.
 
 
 \section{Wnioski}
 
 %TODO net
-Zaprezentowane porównanie różnych splotowych sieci neuronowych informuje, że najlepszym modelem do zadania klasyfikacji rodzajów komórek w szpiku kostnym jest \textit{EfficientNet B4}.
-Ta sieć neuronowa uzyskuje najlepszy ważony wynik F1 równy \textit{0.88}.
+Zaprezentowane porównanie różnych splotowych sieci neuronowych pokazuje, że najlepszym modelem do zadania klasyfikacji rodzajów komórek w szpiku kostnym jest \textit{EfficientNet B4}.
+Wybrana sieć neuronowa uzyskuje najlepszy ważony wynik F1 równy \textit{0.88}.
 Warto też zwrócić uwagę na to, że sieci neuronowe znacznie większe od \textit{EfficientNet B4} nie dawały dużo lepszych rezultatów.
 

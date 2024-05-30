@@ -13,11 +13,11 @@ Ogólna architektura sieci neuronowej:
     Danymi wejściowymi mogą być poziomy jasności obrazu, dane o cenach lub sygnale (w przypadku prognozowania serii czasowych) lub osadzenia (z ang. \textit{embeddings}) dla modeli językowych.
     \item Warstwy ukryte - te warstwy przetwarzają dane wejściowe przez sekwencję transformacji matematycznych.
     Neurony są połączone z poprzednią warstwą, a siła ich połączenia jest wyrażana przez tak zwane wagi.
-    Wartość, którą przyjmie dany neuron, jest liczona na podstawie ważonej sumy wartości neuronów z poprzedniej warstw.
+    Wartość, którą przyjmie dany neuron, jest liczona na podstawie ważonej sumy wartości neuronów z poprzedniej warstwy.
     Po obliczeniu sumy, stosowana jest funkcja aktywacji.
     Ma ona za zadanie wprowadzić nieliniowość obliczeń, która jest wymagana do rozpoznawania zaawansowanych wzorców.
     \item Warstwa wyjściowa - warstwa, która generuje końcowy tensor.
-    Tensor może zawierać informacje takie jak rozkład prawdopodobieństwa przyporządkowania do poszczególnych klas.
+    Tensor może zawierać informacje, takie jak rozkład prawdopodobieństwa przyporządkowania do poszczególnych klas.
     Może również zawierać prognozowaną liczbę, w przypadku modeli regresyjnych.
 \end{itemize}
 
@@ -28,9 +28,9 @@ W rzeczywistych zadaniach stosuje się jednak bardziej wyszukane algorytmy takie
 
 Sieci neuronowe okazały się dużym sukcesem w wielu trudnych zadaniach uczenia maszynowego.
 Są z powodzeniem stosowane w takich branżach jak medycyna, rozrywka, cyberbezpieczeństwo czy motoryzacja.
-Na przykład zespół Tesla Vision trenuje duże sieci neuronowe by stworzyć pojazd autonomiczny, zdolny poruszać się bezpiecznie bez kierowcy.
+Na przykład, zespół Tesla Vision trenuje duże sieci neuronowe by stworzyć pojazd autonomiczny, zdolny poruszać się bezpiecznie bez kierowcy.
 Sieci neuronowe coraz częściej będą wykonywać określone zadania szybciej i skuteczniej niż człowiek.
-Czas reakcji systemu autopilot samochodu autonomicznego jest znacznie krótszy niż czas reakcji kierowcy, co w długiej perspektywie może przyczynić się do zwiększenia bezpieczeństwa na drogach i szlakach komunikacyjnych.
+Czas reakcji systemu autopilot samochodu autonomicznego jest znacznie krótszy niż czas reakcji kierowcy, co w dłuższej perspektywie może przyczynić się do zwiększenia bezpieczeństwa na drogach i szlakach komunikacyjnych.
 Innym bardzo ważnym zastosowaniem sieci neuronowych jest medycyna.
 Naukowcy z Google DeepMind stworzyli model \textit{AlphaFold}, który jest w stanie przewidywać molekularną strukturę białek.
 Postęp informatyki w naukach biologicznych i chemicznych otwiera perspektywę na leczenie chorób, które dotychczas były nieuleczalne i umożliwia lepsze zrozumienie organizmu człowieka.
@@ -48,7 +48,7 @@ Zasada działania algorytmu:
     Użycie takiego rozkładu pozwala uodpornić proces treningu na problem zanikających i eksplodujących gradientów.
     \item Przejście w przód - dane wejściowe są przekazywane do sieci neuronowej i liczone są wartości neuronów w kolejnych warstwach.
     Ostatnia warstwa stanowi wyjście modelu.
-    \item Obliczenie błędu (inaczej straty) - wyliczone wyjście modelu jest porównywanie z oczekiwanym wyjściem (pochodzi ono z danych wejściowych w przypadku uczenia nadzorowanego).
+    \item Obliczenie błędu (inaczej straty) - wyliczone wyjście modelu jest porównywane z oczekiwanym wyjściem (pochodzi ono z danych wejściowych w przypadku uczenia nadzorowanego).
     Używając różnych funkcji matematycznych, algorytm oblicza błąd, który informuje, jak bardzo predykcje odbiegają od docelowego wyjścia modelu.
     Najpopularniejsze funkcje błędu to błąd średniokwadratowy (z ang. \textit{Mean-Square Error} albo \textit{MSE}) bądź entropia krzyżowa (z ang. \textit{Cross Entropy}).
     Dla zadań klasyfikacji wieloklasowej często stosuje się entropię krzyżową, zaś dla regresji liniowej (np.
@@ -59,7 +59,8 @@ Zasada działania algorytmu:
         \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2\label{eq:mse}
     \end{equation}
 
-    Z kolei funkcja błędu entropii krzyżowej dana jest wzorem~\ref{eq:cross_entropy}, gdzie $N$ to liczba wszystkich próbek, a $K$ to liczba klas. $y_{i,k}$ to prawdziwa etykieta dla próbki $i$ i klasy $k$, a $\hat{y}_{i,k}$ to przewidywane prawdopodobieństwo, że próbka $i$ należy do klasy $k$.
+    Z kolei funkcja błędu entropii krzyżowej dana jest wzorem~\ref{eq:cross_entropy}, gdzie $N$ to liczba wszystkich próbek, a $K$ to liczba klas.
+    Zmienne $y_{i,k}$ to prawdziwa etykieta dla próbki $i$ i klasy $k$, a $\hat{y}_{i,k}$ to przewidywane prawdopodobieństwo, że próbka $i$ należy do klasy $k$.
     \begin{equation}
         \mathcal{L}_{CE} = -\frac{1}{N} \sum_{i=1}^{N} \sum_{k=1}^{K} y_{i,k} \log(\hat{y}_{i,k})\label{eq:cross_entropy}
     \end{equation}
@@ -67,7 +68,7 @@ Zasada działania algorytmu:
     \item Propagacja błędu - błąd jest przekazywany wstecz od warstwy wyjściowej, przez warstwy ukryte aż do warstwy wejściowej.
     Przy przekazywaniu, liczone są pochodne cząstkowe funkcji błędu względem każdej z wag.
     \item Aktualizacja wag - wagi neuronów są aktualizowane za pomocą różnych algorytmów optymalizacyjnych.
-    Jednym z najprostszych algorytmów jest metoda najszybszego spadku wzdłuż gradientu, która sprowadza się wyliczenia następnej wartości za pomocą równania~\ref{eq:fastest_gradient_descent}.
+    Jednym z najprostszych algorytmów jest metoda najszybszego spadku wzdłuż gradientu, która sprowadza się do wyliczenia następnej wartości za pomocą równania~\ref{eq:fastest_gradient_descent}.
     Warto zwrócić uwagę na hiperparametr $\alpha_k$ - jest to współczynnik uczenia.
     Informuje on algorytm o tempie optymalizacji.
     Gdy współczynnik będzie zbyt niski, proces trenowania będzie trwał bardzo długo i może dojść do sytuacji, gdzie model nigdy nie zdąży się wytrenować.
@@ -78,17 +79,17 @@ Zasada działania algorytmu:
     \item Iteracja - kroki (oprócz inicjalizacji) są powtarzane tak długo, aż sieć neuronowa będzie dawała jakościowe predykcje.
 \end{itemize}
 
-Zagadnienie propagacji wstecznej jest bardzo szerokie - pomimo niezbyt skomplikowanego algorytmu, w trakcie trenowanie sieci mogą pojawiać się problemy z tak zwanymi zanikającymi bądź eksplodującymi gradientami.
+Zagadnienie propagacji wstecznej jest bardzo szerokie - pomimo niezbyt skomplikowanego algorytmu, w trakcie trenowania sieci mogą pojawiać się problemy z tak zwanymi zanikającymi bądź eksplodującymi gradientami.
 Wartość współczynnika uczenia nie musi być z góry ustalona, lecz może być wyliczana na bieżąco.
 Przykładowo, wraz z czasem treningu współczynnik może być zmniejszany (nazwa metody w języku angielskim to \textit{learning rate decay}).
-Podsumowując, propagacja wsteczna jest bardzo przydatna w zagadnieniu trenowania sieci neuronowych i uczeniu głębokim, pomimo korzystania z prostych pojęć analizy matematycznej takich jak pochodna cząstkowa.
+Zatem propagacja wsteczna jest bardzo przydatna w zagadnieniu trenowania sieci neuronowych i uczeniu głębokim, pomimo korzystania z prostych pojęć analizy matematycznej takich jak pochodna cząstkowa.
 
 
 \section{Metryki}
 
 Do stwierdzenia, który model uczenia maszynowego jest najlepszej jakości, wymagane są pewne metryki.
 Dobór tych metryk zależy od zadania, jak i zbioru danych.
-Jednymi z podstawowych metryk jest dokładność (z ang. \textit{accuracy}) - równanie~\ref{eq:accuracy}.
+Jedną z podstawowych metryk jest dokładność (z ang. \textit{accuracy}) - równanie~\ref{eq:accuracy}.
 
 \begin{equation}
     \text{Dokładność} = \frac{TP + TN}{TP + TN + FP + FN}\label{eq:accuracy}
@@ -96,13 +97,13 @@ Jednymi z podstawowych metryk jest dokładność (z ang. \textit{accuracy}) - r�
 
 Czasem jednak metryka taka jak dokładność jest niewystarczająca.
 W przypadku niezrównoważonych zbiorów danych najczęściej korzysta się z zestawu trzech metryk - precyzji, czułości i miary F1.
-
+%TODO co to jest
 Precyzja jest definiowana jako:
 
 \begin{equation}
     \text{Precyzja} = \frac{TP}{TP + FP}\label{eq:precision}
 \end{equation}
-
+%TODO co to jest
 Z kolei czułość dana jest wzorem:
 
 \begin{equation}
@@ -133,23 +134,23 @@ W omawianych wzorach \textit{TP}, \textit{FP}, \textit{TN}, \textit{FN} to iloś
 
 \section{Splotowe sieci neuronowe}
 
-Splotowe sieci neuronowe to rodzaj sieci neuronowych dedykowany do rozpoznawania przede wszystkim cech obrazów~\cite{geron}.
+Splotowe sieci neuronowe to rodzaj sieci neuronowych dedykowanych do rozpoznawania przede wszystkim cech obrazów~\cite{geron}.
 Znajdują one zastosowanie w zadaniach takich jak klasyfikacja obrazów, rozpoznawanie obiektów lub segmentacja.
 Czasem są one używane do analizy wideo lub analizy sygnału w czasie.
 
 Struktura splotowych sieci neuronowych sprowadza się do:
 \begin{itemize}
-    \item Warstwa wejściowa - ta warstwa przyjmuje zazwyczaj obraz jako tensor jasności poszczególnych pikseli.
+    \item Warstwy wejściowej - ta warstwa przyjmuje zazwyczaj obraz jako tensor jasności poszczególnych pikseli.
     Obraz wejściowy może być w skali szarości (pojedynczy kanał) lub kolorowy - najczęściej składowe RGB pojedynczego piksela są kodowane przez 3 neurony.
-    \item Warstwy splotowe - te warstwy wykorzystują matematyczną operację splotu.
-    Taka warstwa zawiera pewną macierz, zwaną filtrem o pewnym ustalonym rozmiarze (najczęściej \textit{3x3} lub \textit{5x5}).
-    Macierz ta jes przesuwana od lewej do prawej, z góry do dołu po obrazie.
-    Odpowiednie wartości filtra są w stanie wzmocnić lub osłabić pewne cechy obrazu takie jak ostre krawędzie bądź rogi.
+    \item Warstw splotowych - te warstwy wykorzystują matematyczną operację splotu.
+    Warstwy te zawierają macierze, zwane filtrami o ustalonym rozmiarze (najczęściej \textit{3x3} lub \textit{5x5}).
+    Macierze są przesuwane od lewej do prawej strony, z góry do dołu po obrazie.
+    Odpowiednie wartości filtrów są w stanie wzmocnić lub osłabić pewne cechy obrazu takie jak ostre krawędzie bądź rogi.
     Wartości macierzy są dobierane w procesie trenowania modelu.
-    \item Warstwy łączące - warstwy te mają za zadanie zmniejszyć wymiarowość danych z poprzedniej warstwy.
+    \item Warstw łączących - warstwy te mają za zadanie zmniejszyć wymiarowość danych z poprzedniej warstwy.
     Popularną funkcją łączącą jest uśrednianie - dla zadanego otoczenia pikseli (najczęściej \textit{2x2} lub \textit{3x3}) wybierana jest średnia wartość.
     Inną funkcją łączącą jest maksimum - z otoczenia wybierana jest wartość maksymalna.
-    \item Warstwy gęste - po kilku warstwach splotowych, zaawansowane rozumowanie jest przeprowadzane przez warstwy gęste, czyli neurony połączone w sposób “każdy z każdym“.
+    \item Warstw gęstych - po kilku warstwach splotowych, zaawansowane rozumowanie jest przeprowadzane przez warstwy gęste, czyli neurony połączone są w sposób “każdy z każdym“.
 \end{itemize}
 
 Główne zastosowanie splotowych sieci neuronowych to wykrywanie przedmiotów i ludzi na obrazach i nagraniach wideo,
@@ -158,12 +159,12 @@ opisywanie i wykrywanie anomalii w skanach medycznych oraz analiza sytuacji na d
 
 \section{Problem klasyfikacji komórek krwi w rozmazach szpiku kostnego}
 
-Problem opisu komórek na rozmazach krwi i szpiku kostnego jest bardzo ważny z perspektywy diagnostyki wielu chorób takich jak np.
+Problem opisu komórek w rozmazach krwi i szpiku kostnego jest bardzo ważny z perspektywy diagnostyki wielu chorób takich jak np.
 nowotwory.
-Po wykonaniu mikroskopowej fotografii rozmazu lekarz diagnosta musi policzyć ilość komórek każdego typu w próbce.
+Po wykonaniu mikroskopowej fotografii rozmazu, lekarz diagnosta musi policzyć ilość komórek każdego typu w próbce.
 Ilość komórek danego rodzaju może być przesłanką do zdiagnozowania nieprawidłowości w organiźmie.
 Przykładowo, do stwierdzenia białaczki lekarz zlicza ilość limfoblastów w próbce w stosunku do wszystkich komórek.
-Gdy ten stosunek przekracza pewien próg, jest to przesłanka o obecności nowotworu.
+Gdy ten stosunek przekracza pewien próg, jest to przesłanka mogąca świadczyć o obecności nowotworu.
 Limfoblasty to forma niedojrzała limfocytów.
 Ich zwiększone występowanie sugeruje nieprawidłowości w procesie rozwoju tych komórek do docelowej postaci.
 
@@ -178,13 +179,13 @@ Objaśnienie: A - erytrocyt (widok z góry i widok przekroju), B - neutrofil, C 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{morfotyczne}
-    \caption{Elementy morfotyczne krwi w obrazie optycznego i elektronowego. Rysunek pochodzi z “Kompendium histologii“ autorstwa Tadeusza Cichockiego, Jana Litwina i Jadwigi Mireckiej \cite{histology}.}
+    \caption{Elementy morfotyczne krwi w obrazie mikroskopu optycznego i elektronowego. Rysunek pochodzi z “Kompendium histologii“ autorstwa Tadeusza Cichockiego, Jana Litwina i Jadwigi Mireckiej \cite{histology}.}
     \label{fig:electron_microscope}
 \end{figure}
 
-Rozwój metod komputerowej klasyfikacji komórek jest bardzo istotny, ponieważ potencjalne zautomatyzowanie procesu zliczania komórek pozwoliłoby szybsze stawianie diagnozy i zaoszczędzenie wielu godzin pracy diagnostów.
-%TODO check if this is truth
-Obecne rozwiązania służące do opisu komórek w krwi lub szpiku kostnym bazują cytometrii przepływowej (czyli analizie kąta odbicia fali światła).
+Rozwój metod komputerowej klasyfikacji komórek jest bardzo istotny, ponieważ potencjalne zautomatyzowanie procesu zliczania komórek pozwoliłoby na szybsze stawianie diagnozy i zaoszczędzenie wielu godzin pracy diagnostów.
+
+Obecne rozwiązania służące do opisu komórek w krwi lub szpiku kostnym bazują na cytometrii przepływowej (czyli analizie kąta odbicia fali światła).
 Warto natomiast zwrócić uwagę na to, że zdjęcie komórki (to znaczy obrazowanie w zakresie światła widzialnego) jest wystarczające do rozpoznania typu komórki przez człowieka, a więc niesie dostateczną ilość informacji.
 To oznacza, że odpowiednio zaawansowany model sztucznej inteligencji byłby w stanie klasyfikować komórki jedynie na podstawie wizji komputerowej, bez potrzeby analizy widma falowego lub kątów odbicia światła.
 
@@ -222,7 +223,7 @@ Wzór na tak zwany moment centralny $\mu_{ij}$ przedstawia równanie~\ref{eq:cen
 
 \section{GradCAM - wytłumaczalne uczenie maszynowe}
 
-GradCAM (z ang. \textit{Gradient-weighted Class Activation Mapping}) to technika, która umożliwia użytkownikom splotowych sieci neuronowych lepiej zrozumieć proces podejmowania decyzji przez model uczenia maszynowego.
+GradCAM (z ang. \textit{Gradient-weighted Class Activation Mapping}) to technika, która umożliwia użytkownikom splotowych sieci neuronowych lepsze zrozumienie procesu podejmowania decyzji przez model uczenia maszynowego.
 Jest to jedna z podstawowych metod zagadnienia wytłumaczalnego SI (z ang. \texit{explainable artificial intelligence}).
 Po wykonaniu przejścia w przód sieci neuronowej GradCAM jest w stanie wygenerować mapę cieplną wskazującą obszary obrazu, które były istotne do podjęcia decyzji przez model.
 Zasada działania algorytmu GradCAM:
@@ -246,7 +247,7 @@ Zasada działania algorytmu GradCAM:
     \item Interpolacja do rozmiaru obrazu wejściowego-obliczona mapa cech $L^c_{\text{gradcam}}$ jest skalowana, by można było nałożyć ją na obraz wejściowy.
 \end{itemize}
 
-Skorzystanie z metod wytłumaczalnego uczenia maszynowego pozwala zwiększyć transparentność modelu i lepiej zrozumieć proces decyzji.
+Skorzystanie z metod wytłumaczalnego uczenia maszynowego pozwala na zwiększenie transparentności modelu i lepsze zrozumienie procesu podejmowania decyzji.
 Jest to szczególne ważne z punktu widzenia zastosowań sieci neuronowych w medycynie, ponieważ lekarz może dogłębniej przyjrzeć się przesłankom, co stoi za daną odpowiedzią modelu.
 W przypadku zadania rozpoznawania rodzajów komórek z krwi obwodowej bądź szpiku mapa cieplna GradCAM wskazuje na te obszary komórki, po których można rozpoznać jej typ.
 Innym przykładem zastosowania wytłumaczalnego uczenia maszynowego jest rozpoznawanie zmian nowotworowych na skanach mózgu z rezonansu magnetycznego.
