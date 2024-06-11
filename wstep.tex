@@ -5,39 +5,39 @@
 
 Rozwój technologii informatycznych, w szczególności uczenia maszynowego, otwiera nowe możliwości w wielu dziedzinach nauki i przemysłu.
 Jednym z obszarów życia, w którym te technologie mogą odnieść duży sukces, jest medycyna.
-Zastosowanie komputerów do analizy danych medycznych powoduje polepszenie procesów leczenia wielu chorób.
-Sztuczna inteligencja daje możliwość zautomatyzowania czasochłonnych zadań w diagnostyce i zaoszczędzenie wielu godzin pracy lekarza diagnosty.
+Zastosowanie komputerów do analizy danych medycznych \textcolor{red}{może wpłynąć pozytywnie na proces} leczenia wielu chorób.
+Sztuczna inteligencja daje możliwość zautomatyzowania czasochłonnych zadań w diagnostyce i zaoszczędzenia wielu godzin pracy lekarza diagnosty.
 
 Celem niniejszej pracy jest zastosowanie splotowych sieci neuronowych do klasyfikacji komórek szpiku kostnego na podstawie zdjęć rozmazów.
-Wykorzystanie tej technologii może znacznie przyspieszyć i ułatwić proces diagnozy, co jest kluczowe dla skutecznego leczenia wielu chorób takich jak nowotwory krwi.
+Wykorzystanie tej technologii może znacznie przyspieszyć i ułatwić proces diagnozy, co jest kluczowe dla skutecznego leczenia wielu chorób takich \textcolor{red}{jak na przykład} nowotwory krwi.
 
 Praca ma charakter badawczy i jest próbą zastosowania nowoczesnych technologii informatycznych w praktycznym problemie medycznym.
 
 
 \section{Motywacja}
 
-W ostatnich latach obserwuje się coraz większe zastosowanie informatyki, a w szczególności algorytmów uczenia maszynowego,
+W ostatnich latach obserwuje się coraz \textcolor{red}{częstsze} zastosowanie informatyki, a w szczególności algorytmów uczenia maszynowego,
 w medycynie i diagnostyce.
-Jednym z ważniejszych zastosowań jest wykorzystanie widzenia komputerowego, wspieranego sieciami neuronowymi, do przetwarzania i analizy obrazów medycznych.
+Jednym z ważniejszych zastosowań \textcolor{red}{tych metod} jest wykorzystanie widzenia komputerowego, wspieranego sieciami neuronowymi, do przetwarzania i analizy obrazów medycznych.
 Przykładowo, odpowiedni system może analizować wyniki tomografii komputerowej bądź rezonansu magnetycznego, by stwierdzić niepokojące zmiany w ciele człowieka.
 Odpowiednia sieć neuronowa widzenia komputerowego może badać skany ludzkiego mózgu i ustalać, czy na zdjęciu jest widoczny guz \cite{brain_tumor}.
 Innym przykładem jest traktowanie zapisu sygnału elektrokardiogramu jako szerokiego
 obrazu \cite{ecg_cnn}.
 Wtedy program komputerowy może oznaczać fragmenty, na które lekarz powinien zwrócić szczególną uwagę.
 
-W niniejszym projekcie zaproponowany algorytm uczenia maszynowego jest w stanie rozpoznawać komórki w szpiku kostnym.
+W niniejszym projekcie został \textcolor{red}{zaproponowany algorytm uczenia maszynowego, którego zadaniem jest rozpoznawać} rodzaje komórek w szpiku kostnym.
 Klasyfikowanie typów komórek jest kluczowe z perspektywy diagnostyki wielu chorób.
 Przykładowo, stwierdzenie ostrej białaczki limfoblastycznej opiera się na m.in.
-zliczeniu 1000 komórek i policzeniu, ile z nich jest limfoblastami~\cite{blast_counting_diagnosis}.
+\textcolor{red}{przeglądnięciu ok. 1000 komórek pochodzących z krwi i stwierdzeniu}, ile z nich jest limfoblastami~\cite{blast_counting_diagnosis}.
 Obecnie nie istnieje w pełni automatyczny system ich zliczania, więc w procesie diagnostyki musi być zaangażowany człowiek.
 Postęp w tym zakresie oznaczałby znaczne przyspieszenie diagnozy pacjenta, a co za tym idzie polepszenie rokowania wyleczenia.
 
 
 \section{Cele i zakres pracy}
 
-Celem pracy jest porównanie kilku algorytmów uczenia maszynowego z wykorzystaniem splotowych sieci neuronowych do rozpoznawania typów komórek na podstawie zdjęć.
+Celem pracy jest porównanie kilku algorytmów uczenia maszynowego z wykorzystaniem splotowych sieci neuronowych do rozpoznawania typów komórek na podstawie \textcolor{red}{zdjęć przedstawiających obraz mikroskopowy}.
 Zdjęcia przedstawiają obraz mikroskopowy rozmazu szpiku kostnego. Wykorzystany zbiór danych pochodzi z
 Monachijskiego Labolatorium Białaczek (\textit{MLL Münchner Leukämielabor} \cite{mll}) i jest dostępny na platformie \textit{kaggle.com} \cite{dataset}.
-Praca ma za zadanie porównać różne architektury splotowych sieci neuronowych i stwierdzić, która z nich daje najlepsze rezultaty.
+Praca ma za zadanie porównać różne architektury splotowych sieci neuronowych i stwierdzić, która z nich daje najlepsze \textcolor{red}{rezultaty pod względem precyzji i liczby pomyłek w klasyfikacji}.
 
 Praca zawiera także omówienie algorytmu wstępnego przetwarzania danych (z ang. \textit{preprocessing}) oraz algorytmu ekstrakcji obrazów komórek z dużego skanu rozmazu.

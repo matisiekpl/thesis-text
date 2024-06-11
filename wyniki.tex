@@ -35,6 +35,7 @@
     \label{tab:comparison}
 \end{table}
 \begin{table}
+    \caption{Podsumowanie miary F1 dla poszczególnych klas (EfficientNet B4)}
     \begin{center}
         \begin{tabular}{|l|l|l|l|l|}
             \hline
@@ -64,7 +65,6 @@
             \hline
         \end{tabular}
     \end{center}
-    \caption{Podsumowanie miary F1 dla poszczególnych klas (EfficientNet B4)}
     \label{tab:f1_summary}
 \end{table}
 
@@ -73,7 +73,7 @@ Tabela~\ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególn
 Dla każdej architektury wskazano jej wielkość (ilość parametrów trenowalnych) oraz ważony wynik F1.
 Większy wynik F1 informuje o lepszym zachowaniu modelu w rozpoznawaniu typów komórek.
 
-Warto zauważyć, że często wielkość sieci neuronowej nie koreluje bezpośrednio z jakością uzyskiwanych predykcji.
+Warto zauważyć, że \textcolor{red}{często wielkość sieci neuronowej (liczba wag)} \textcolor{red}{nie jest liniowo zależna} z jakością uzyskiwanych predykcji.
 Dzieje się tak ze względu na to, że pojemność zachowania informacji nawet w mniejszej sieci jest wystarczająca, by móc rozpoznawać rodzaje komórek.
 
 \begin{figure}
