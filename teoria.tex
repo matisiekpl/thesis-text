@@ -70,7 +70,7 @@ Zasada działania algorytmu:
     \item Aktualizacja wag - wagi neuronów są aktualizowane za pomocą różnych algorytmów optymalizacyjnych.
     Jednym z najprostszych algorytmów jest metoda najszybszego spadku wzdłuż gradientu, która sprowadza się do wyliczenia następnej wartości za pomocą równania~\ref{eq:fastest_gradient_descent}.
     Warto zwrócić uwagę na hiperparametr $\alpha_k$ - jest to współczynnik uczenia.
-    Informuje on algorytm o tempie optymalizacji.
+    \textcolor{red}{Decyduje on o} tempie optymalizacji.
     Gdy współczynnik będzie zbyt niski, proces trenowania będzie trwał bardzo długo i może dojść do sytuacji, gdzie model nigdy nie zdąży się wytrenować.
     Z kolei zbyt wysoka wartość współczynnika uczenia może spowodować trudności ze znalezieniem minimum globalnego i brak poprawy jakości modelu.
     \begin{equation}
@@ -80,9 +80,8 @@ Zasada działania algorytmu:
 \end{itemize}
 
 Zagadnienie propagacji wstecznej jest bardzo szerokie - pomimo niezbyt skomplikowanego algorytmu, w trakcie trenowania sieci mogą pojawiać się problemy z tak zwanymi zanikającymi bądź eksplodującymi gradientami.
-Wartość współczynnika uczenia nie musi być z góry ustalona, lecz może być wyliczana na bieżąco.
+Wartość współczynnika uczenia nie musi być \textcolor{red}{stałą}, lecz może być wyliczana na bieżąco.
 Przykładowo, wraz z czasem treningu współczynnik może być zmniejszany (nazwa metody w języku angielskim to \textit{learning rate decay}).
-Zatem propagacja wsteczna jest bardzo przydatna w zagadnieniu trenowania sieci neuronowych i uczeniu głębokim, pomimo korzystania z prostych pojęć analizy matematycznej takich jak pochodna cząstkowa.
 
 
 \section{Metryki}
@@ -138,32 +137,28 @@ Splotowe sieci neuronowe to rodzaj sieci neuronowych dedykowanych do rozpoznawan
 Znajdują one zastosowanie w zadaniach takich jak klasyfikacja obrazów, rozpoznawanie obiektów lub segmentacja.
 Czasem są one używane do analizy wideo lub analizy sygnału w czasie.
 
-Struktura splotowych sieci neuronowych sprowadza się do:
+Struktura splotowych sieci neuronowych \textcolor{red}{składa się z}:
 \begin{itemize}
     \item Warstwy wejściowej - ta warstwa przyjmuje zazwyczaj obraz jako tensor jasności poszczególnych pikseli.
     Obraz wejściowy może być w skali szarości (pojedynczy kanał) lub kolorowy - najczęściej składowe RGB pojedynczego piksela są kodowane przez 3 neurony.
     \item Warstw splotowych - te warstwy wykorzystują matematyczną operację splotu.
     Warstwy te zawierają macierze, zwane filtrami o ustalonym rozmiarze (najczęściej \textit{3x3} lub \textit{5x5}).
-    Macierze są przesuwane od lewej do prawej strony, z góry do dołu po obrazie.
     Odpowiednie wartości filtrów są w stanie wzmocnić lub osłabić pewne cechy obrazu takie jak ostre krawędzie bądź rogi.
     Wartości macierzy są dobierane w procesie trenowania modelu.
-    \item Warstw łączących - warstwy te mają za zadanie zmniejszyć wymiarowość danych z poprzedniej warstwy.
+    \item Warstw łączących \textcolor{red}{(z ang. \textit{pooling})} - warstwy te mają za zadanie zmniejszyć wymiarowość danych z poprzedniej warstwy.
     Popularną funkcją łączącą jest uśrednianie - dla zadanego otoczenia pikseli (najczęściej \textit{2x2} lub \textit{3x3}) wybierana jest średnia wartość.
     Inną funkcją łączącą jest maksimum - z otoczenia wybierana jest wartość maksymalna.
-    \item Warstw gęstych - po kilku warstwach splotowych, zaawansowane rozumowanie jest przeprowadzane przez warstwy gęste, czyli neurony połączone są w sposób “każdy z każdym“.
+    \item Warstw gęstych - po kilku warstwach splotowych, \textcolor{red}{aproksymacja rozwiązania wykonywana jest} przez warstwy gęste, czyli neurony połączone są w sposób “każdy z każdym“.
 \end{itemize}
-
-Główne zastosowanie splotowych sieci neuronowych to wykrywanie przedmiotów i ludzi na obrazach i nagraniach wideo,
-opisywanie i wykrywanie anomalii w skanach medycznych oraz analiza sytuacji na drodze dla pojazdów autonomicznych.
 
 
 \section{Problem klasyfikacji komórek krwi w rozmazach szpiku kostnego}
 
 Problem opisu komórek w rozmazach krwi i szpiku kostnego jest bardzo ważny z perspektywy diagnostyki wielu chorób takich jak np.
 nowotwory.
-Po wykonaniu mikroskopowej fotografii rozmazu, lekarz diagnosta musi policzyć ilość komórek każdego typu w próbce.
-Ilość komórek danego rodzaju może być przesłanką do zdiagnozowania nieprawidłowości w organiźmie.
-Przykładowo, do stwierdzenia białaczki lekarz zlicza ilość limfoblastów w próbce w stosunku do wszystkich komórek.
+Po wykonaniu mikroskopowej fotografii rozmazu, lekarz diagnosta musi policzyć \textcolor{red}{liczbę} komórek każdego typu w próbce.
+\textcolor{red}{Liczba} komórek danego rodzaju może być przesłanką do zdiagnozowania nieprawidłowości w organiźmie.
+Przykładowo, do stwierdzenia białaczki lekarz zlicza \textcolor{red}{liczbę} limfoblastów w próbce w stosunku do wszystkich komórek.
 Gdy ten stosunek przekracza pewien próg, jest to przesłanka mogąca świadczyć o obecności nowotworu.
 Limfoblasty to forma niedojrzała limfocytów.
 Ich zwiększone występowanie sugeruje nieprawidłowości w procesie rozwoju tych komórek do docelowej postaci.
@@ -187,7 +182,7 @@ Rozwój metod komputerowej klasyfikacji komórek jest bardzo istotny, ponieważ 
 
 Obecne rozwiązania służące do opisu komórek w krwi lub szpiku kostnym bazują na cytometrii przepływowej (czyli analizie kąta odbicia fali światła).
 Warto natomiast zwrócić uwagę na to, że zdjęcie komórki (to znaczy obrazowanie w zakresie światła widzialnego) jest wystarczające do rozpoznania typu komórki przez człowieka, a więc niesie dostateczną ilość informacji.
-To oznacza, że odpowiednio zaawansowany model sztucznej inteligencji byłby w stanie klasyfikować komórki jedynie na podstawie wizji komputerowej, bez potrzeby analizy widma falowego lub kątów odbicia światła.
+\textcolor{red}{Oznacza to, że istnieją przesłanki, że} odpowiednio zaawansowany model sztucznej inteligencji byłby w stanie klasyfikować komórki jedynie na podstawie wizji komputerowej, bez potrzeby analizy widma falowego lub kątów odbicia światła.
 
 
 \section{Algorytmy widzenia komputerowego}
