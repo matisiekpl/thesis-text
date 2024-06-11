@@ -22,7 +22,7 @@ Ogólna architektura sieci neuronowej:
 \end{itemize}
 
 Proces trenowania sieci neuronowej polega na modyfikowaniu wag pomiędzy połączeniami poszczególnych neuronów tak, by minimalizować różnicę między tensorem wyjściowym, a tensorem oczekiwanym.
-Najczęściej stosuje się do tego zadania algorytmy optymalizacyjne oparte na pochodnych i gradientach.
+Najczęściej stosuje się do tego zadania algorytmy optymalizacyjne oparte na gradientach.
 Przykładem może być \textit{algorytm spadku wzdłuż gradientu}.
 W rzeczywistych zadaniach stosuje się jednak bardziej wyszukane algorytmy takie jak algorytm stochastycznego spadku wzdłuż gradientu albo algorytm \textit{Adam}.
 
@@ -207,7 +207,7 @@ równanie~\ref{eq:thresholding}).
 \end{equation}
 
 Inną ważną metodą widzenia komputerowego są \textbf{momenty Hu} (zwane też momentami obrazów).
-Momenty Hu to zestaw metryk służących do opis kształtu i właściwości pewnego regionu obrazu~\cite{vision}.
+Momenty Hu to zestaw metryk służących do opisu kształtu i właściwości pewnego regionu obrazu~\cite{vision}.
 Korzystają one z analizy rozkładu jasności pikseli w obrazie.
 W algorytmie ekstrakcji obrazów komórek z dużego zdjęcia rozmazu wykorzystywane są momenty centralne do wyznaczania punktów centralnych komórek.
 Wzór na tak zwany moment centralny $\mu_{ij}$ przedstawia równanie~\ref{eq:central_moment}, zaś współrzędne punktu centralnego można wyznaczyć korzystając z równań~\ref{eq:centroid}.
