@@ -64,8 +64,8 @@ Zasada działania algorytmu:
     Jednym z najprostszych algorytmów jest metoda najszybszego spadku wzdłuż gradientu, która sprowadza się do wyliczenia następnej wartości za pomocą równania~\ref{eq:fastest_gradient_descent}.
     Warto zwrócić uwagę na hiperparametr $\alpha_k$ - jest to współczynnik uczenia.
     \textcolor{red}{Decyduje on o} tempie optymalizacji.
-    Gdy współczynnik będzie zbyt niski, proces trenowania będzie trwał bardzo długo i może dojść do sytuacji, gdzie model nigdy nie zdąży się wytrenować.
-    Z kolei zbyt wysoka wartość współczynnika uczenia może spowodować trudności ze znalezieniem minimum globalnego i brak poprawy jakości modelu.
+    \textcolor{red}{Gdy współczynnik będzie zbyt niski, proces trenowania będzie trwał bardzo długo i może dojść do sytuacji, gdzie model nigdy nie zdąży się wytrenować.
+    Z kolei zbyt wysoka wartość współczynnika uczenia może spowodować trudności ze stabilizacją wag na znalezionym minimum.}
     \begin{equation}
         x_{k+1} = x_k - \alpha_k \nabla f(x_k)\label{eq:fastest_gradient_descent}
     \end{equation}
