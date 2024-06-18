@@ -18,7 +18,7 @@ Biblioteka PyTorch jest obecnie najpopularniejszą biblioteką uczenia maszynowe
 Pozwala ona projektować obliczenia w formie modułów i posiada silnik automatycznego różniczkowania grafu obliczeniowego (z ang. \textit{autograd}).
 Owy silnik jest kluczowy z perspektywy trenowania sieci neuronowych, ponieważ jest w stanie optymalizować parametry modelu.
 Warto zwrócić uwagę na to, że PyTorch stawia nacisk na przejrzystość obliczeń - dla porównania operacje w Tensorflow są nierzadko
-ukryte pod gotowymi funkcjami (zob. listing \ref{lst:tensorflow_sample} i \ref{lst:pytorch_sample})
+ukryte pod gotowymi funkcjami (zob. listing~\ref{lst:tensorflow_sample} i~\ref{lst:pytorch_sample})
 
 \begin{lstlisting}[language=ipython,caption={Przykładowa sieć neuronowa w Tensorflow},label={lst:tensorflow_sample}]
 tensorflow_model = tf.keras.Sequential([
@@ -160,7 +160,7 @@ Omówiony poniżej trening sieci neuronowej o architekturze \textit{EfficientNet
 Współczynnik uczenia wynosił \textit{0.001}, a ilość epok była równa 3.
 
 Trenowanie sieci neuronowej z użyciem biblioteki PyTorch sprowadza się do iterowania po zbiorze wejściowym i wykonywania kroku optymalizacyjnego przy każdym przejściu.
-Uproszczony schemat działania głównej pętli treningowej:
+Uproszczony schemat działania głównej pętli treningowej (kod przestawiony na listingu~\ref{lst:train}):
 
 \begin{enumerate}
     \item Pobranie miniwsadu z próbkami treningowymi i skopiowanie ich na urządzenie zewnętrzne, czyli kartę graficzną.
@@ -171,6 +171,8 @@ Uproszczony schemat działania głównej pętli treningowej:
     \item Wykonanie kroku optymalizacyjnego z użyciem optymalizatora \textit{Adam}.
     \item Obliczenie metryk dla zbioru walidacyjnego i zapisanie ich.
 \end{enumerate}
+
+\lstinputlisting[label={lst:train}, caption={Kod pętli treningowej w języku Python z wykorzystaniem PyTorch}, language=ipython]{train.py}
 
 \subsection{Ewaluacja jakości modelu}
 
@@ -294,3 +296,7 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
     \item Wycięcie obszaru komórki za pomocą indeksów Python (rys.~\ref{fig:extract_squares}). Obraz każdej znalezionej komórki trafia do osobnego pliku w folderze wyjściowym.
     Do zapisu na dysk wykorzystano funkcję \textit{matplotlib.pyplot.imsave()}.
 \end{enumerate}
+
+Kod opisanego algorytmu przedstawia listing~\ref{lst:extract}.
+
+\lstinputlisting[label={lst:extract}, caption={Kod wycinający obraz komórki z dużego skanu mikroskopowego}, language=ipython]{extract.py}
