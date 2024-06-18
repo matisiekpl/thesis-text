@@ -158,6 +158,7 @@ Niniejsza praca ma za zadanie między innymi porównać różne architektury spl
 która z nich wypada najlepiej w zadaniu klasyfikacji komórek z rozmazów szpiku kostnego.
 Omówiony poniżej trening sieci neuronowej o architekturze \textit{EfficientNet B0} wygląda tak samo dla innych architektur, takich jak \textit{EfficientNet B5}, \textit{ResNet} i innych.
 Współczynnik uczenia wynosił \textit{0.001}, a ilość epok była równa 3.
+\textcolor{red}{Niestety z powodu ograniczeń infrastruktury do trenowania, nie udało się wykonać walidacji krzyżowej dla każdego z modeli osobno. Zbiór walidacyjny był natomiast wybierany losowo za każdym razem, gdy badano nową sieć neuronową.}
 
 Trenowanie sieci neuronowej z użyciem biblioteki PyTorch sprowadza się do iterowania po zbiorze wejściowym i wykonywania kroku optymalizacyjnego przy każdym przejściu.
 Uproszczony schemat działania głównej pętli treningowej (kod przestawiony na listingu~\ref{lst:train}):

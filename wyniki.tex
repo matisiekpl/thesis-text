@@ -4,6 +4,7 @@
 \section{Ocena jakości różnych architektur sieci neuronowych}
 
 \begin{table}
+    \caption{Porównanie jakości predykcji różnych architektur splotowych sieci neuronowych}
     \begin{center}
         \begin{tabular}{|l|l|l|l|l|}
             \hline
@@ -31,7 +32,6 @@
             \hline
         \end{tabular}
     \end{center}
-    \caption{Porównanie jakości predykcji różnych architektur splotowych sieci neuronowych}
     \label{tab:comparison}
 \end{table}
 \begin{table}
@@ -216,6 +216,11 @@ Można stwierdzić, że jakość modelu nie poprawia się znacząco wraz z kolej
 Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_efficientnet_b4}.
 Informuje ona, które klasy są najczęściej mylone między sobą.
 
+\textcolor{red}{
+Na podstawie wykresów funkcji straty i F1, można stwierdzić, że dla wszystkich sieci neuronowych już pierwsza epoka skutkowała rozpoznaniem wzorców.
+Kolejne epoki nie poprawiały drastycznie skuteczności sieci.
+Często mylonymi komórkami były promielocyty (\textit{PMO}) i mielocyty (\textit{MYB}), wynika to z tego, że ich wygląd jest podobny.
+}
 
 \section{Porównanie z innymi algorytmami}
 
