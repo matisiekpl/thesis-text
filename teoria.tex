@@ -29,6 +29,7 @@ Przykładem może być \textit{algorytm spadku wzdłuż gradientu}.
 \textcolor{red}{Sieci neuronowe okazały się dużym sukcesem w wielu trudnych zadaniach uczenia maszynowego.
 Są z powodzeniem stosowane w takich branżach jak medycyna \cite{medicine_applications}, rozrywka \cite{netflix_applications}, cyberbezpieczeństwo \cite{cybersecurity_applications} czy motoryzacja \cite{automotive_applications}, a ich dalsza obecność w różnych dziedzinach życia będzie wzrastać}.
 
+
 \section{Algorytm propagacji wstecznej}
 
 Algorytm propagacji wstecznej to podstawowy algorytm używany do trenowania sieci neuronowych~\cite{geron}.
@@ -240,3 +241,35 @@ Jest to szczególne ważne z punktu widzenia zastosowań sieci neuronowych w med
 W przypadku zadania rozpoznawania rodzajów komórek z krwi obwodowej bądź szpiku mapa cieplna GradCAM wskazuje na te obszary komórki, po których można rozpoznać jej typ.
 Innym przykładem zastosowania wytłumaczalnego uczenia maszynowego jest rozpoznawanie zmian nowotworowych na skanach mózgu z rezonansu magnetycznego.
 Algorytm GradCAM może wskazać obszar na skanie, po którym model stwierdził obecność nowotworu~\cite{gradcam_brain_tumor}.
+
+\section{Porównanie architektur splotowych sieci neuronowych}
+
+Architektura sieci neuronowej wpływa na uzyskiwaną jakość predykcji.
+Wybór wielkości poszczególnych warstw determinuje zdolność modelu uczenia maszynowego do uchwycenia zależności i wzorców w danych.
+Poniżej przedstawiono porównanie zbadanych architektur w niniejszym projekcie inżynierskim.
+
+\subsection{EfficientNet}
+
+EfficientNet to rodzina modeli splotowych, które mają za zadanie zachować równowagę między liczbą parametrów, głębokością i szerokością~\cite{efficientnet}.
+Korzystają one z parametru współczynnika skalowania (z ang. \textit{compound scaling}),
+który umożliwia jednoczesne skalowanie wymiarów modelu w sposób proporcjonalny, prowadząc do lepszej wydajności przy minimalnym koszcie obliczeniowym.
+
+\subsection{DenseNet}
+
+DenseNet (z ang. \textit{Densely Connected Convolutional Networks}) to architektura,
+w której każda warstwa jest bezpośrednio połączona ze wszystkimi poprzednimi warstwami~\cite{densenet}.
+Dzięki temu unika problemu zanikania gradientu i promuje ponowne użycie cech w sieci.
+
+\subsection{ResNet}
+
+ResNet (z ang. \textit{Residual Networks}) jest znane ze wprowadzenia pojęcia "połączeń rezydualnych", które pomagają w trenowaniu bardzo głębokich sieci~\cite{resnet}.
+Dzięki temu ResNet skutecznie rozwiązuje problem znikających gradientów, umożliwiając budowę modeli o głębokościach rzędu setek lub tysięcy warstw.
+Podstawowa idea ResNet opiera się na uczeniu modelu różnicy (rezyduum) między wejściem a wyjściem zamiast samych wartości, co sprawia, że model jest łatwiejszy do optymalizacji.
+
+\subsection{ResNeXt}
+
+ResNeXt to rozszerzenie ResNet, które wprowadza koncepcję grupowanych splotów.
+Pozwala to na zwiększenie szerokości sieci bez znacznego zwiększania liczby parametrów.
+Architektura ResNeXt wykorzystuje tzw.
+kardynalność (z ang. \textit{cardinality}) – liczbę niezależnych ścieżek przetwarzania w warstwie splotowej~\cite{cardinality}.
+Każda ścieżka przetwarza różne wzorce z danych wejściowych, co skutkuje poprawioną zdolnością ekstrakcji cech i lepszej wydajności w porównaniu do standardowej rodziny modeli ResNet.
