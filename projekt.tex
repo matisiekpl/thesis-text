@@ -90,7 +90,7 @@ Trenowanie sieci odbywało się na platformie \textit{kaggle.com}, która oferuj
 Wykorzystany w projekcie zbiór danych to kolekcja 170 tysięcy zdjęć komórek z rozmazów szpiku kostnego.
 Zdjęcia mają nadane etykiety przez diagnostów i przedstawiają różne komórki widziane pod mikroskopem.
 Próbki szpiku kostnego pochodzą z biopsji 945 pacjentów z Monachijskiego Labolatorium Białaczek (\textit{MLL Münchner Leukämielabor} \cite{mll}).
-Akwizycja obrazu polegała na wykonaniu zdjęcia mikroskopią Brightfield'a z 40-krotnym powiększeniem.
+Akwizycja obrazu polegała na wykonaniu zdjęcia mikroskopią Brightfield'a~\cite{microscopy} z 40-krotnym powiększeniem.
 Producentem mikroskopu było przedsiębiorstwo Fraunhofer IIS.
 
 \begin{figure}
@@ -137,7 +137,7 @@ Kod transformacji jest przedstawiony na listingu~\ref{lst:transforms}.
 Wykonuje on przeskalowanie obrazu wejściowego do rozmiaru \textit{224 piksele na 224 piksele}.
 Następnie wyrównuje histogram i normalizuje według średniej i odchylenia standardowego (rys.~\ref{fig:transformations_example}).
 
-Wyrównanie histogramu jest konieczne z powodu różnic w odcieniach barwienia Maya-Grünwalda-Giemsa.
+Wyrównanie histogramu jest konieczne z powodu różnic w odcieniach barwienia Maya-Grünwalda-Giemsa~\cite{stain}.
 Przy każdym wykonaniu rozmazu intensywność kolorów komórek jest inna.
 Taka normalizacja zapobiega błędnemu nauczeniu się sieci neuronowej ze względu na odcień, a nie kształt i wygląd komórek.
 
@@ -278,11 +278,11 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
     \item Konwersja oryginalnego obrazu (rys.~\ref{fig:extract_input}) na skalę szarości.
     Jest to konieczne, ponieważ progowanie w kroku drugim nie może odbywać się na obrazie kolorowym.
     Do konwersji zastosowano funkcję \textit{cv2.cvtColor} - pozwala ona konwertować obraz z jednej przestrzeni kolorów do innej.
-    \item Progowanie z pomocą algorytmu Otsu.
+    \item Progowanie z pomocą algorytmu Otsu~\cite{otsu}.
     Jest to algorytm adaptacyjnego progowania, często stosowany do analizy obrazów medycznych.
     Progowanie ma na celu wyodrębnienie ciemniejszych obszarów obrazu - cytoplazmy i jądra komórek (rys.~\ref{fig:extract_thresh}). Otsu jest algorytmem progowania globalnego i opiera się na analizie histogramu.
     Dąży on do maksymalizacji wariancji międzyklasowej.
-    \item Wyznaczenie konturów z pomocą funkcji \textit{cv2.findContours}.
+    \item Wyznaczenie konturów z pomocą funkcji \textit{cv2.findContours}~\cite{contours}.
     Kontur jest definiowany jako pewna ciągła krzywa, która łączy punkty o tej samej intensywności.
     W opisanym algorytmie kontury mają za zadanie informować o granicach komórki.
     Argumentem funkcji jest flaga \textit{cv2.RETR\_EXTERNAL}, która powoduje, że zwrócone zostają jedynie najbardziej zewnętrzne kontury - kontury wewnętrzne są ignorowane.

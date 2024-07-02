@@ -10,11 +10,11 @@ Sieci składają się z neuronowów, pogrupowanych w połączone ze sobą warstw
 Ogólna architektura sieci neuronowej:
 \begin{itemize}
     \item Warstwa wejściowa - ta warstwa przyjmuje dane początkowe w formie tensora liczb rzeczywistych.
-    Danymi wejściowymi mogą być poziomy jasności obrazu, dane o cenach lub sygnale (w przypadku prognozowania serii czasowych) lub osadzenia (z ang. \textit{embeddings}) dla modeli językowych.
+    Danymi wejściowymi mogą być poziomy jasności obrazu, dane o cenach lub sygnale (w przypadku prognozowania serii czasowych) lub osadzenia (z ang. \textit{embeddings}) dla modeli językowych~\cite{embeddings}.
     \item Warstwy ukryte - te warstwy przetwarzają dane wejściowe przez sekwencję transformacji matematycznych.
     Neurony są połączone z poprzednią warstwą, a siła ich połączenia jest wyrażana przez tak zwane wagi.
     Wartość, którą przyjmie dany neuron, jest liczona na podstawie ważonej sumy wartości neuronów z poprzedniej warstwy.
-    Po obliczeniu sumy, stosowana jest funkcja aktywacji.
+    Po obliczeniu sumy, stosowana jest funkcja aktywacji~\cite{activations}.
     Ma ona za zadanie wprowadzić nieliniowość obliczeń, która jest wymagana do rozpoznawania zaawansowanych wzorców.
     \item Warstwa wyjściowa - warstwa, która generuje końcowy tensor.
     Tensor może zawierać informacje, takie jak rozkład prawdopodobieństwa przyporządkowania do poszczególnych klas.
@@ -53,7 +53,7 @@ Zasada działania algorytmu:
         \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2\label{eq:mse}
     \end{equation}
 
-    Z kolei funkcja błędu entropii krzyżowej dana jest wzorem~\ref{eq:cross_entropy}, gdzie $N$ to liczba wszystkich próbek, a $K$ to liczba klas.
+    Z kolei funkcja błędu entropii krzyżowej dana jest wzorem~\ref{eq:cross_entropy}~\cite{crossentropy}, gdzie $N$ to liczba wszystkich próbek, a $K$ to liczba klas.
     Zmienne $y_{i,k}$ to prawdziwa etykieta dla próbki $i$ i klasy $k$, a $\hat{y}_{i,k}$ to przewidywane prawdopodobieństwo, że próbka $i$ należy do klasy $k$.
     \begin{equation}
         \mathcal{L}_{CE} = -\frac{1}{N} \sum_{i=1}^{N} \sum_{k=1}^{K} y_{i,k} \log(\hat{y}_{i,k})\label{eq:cross_entropy}
@@ -62,7 +62,7 @@ Zasada działania algorytmu:
     \item Propagacja błędu - błąd jest przekazywany wstecz od warstwy wyjściowej, przez warstwy ukryte aż do warstwy wejściowej.
     Przy przekazywaniu, liczone są pochodne cząstkowe funkcji błędu względem każdej z wag.
     \item Aktualizacja wag - wagi neuronów są aktualizowane za pomocą różnych algorytmów optymalizacyjnych.
-    Jednym z najprostszych algorytmów jest metoda najszybszego spadku wzdłuż gradientu, która sprowadza się do wyliczenia następnej wartości za pomocą równania~\ref{eq:fastest_gradient_descent}.
+    Jednym z najprostszych algorytmów jest metoda najszybszego spadku wzdłuż gradientu~\cite{gradient_descent}, która sprowadza się do wyliczenia następnej wartości za pomocą równania~\ref{eq:fastest_gradient_descent}.
     Warto zwrócić uwagę na hiperparametr $\alpha_k$ - jest to współczynnik uczenia.
     \textcolor{red}{Decyduje on o} tempie optymalizacji.
     \textcolor{green}{Gdy współczynnik będzie zbyt niski, proces trenowania będzie trwał bardzo długo i może dojść do sytuacji, w której model nigdy nie zdąży się wytrenować, bo będzie miał trudności z opuszczeniem minimum lokalnego.
@@ -81,7 +81,7 @@ Przykładowo, wraz z czasem treningu współczynnik może być zmniejszany (nazw
 \section{Metryki}
 
 Do stwierdzenia, który model uczenia maszynowego jest najlepszej jakości, wymagane są pewne metryki.
-Dobór tych metryk zależy od zadania, jak i zbioru danych.
+Dobór tych metryk zależy od zadania, jak i zbioru danych~\cite{metrics}.
 Jedną z podstawowych metryk jest dokładność (z ang. \textit{accuracy}) - równanie~\ref{eq:accuracy}.
 
 \begin{equation}
@@ -153,7 +153,7 @@ nowotwory.
 Po wykonaniu mikroskopowej fotografii rozmazu, lekarz diagnosta musi \textcolor{green}{określić} \textcolor{red}{liczbę} komórek każdego typu w próbce.
 \textcolor{red}{Liczba} komórek danego rodzaju może być przesłanką do zdiagnozowania nieprawidłowości w organiźmie.
 Przykładowo, do stwierdzenia białaczki lekarz zlicza \textcolor{red}{liczbę} limfoblastów w próbce w stosunku do wszystkich komórek.
-Gdy ten stosunek przekracza pewien próg, jest to przesłanka mogąca świadczyć o obecności nowotworu.
+Gdy ten stosunek przekracza pewien próg, jest to przesłanka mogąca świadczyć o obecności nowotworu~\cite{interna}.
 Limfoblasty to forma niedojrzała limfocytów.
 Ich zwiększone występowanie sugeruje nieprawidłowości w procesie rozwoju tych komórek do docelowej postaci.
 
@@ -174,7 +174,7 @@ Objaśnienie: A - erytrocyt (widok z góry i widok przekroju), B - neutrofil, C 
 
 Rozwój metod komputerowej klasyfikacji komórek jest bardzo istotny, ponieważ potencjalne zautomatyzowanie procesu zliczania komórek pozwoliłoby na szybsze stawianie diagnozy i zaoszczędzenie wielu godzin pracy diagnostów.
 
-Obecne rozwiązania służące do opisu komórek w krwi lub szpiku kostnym bazują na cytometrii przepływowej (czyli analizie kąta odbicia fali światła).
+Obecne rozwiązania służące do opisu komórek w krwi lub szpiku kostnym bazują na cytometrii przepływowej (czyli analizie kąta odbicia fali światła)~\cite{cytometry}.
 Warto natomiast zwrócić uwagę na to, że zdjęcie komórki (to znaczy obrazowanie w zakresie światła widzialnego) jest wystarczające do rozpoznania typu komórki przez człowieka, a więc niesie dostateczną ilość informacji.
 \textcolor{red}{Oznacza to, że istnieją przesłanki, że} odpowiednio zaawansowany model sztucznej inteligencji byłby w stanie klasyfikować komórki jedynie na podstawie wizji komputerowej, bez potrzeby analizy widma falowego lub kątów odbicia światła.
 
@@ -213,7 +213,7 @@ Wzór na tak zwany moment centralny $\mu_{ij}$ przedstawia równanie~\ref{eq:cen
 \section{GradCAM - wytłumaczalne uczenie maszynowe}
 
 GradCAM (z ang. \textit{Gradient-weighted Class Activation Mapping}) to technika, która umożliwia użytkownikom splotowych sieci neuronowych lepsze zrozumienie procesu podejmowania decyzji przez model uczenia maszynowego.
-Jest to jedna z podstawowych metod zagadnienia wytłumaczalnego SI (z ang. \texit{explainable artificial intelligence}).
+Jest to jedna z podstawowych metod zagadnienia wytłumaczalnego SI (z ang. \texit{explainable artificial intelligence})~\cite{xai}.
 Po wykonaniu przejścia w przód sieci neuronowej GradCAM jest w stanie wygenerować mapę cieplną wskazującą obszary obrazu, które były istotne do podjęcia decyzji przez model.
 Zasada działania algorytmu GradCAM:
 \begin{itemize}
