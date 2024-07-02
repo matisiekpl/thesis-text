@@ -26,8 +26,8 @@ Najczęściej stosuje się do tego zadania algorytmy optymalizacyjne oparte na g
 Przykładem może być \textit{algorytm spadku wzdłuż gradientu}.
 \textcolor{red}{W rzeczywistych zadaniach stosuje się jednak bardziej wyszukane algorytmy takie jak algorytm stochastycznego spadku wzdłuż gradientu albo algorytm \textit{Adam}}.
 
-\textcolor{red}{Sieci neuronowe okazały się dużym sukcesem w wielu trudnych zadaniach uczenia maszynowego.
-Są z powodzeniem stosowane w takich branżach jak medycyna \cite{medicine_applications}, rozrywka \cite{netflix_applications}, cyberbezpieczeństwo \cite{cybersecurity_applications} czy motoryzacja \cite{automotive_applications}, a ich dalsza obecność w różnych dziedzinach życia będzie wzrastać}.
+\textcolor{green}{Sieci neuronowe okazały się dużym sukcesem w wielu trudnych zadaniach uczenia maszynowego.
+Są z powodzeniem stosowane w takich branżach jak medycyna \cite{medicine_applications}, rozrywka \cite{netflix_applications}, cyberbezpieczeństwo \cite{cybersecurity_applications} czy motoryzacja \cite{automotive_applications} i zapewne cieszyć się będą rosnącą popularnością wraz z postępującą digitalizacją życia}.
 
 
 \section{Algorytm propagacji wstecznej}
@@ -65,7 +65,7 @@ Zasada działania algorytmu:
     Jednym z najprostszych algorytmów jest metoda najszybszego spadku wzdłuż gradientu, która sprowadza się do wyliczenia następnej wartości za pomocą równania~\ref{eq:fastest_gradient_descent}.
     Warto zwrócić uwagę na hiperparametr $\alpha_k$ - jest to współczynnik uczenia.
     \textcolor{red}{Decyduje on o} tempie optymalizacji.
-    \textcolor{red}{Gdy współczynnik będzie zbyt niski, proces trenowania będzie trwał bardzo długo i może dojść do sytuacji, gdzie model nigdy nie zdąży się wytrenować.
+    \textcolor{green}{Gdy współczynnik będzie zbyt niski, proces trenowania będzie trwał bardzo długo i może dojść do sytuacji, w której model nigdy nie zdąży się wytrenować, bo będzie miał trudności z opuszczeniem minimum lokalnego.
     Z kolei zbyt wysoka wartość współczynnika uczenia może spowodować trudności ze stabilizacją wag na znalezionym minimum.}
     \begin{equation}
         x_{k+1} = x_k - \alpha_k \nabla f(x_k)\label{eq:fastest_gradient_descent}
@@ -150,7 +150,7 @@ Struktura splotowych sieci neuronowych \textcolor{red}{składa się z}:
 
 Problem opisu komórek w rozmazach krwi i szpiku kostnego jest bardzo ważny z perspektywy diagnostyki wielu chorób takich jak np.
 nowotwory.
-Po wykonaniu mikroskopowej fotografii rozmazu, lekarz diagnosta musi policzyć \textcolor{red}{liczbę} komórek każdego typu w próbce.
+Po wykonaniu mikroskopowej fotografii rozmazu, lekarz diagnosta musi \textcolor{green}{określić} \textcolor{red}{liczbę} komórek każdego typu w próbce.
 \textcolor{red}{Liczba} komórek danego rodzaju może być przesłanką do zdiagnozowania nieprawidłowości w organiźmie.
 Przykładowo, do stwierdzenia białaczki lekarz zlicza \textcolor{red}{liczbę} limfoblastów w próbce w stosunku do wszystkich komórek.
 Gdy ten stosunek przekracza pewien próg, jest to przesłanka mogąca świadczyć o obecności nowotworu.
@@ -168,7 +168,7 @@ Objaśnienie: A - erytrocyt (widok z góry i widok przekroju), B - neutrofil, C 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{morfotyczne}
-    \caption{Elementy morfotyczne krwi w obrazie mikroskopu optycznego i elektronowego. Rysunek pochodzi z “Kompendium histologii“ autorstwa Tadeusza Cichockiego, Jana Litwina i Jadwigi Mireckiej \cite{histology}.}
+    \caption{Elementy morfotyczne krwi w obrazie mikroskopu optycznego i elektronowego. Rysunek pochodzi z “Kompendium histologii“ autorstwa Tadeusza Cichockiego, Jana Litwina i Jadwigi Mireckiej \cite{histology}. A - erytrocyt, B - neutrofil, C - eozynofil, D - bazofil, E - limfocyt, F - monocyt.}
     \label{fig:electron_microscope}
 \end{figure}
 
