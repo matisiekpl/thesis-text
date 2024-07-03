@@ -3,37 +3,37 @@
 
 \section{Ocena jakości różnych architektur sieci neuronowych}
 
-\begin{table}
-    \caption{Porównanie jakości predykcji różnych architektur splotowych sieci neuronowych}
-    \begin{center}
-        \begin{tabular}{|l|l|l|l|l|}
-            \hline
-            Architektura             & Liczba parametrów & F1             & Wykresy funkcji błędu i F1     & Macierz pomyłek                     \\
-            \hline
-            EfficientNet B0          & 5.3M             & 0.860          & rys. \ref{fig:plot_efficientnet_b0} & rys. \ref{fig:confusion_efficientnet_b0} \\
-            \hline
-            EfficientNet B1          & 7.8M             & 0.850          & rys. \ref{fig:plot_efficientnet_b1} & rys. \ref{fig:confusion_efficientnet_b1} \\
-            \hline
-            EfficientNet B2          & 9.2M             & 0.860          & rys. \ref{fig:plot_efficientnet_b2} & rys. \ref{fig:confusion_efficientnet_b2} \\
-            \hline
-            EfficientNet B3          & 12.0M            & 0.870          & rys. \ref{fig:plot_efficientnet_b3} & rys. \ref{fig:confusion_efficientnet_b3} \\
-            \hline
-            \textbf{EfficientNet B4} & \textbf{19.0M}   & \textbf{0.880} & rys. \ref{fig:plot_efficientnet_b4} & rys. \ref{fig:confusion_efficientnet_b4} \\
-            \hline
-            EfficientNet B5          & 30.0M            & 0.860          & rys. \ref{fig:plot_efficientnet_b5} & rys. \ref{fig:confusion_efficientnet_b5} \\
-            \hline
-            DenseNet121              & 8.0M             & 0.850          & rys. \ref{fig:plot_densenet121}     & rys. \ref{fig:confusion_densenet121}     \\
-            \hline
-            DenseNet169              & 14.1M            & 0.840          & rys. \ref{fig:plot_densenet169}     & rys. \ref{fig:confusion_densenet169}     \\
-            \hline
-            DenseNet201              & 20.0M            & 0.850          & rys. \ref{fig:plot_densenet201}     & rys. \ref{fig:confusion_densenet201}     \\
-            \hline
-            ResNet18                 & 11.7M            & 0.840          & rys. \ref{fig:plot_resnet18}        & rys. \ref{fig:confusion_resnet18}        \\
-            \hline
-        \end{tabular}
-    \end{center}
-    \label{tab:comparison}
-\end{table}
+%\begin{table}
+%    \caption{Porównanie jakości predykcji różnych architektur splotowych sieci neuronowych}
+%    \begin{center}
+%        \begin{tabular}{|l|l|l|l|l|}
+%            \hline
+%            Architektura             & Liczba parametrów & F1             & Wykresy funkcji błędu i F1     & Macierz pomyłek                     \\
+%            \hline
+%            EfficientNet B0          & 5.3M             & 0.860          & rys. \ref{fig:plot_efficientnet_b0} & rys. \ref{fig:confusion_efficientnet_b0} \\
+%            \hline
+%            EfficientNet B1          & 7.8M             & 0.850          & rys. \ref{fig:plot_efficientnet_b1} & rys. \ref{fig:confusion_efficientnet_b1} \\
+%            \hline
+%            EfficientNet B2          & 9.2M             & 0.860          & rys. \ref{fig:plot_efficientnet_b2} & rys. \ref{fig:confusion_efficientnet_b2} \\
+%            \hline
+%            EfficientNet B3          & 12.0M            & 0.870          & rys. \ref{fig:plot_efficientnet_b3} & rys. \ref{fig:confusion_efficientnet_b3} \\
+%            \hline
+%            \textbf{EfficientNet B4} & \textbf{19.0M}   & \textbf{0.880} & rys. \ref{fig:plot_efficientnet_b4} & rys. \ref{fig:confusion_efficientnet_b4} \\
+%            \hline
+%            EfficientNet B5          & 30.0M            & 0.860          & rys. \ref{fig:plot_efficientnet_b5} & rys. \ref{fig:confusion_efficientnet_b5} \\
+%            \hline
+%            DenseNet121              & 8.0M             & 0.850          & rys. \ref{fig:plot_densenet121}     & rys. \ref{fig:confusion_densenet121}     \\
+%            \hline
+%            DenseNet169              & 14.1M            & 0.840          & rys. \ref{fig:plot_densenet169}     & rys. \ref{fig:confusion_densenet169}     \\
+%            \hline
+%            DenseNet201              & 20.0M            & 0.850          & rys. \ref{fig:plot_densenet201}     & rys. \ref{fig:confusion_densenet201}     \\
+%            \hline
+%            ResNet18                 & 11.7M            & 0.840          & rys. \ref{fig:plot_resnet18}        & rys. \ref{fig:confusion_resnet18}        \\
+%            \hline
+%        \end{tabular}
+%    \end{center}
+%    \label{tab:comparison}
+%\end{table}
 \begin{table}
     \caption{Podsumowanie miary F1 dla poszczególnych klas (EfficientNet B4)}
     \begin{center}
@@ -69,7 +69,6 @@
 \end{table}
 
 Niniejszy projekt ma za zadanie porównać różne architektury splotowych sieci neuronowych i wskazać, która z nich daje najlepsze rezultaty.
-Tabela~\ref{tab:comparison} przedstawia porównanie wyników F1 dla poszczególnych eksperymentów.
 Dla każdej architektury wskazano jej wielkość (ilość parametrów trenowalnych) oraz ważony wynik F1.
 Większy wynik F1 informuje o lepszym zachowaniu modelu w rozpoznawaniu typów komórek.
 
@@ -206,21 +205,105 @@ Dzieje się tak ze względu na to, że pojemność zachowania informacji nawet w
     \label{fig:confusion_resnet18}
 \end{figure}
 
+\subsection{EfficientNet B0}
+\textit{Liczba parametrów: 5.3M}
+
+\textit{Ważony wynik F1: 0.860}
+
+Najmniejszy wariant architektury EfficientNet, zawierający tylko 5.3M parametrów oferuje jakość predykcji na poziomie ważonego wyniku F1 równego 0.86.
+Na podstawie wykresu 4.1 można stwierdzić, że już pierwsza epoka treningu sieci daje satysfakcjonujące rezultaty (wyk.~\ref{fig:plot_efficientnet_b0}).
+Kolejne dwie epoki jedynie nieznacznie poprawiają jakość modelu.
+Najczęściej mylonymi klasami jest klasa NGB i NGS (rys.~\ref{fig:confusion_efficientnet_b0}).
+
+\subsection{EfficientNet B1}
+\textit{Liczba parametrów: 7.8M}
+
+\textit{Ważony wynik F1: 0.850}
+
+Dla treningu wariantu B1 architektury EfficientNet zachodzi lekkie przetrenowanie.
+Na podstawie wykresu F1 (wyk.~\ref{fig:plot_efficientnet_b1}) można zobaczyć, że trenowanie w trzeciej epoce jedynie pogarsza jakość predykcji.
+Sieć często myli klasy PEB z EBO i NGB z NGS (rys. ~\ref{fig:confusion_efficientnet_b1}).
+
+\subsection{EfficientNet B2}
+\textit{Liczba parametrów: 9.2M}
+
+\textit{Ważony wynik F1: 0.860}
+
+Architektura EfficientNet B2 dostarcza dostatecznej jakości prognoz już w pierwszej epoce treningu.
+Kolejne epoki jedynie nieznacznie poprawiają jakość modelu (rys.~\ref{fig:plot_efficientnet_b2}).
+Najczęściej mylonymi klasami są MYB i PMO (rys.~\ref{fig:confusion_efficientnet_b2}).
+
+\subsection{EfficientNet B3}
+\textit{Liczba parametrów: 12.0M}
+
+\textit{Ważony wynik F1: 0.870}
+
+Proces treningu EfficientNet B3 wygląda bardzo podobnie jak trening EfficientNet B2. Model natomiast charakteryzuje się nieco lepszą miarą F1 równą 0.87 w porównaniu do 0.86 modelu B2 (wyk.~\ref{fig:plot_efficientnet_b3}). Najczęściej mylonymi klasami są MYB i PMO, oraz EBO i PEB (wyk.~\ref{fig:confusion_efficientnet_b3}).
+
+\subsection{EfficientNet B4}
+\textit{Liczba parametrów: 19.0M}
+
+\textit{Ważony wynik F1: 0.880}
+
+Jest to najlepszy model uzyskany w trakcie badań projektu inżynierskiego.
+Jego wynik F1 wynosi 0.88 (wyk.~\ref{fig:plot_efficientnet_b4}). Najczęściej mylonymi klasami są MYB i PMO (rys.~\ref{fig:confusion_efficientnet_b4}).
+Tabela ~\ref{tab:f1_summary} przedstawia zestawienie precyzji, czułości i F1 dla poszczególnych klas.
+
+\subsection{EfficientNet B5}
+\textit{Liczba parametrów: 30.0M}
+
+\textit{Ważony wynik F1: 0.860}
+
+Pomimo tego, że model ten zawiera więcej parametrów niż EfficientNet B4, miara F1 wynosi 0.86, co oznacza, że jego predykcje są gorsze niż w przypadku EfficientNet B4 (rys.~\ref{fig:plot_efficientnet_b5}).
+Najczęściej mylonymi klasami są MYB i PMO (rys.~\ref{fig:confusion_efficientnet_b5}).
+
+\subsection{DenseNet121}
+\textit{Liczba parametrów: 8.0M}
+
+\textit{Ważony wynik F1: 0.850}
+
+Architektura DenseNet121 trenuje się podobnie jak architektury EfficientNet - to znaczy już w pierwszej epoce treningu ważony wynik F1 jest bliski temu po trzeciej epoce (wyk.~\ref{fig:plot_densenet121}).
+Najczęściej mylonymi klasami są NGB i NGS oraz MYB i PMO (rys.~\ref{fig:confusion_densenet121}).
+
+\subsection{DenseNet169}
+\textit{Liczba parametrów: 14.1M}
+
+\textit{Ważony wynik F1: 0.840}
+
+Sieć głównie trenuje się w pierwszej epoce, dwie kolejne nieznacznie poprawiają jej jakość.
+W trzeciej epoce widać oznaki nadmiernego dopasowania (wyk.~\ref{fig:plot_densenet169}).
+Najczęściej mylonymi klasami są MON i BLA oraz MYB i PMO (rys.~\ref{fig:confusion_densenet169}).
+
+\subsection{DenseNet201}
+\textit{Liczba parametrów: 20.0M}
+
+\textit{Ważony wynik F1: 0.850}
+
+Przebieg treningu DenseNet201 przypomina trening DenseNet169.
+Po trzeciej epoce nie występuje jednak nadmierne dopasowanie (wyk.~\ref{fig:plot_densenet201}), a najczęściej mylonymi klasami są MON i BLA oraz MYB i PMO (rys.~\ref{fig:confusion_densenet201}).
+
+\subsection{ResNet18}
+\textit{Liczba parametrów: 11.7M}
+
+\textit{Ważony wynik F1: 0.840}
+
+Architektura ResNet18, zawierając 11.7M parametrów oferuje gorszą jakość predykcji (wyk.~\ref{fig:plot_resnet18}) niż przykładowo EfficientNet B2, która posiada 9.2M parametrów (ważony wynik F1 sieci ResNet wynosi 0.84 w porównaniu do 0.86 sieci EfficientNet B2).
+Najczęściej mylonymi klasami są MYB i PMO (rys.~\ref{fig:confusion_resnet18}).
+
+\newline
+\newline
+\newline
 
 %TODO net
 Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B4}.
 Ważony wynik F1 w jej przypadku wynosi \textit{0.88}.
-Tabela ~\ref{tab:f1_summary} przedstawia zestawienie precyzji, czułości i F1 dla poszczególnych klas.
-Z kolei wykresy na rys. \ref{fig:plot_efficientnet_b4} przedstawiają zależności funkcji straty i F1 od epoki trenowania.
-Można stwierdzić, że jakość modelu nie poprawia się znacząco wraz z kolejnymi iteracjami.
-Macierz pomyłek jest widoczna natomiast na rys. \ref{fig:confusion_efficientnet_b4}.
-Informuje ona, które klasy są najczęściej mylone między sobą.
 
 \textcolor{red}{
-Na podstawie wykresów funkcji straty i F1, można stwierdzić, że dla wszystkich sieci neuronowych już pierwsza epoka skutkowała rozpoznaniem wzorców.
-Kolejne epoki nie poprawiały \textcolor{green}{drastycznie} skuteczności sieci.
-Często mylonymi komórkami były promielocyty (\textit{PMO}) i mielocyty (\textit{MYB}), wynika to z tego, że ich wygląd jest podobny.
+    Na podstawie wykresów funkcji straty i F1, można stwierdzić, że dla wszystkich sieci neuronowych już pierwsza epoka skutkowała rozpoznaniem wzorców.
+    Kolejne epoki nie poprawiały \textcolor{green}{znacząco} skuteczności sieci.
+    Często mylonymi komórkami były promielocyty (\textit{PMO}) i mielocyty (\textit{MYB}), wynika to z tego, że ich wygląd jest podobny.
 }
+
 
 \section{Porównanie z innymi algorytmami}
 
