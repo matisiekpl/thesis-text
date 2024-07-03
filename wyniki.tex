@@ -213,7 +213,7 @@ Dzieje się tak ze względu na to, że pojemność zachowania informacji nawet w
 Najmniejszy wariant architektury EfficientNet, zawierający tylko 5.3M parametrów oferuje jakość predykcji na poziomie ważonego wyniku F1 równego 0.86.
 Na podstawie wykresu 4.1 można stwierdzić, że już pierwsza epoka treningu sieci daje satysfakcjonujące rezultaty (wyk.~\ref{fig:plot_efficientnet_b0}).
 Kolejne dwie epoki jedynie nieznacznie poprawiają jakość modelu.
-Najczęściej mylonymi klasami jest klasa NGB i NGS (rys.~\ref{fig:confusion_efficientnet_b0}).
+Najczęściej mylonymi klasami jest klasa NGB (Krwinka biała pałeczkowata) i NGS (Segmentowany neutrofil) - rys.~\ref{fig:confusion_efficientnet_b0}.
 
 \subsection{EfficientNet B1}
 \textit{Liczba parametrów: 7.8M}
@@ -222,7 +222,7 @@ Najczęściej mylonymi klasami jest klasa NGB i NGS (rys.~\ref{fig:confusion_eff
 
 Dla treningu wariantu B1 architektury EfficientNet zachodzi lekkie przetrenowanie.
 Na podstawie wykresu F1 (wyk.~\ref{fig:plot_efficientnet_b1}) można zobaczyć, że trenowanie w trzeciej epoce jedynie pogarsza jakość predykcji.
-Sieć często myli klasy PEB z EBO i NGB z NGS (rys. ~\ref{fig:confusion_efficientnet_b1}).
+Sieć często myli klasy PEB (Proerytroblast) z EBO (Erytroblast) i NGB (Krwinka biała pałeczkowata) z NGS (Segmentowany neutrofil) - rys. ~\ref{fig:confusion_efficientnet_b1}.
 
 \subsection{EfficientNet B2}
 \textit{Liczba parametrów: 9.2M}
@@ -230,15 +230,15 @@ Sieć często myli klasy PEB z EBO i NGB z NGS (rys. ~\ref{fig:confusion_efficie
 \textit{Ważony wynik F1: 0.860}
 
 Architektura EfficientNet B2 dostarcza dostatecznej jakości prognoz już w pierwszej epoce treningu.
-Kolejne epoki jedynie nieznacznie poprawiają jakość modelu (rys.~\ref{fig:plot_efficientnet_b2}).
-Najczęściej mylonymi klasami są MYB i PMO (rys.~\ref{fig:confusion_efficientnet_b2}).
+Kolejne epoki jedynie nieznacznie poprawiają jakość modelu (wyk.~\ref{fig:plot_efficientnet_b2}).
+Najczęściej mylonymi klasami są MYB (Mielocyt) i PMO (Promielocyt) - rys.~\ref{fig:confusion_efficientnet_b2}.
 
 \subsection{EfficientNet B3}
 \textit{Liczba parametrów: 12.0M}
 
 \textit{Ważony wynik F1: 0.870}
 
-Proces treningu EfficientNet B3 wygląda bardzo podobnie jak trening EfficientNet B2. Model natomiast charakteryzuje się nieco lepszą miarą F1 równą 0.87 w porównaniu do 0.86 modelu B2 (wyk.~\ref{fig:plot_efficientnet_b3}). Najczęściej mylonymi klasami są MYB i PMO, oraz EBO i PEB (wyk.~\ref{fig:confusion_efficientnet_b3}).
+Proces treningu EfficientNet B3 wygląda bardzo podobnie jak trening EfficientNet B2. Model natomiast charakteryzuje się nieco lepszą miarą F1 równą 0.87 w porównaniu do 0.86 modelu B2 (wyk.~\ref{fig:plot_efficientnet_b3}). Najczęściej mylonymi klasami są MYB (Mielocyt) i PMO (Promielocyt), oraz EBO (Erytroblast) i PEB (Proerytroblast) - rys.~\ref{fig:confusion_efficientnet_b3}.
 
 \subsection{EfficientNet B4}
 \textit{Liczba parametrów: 19.0M}
@@ -246,7 +246,7 @@ Proces treningu EfficientNet B3 wygląda bardzo podobnie jak trening EfficientNe
 \textit{Ważony wynik F1: 0.880}
 
 Jest to najlepszy model uzyskany w trakcie badań projektu inżynierskiego.
-Jego wynik F1 wynosi 0.88 (wyk.~\ref{fig:plot_efficientnet_b4}). Najczęściej mylonymi klasami są MYB i PMO (rys.~\ref{fig:confusion_efficientnet_b4}).
+Jego wynik F1 wynosi 0.88 (wyk.~\ref{fig:plot_efficientnet_b4}). Najczęściej mylonymi klasami są MYB (Mielocyt) i PMO (Promielocyt) - rys.~\ref{fig:confusion_efficientnet_b4}.
 Tabela ~\ref{tab:f1_summary} przedstawia zestawienie precyzji, czułości i F1 dla poszczególnych klas.
 
 \subsection{EfficientNet B5}
@@ -254,8 +254,8 @@ Tabela ~\ref{tab:f1_summary} przedstawia zestawienie precyzji, czułości i F1 d
 
 \textit{Ważony wynik F1: 0.860}
 
-Pomimo tego, że model ten zawiera więcej parametrów niż EfficientNet B4, miara F1 wynosi 0.86, co oznacza, że jego predykcje są gorsze niż w przypadku EfficientNet B4 (rys.~\ref{fig:plot_efficientnet_b5}).
-Najczęściej mylonymi klasami są MYB i PMO (rys.~\ref{fig:confusion_efficientnet_b5}).
+Pomimo tego, że model ten zawiera więcej parametrów niż EfficientNet B4, miara F1 wynosi 0.86, co oznacza, że jego predykcje są gorsze niż w przypadku EfficientNet B4 (wyk.~\ref{fig:plot_efficientnet_b5}).
+Najczęściej mylonymi klasami są MYB (Mielocyt) i PMO (Promielocyt) - rys.~\ref{fig:confusion_efficientnet_b5}.
 
 \subsection{DenseNet121}
 \textit{Liczba parametrów: 8.0M}
@@ -263,7 +263,7 @@ Najczęściej mylonymi klasami są MYB i PMO (rys.~\ref{fig:confusion_efficientn
 \textit{Ważony wynik F1: 0.850}
 
 Architektura DenseNet121 trenuje się podobnie jak architektury EfficientNet - to znaczy już w pierwszej epoce treningu ważony wynik F1 jest bliski temu po trzeciej epoce (wyk.~\ref{fig:plot_densenet121}).
-Najczęściej mylonymi klasami są NGB i NGS oraz MYB i PMO (rys.~\ref{fig:confusion_densenet121}).
+Najczęściej mylonymi klasami są NGB (Krwinka biała pałeczkowata) i NGS (Segmentowany neutrofil) oraz MYB (Mielocyt) i PMO (rys.~\ref{fig:confusion_densenet121}).
 
 \subsection{DenseNet169}
 \textit{Liczba parametrów: 14.1M}
@@ -272,7 +272,7 @@ Najczęściej mylonymi klasami są NGB i NGS oraz MYB i PMO (rys.~\ref{fig:confu
 
 Sieć głównie trenuje się w pierwszej epoce, dwie kolejne nieznacznie poprawiają jej jakość.
 W trzeciej epoce widać oznaki nadmiernego dopasowania (wyk.~\ref{fig:plot_densenet169}).
-Najczęściej mylonymi klasami są MON i BLA oraz MYB i PMO (rys.~\ref{fig:confusion_densenet169}).
+Najczęściej mylonymi klasami są MON (Monocyt) i BLA (Blast) oraz MYB (Mielocyt) i PMO (Promielocyt) - rys.~\ref{fig:confusion_densenet169}.
 
 \subsection{DenseNet201}
 \textit{Liczba parametrów: 20.0M}
@@ -280,7 +280,7 @@ Najczęściej mylonymi klasami są MON i BLA oraz MYB i PMO (rys.~\ref{fig:confu
 \textit{Ważony wynik F1: 0.850}
 
 Przebieg treningu DenseNet201 przypomina trening DenseNet169.
-Po trzeciej epoce nie występuje jednak nadmierne dopasowanie (wyk.~\ref{fig:plot_densenet201}), a najczęściej mylonymi klasami są MON i BLA oraz MYB i PMO (rys.~\ref{fig:confusion_densenet201}).
+Po trzeciej epoce nie występuje jednak nadmierne dopasowanie (wyk.~\ref{fig:plot_densenet201}), a najczęściej mylonymi klasami są MON (Monocyt) i BLA (Blast) oraz MYB (Mielocyt) i PMO (Promielocyt) - rys.~\ref{fig:confusion_densenet201}.
 
 \subsection{ResNet18}
 \textit{Liczba parametrów: 11.7M}
@@ -288,7 +288,7 @@ Po trzeciej epoce nie występuje jednak nadmierne dopasowanie (wyk.~\ref{fig:plo
 \textit{Ważony wynik F1: 0.840}
 
 Architektura ResNet18, zawierając 11.7M parametrów oferuje gorszą jakość predykcji (wyk.~\ref{fig:plot_resnet18}) niż przykładowo EfficientNet B2, która posiada 9.2M parametrów (ważony wynik F1 sieci ResNet wynosi 0.84 w porównaniu do 0.86 sieci EfficientNet B2).
-Najczęściej mylonymi klasami są MYB i PMO (rys.~\ref{fig:confusion_resnet18}).
+Najczęściej mylonymi klasami są MYB (Mielocyt) i PMO (Promielocyt) - rys.~\ref{fig:confusion_resnet18}.
 
 \newline
 \newline
