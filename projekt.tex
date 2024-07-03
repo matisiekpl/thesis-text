@@ -184,10 +184,12 @@ Uproszczony schemat działania głównej pętli treningowej (kod przestawiony na
     \label{fig:cam}
 \end{figure}
 
-\textcolor{red}{
-    Wyjściem modelu jest rozkład prawdopodobieństwa rozpoznania poszczególnych rodzajów komórek oraz mapa cieplna GradCAM.
-    Przykładowa mapa cieplna jest widoczna na rys.~\ref{fig:cam}.
-    Przedstawia ona miejsca na obrazie, które najbardziej wpłynęły na predykcję.
+
+Wyjściem modelu jest rozkład prawdopodobieństwa rozpoznania poszczególnych rodzajów komórek oraz mapa cieplna GradCAM.
+Przykładowa mapa cieplna jest widoczna na rys.~\ref{fig:cam}.
+Przedstawia ona miejsca na obrazie, które najbardziej wpłynęły na predykcję.
+\textcolor{green}{
+    Zgadzają się one z obszarami, na które zwraca uwagę lekarz - sprawdza on wygląd jądra komórkowego jak i jego ziarnistości.
 }
 
 Do sprawdzenia jakości modelu uczenia maszynowego konieczny jest dobór właściwych metryk.
