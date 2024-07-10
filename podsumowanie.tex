@@ -1,16 +1,16 @@
 \chapter{Podsumowanie}
 
-W niniejszym projekcie inżynierskim omówiono realizację systemu \textcolor{red}{klasyfikującego} rodzaje komórek szpiku kostnego \textcolor{red}{za pomocą} uczenia maszynowego.
-Porównane zostały \textcolor{red}{rezultaty trenowania różnych architektur} splotowych sieci neuronowych.
+W niniejszym projekcie inżynierskim omówiono realizację systemu klasyfikującego rodzaje komórek szpiku kostnego za pomocą uczenia maszynowego.
+Porównane zostały rezultaty trenowania różnych architektur splotowych sieci neuronowych.
 Architekturą, która daje najlepsze rezultaty okazała się \textbf{EfficientNet B4}.
-Przedstawione rozwiązanie oferuje podobną jakość klasyfikacji (\textcolor{red}{na podstawie} ważonej miary F1) jak \textcolor{red}{opublikowana wcześniej praca naukowa autorstwa dostawcy danych}.
-Warto zauważyć jednak, że sieć EfficientNet B4 dostarcza podobnej jakości predykcji jak omawiana w innych artykułach architektura \textit{ResNeXt}, pomimo znacznie mniejszej ilości parametrów do optymalizacji (19 milionów parametrów w przypadku EfficientNet B4 w \textcolor{red}{stosunku do} 25 milionów w przypadku ResNeXt \cite{resnext}).
+Przedstawione rozwiązanie oferuje podobną jakość klasyfikacji (na podstawie ważonej miary F1) jak opublikowana wcześniej praca naukowa autorstwa dostawcy danych.
+Warto zauważyć jednak, że sieć EfficientNet B4 dostarcza podobnej jakości predykcji jak omawiana w innych artykułach architektura \textit{ResNeXt}, pomimo znacznie mniejszej ilości parametrów do optymalizacji (19 milionów parametrów w przypadku EfficientNet B4 w stosunku do 25 milionów w przypadku ResNeXt \cite{resnext}).
 
 Opisano również algorytm ekstrakcji obrazów komórek z dużego skanu rozmazu, dzięki któremu można automatycznie wyznaczyć dane wejściowe do sieci neuronowej (sieć neuronowa wymaga obrazu pojedynczej komórki).
-Do jego opracowania wykorzystano takie metody \textcolor{red}{przetwarzania obrazów} jak progowanie, znajdowanie konturów czy momenty Hu.
+Do jego opracowania wykorzystano takie metody przetwarzania obrazów jak progowanie, znajdowanie konturów czy momenty Hu.
 
 W ramach projektu stworzono również przejrzysty interfejs użytkownika, który umożliwia użytkownikowi łatwą interakcję z modelem sztucznej inteligencji.
-Po wysłaniu obrazu komórki na serwer pojawia się tabela rozkładu prawdopodobieństwa \textcolor{red}{ rozpoznania poszczególnych klas} wraz z wizualizacją mapy cieplnej \textit{GradCam}.
+Po wysłaniu obrazu komórki na serwer pojawia się tabela rozkładu prawdopodobieństwa rozpoznania poszczególnych klas wraz z wizualizacją mapy cieplnej \textit{GradCam}.
 Mapa cieplna pozwala użytkownikowi lepiej zrozumieć proces predykcji klas.
 
 Podsumowując, zaprezentowany system stanowi przykład praktycznego zastosowania uczenia maszynowego i splotowych sieci neuronowych w medycynie.

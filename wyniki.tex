@@ -3,37 +3,6 @@
 
 \section{Ocena jakości różnych architektur sieci neuronowych}
 
-%\begin{table}
-%    \caption{Porównanie jakości predykcji różnych architektur splotowych sieci neuronowych}
-%    \begin{center}
-%        \begin{tabular}{|l|l|l|l|l|}
-%            \hline
-%            Architektura             & Liczba parametrów & F1             & Wykresy funkcji błędu i F1     & Macierz pomyłek                     \\
-%            \hline
-%            EfficientNet B0          & 5.3M             & 0.860          & rys. \ref{fig:plot_efficientnet_b0} & rys. \ref{fig:confusion_efficientnet_b0} \\
-%            \hline
-%            EfficientNet B1          & 7.8M             & 0.850          & rys. \ref{fig:plot_efficientnet_b1} & rys. \ref{fig:confusion_efficientnet_b1} \\
-%            \hline
-%            EfficientNet B2          & 9.2M             & 0.860          & rys. \ref{fig:plot_efficientnet_b2} & rys. \ref{fig:confusion_efficientnet_b2} \\
-%            \hline
-%            EfficientNet B3          & 12.0M            & 0.870          & rys. \ref{fig:plot_efficientnet_b3} & rys. \ref{fig:confusion_efficientnet_b3} \\
-%            \hline
-%            \textbf{EfficientNet B4} & \textbf{19.0M}   & \textbf{0.880} & rys. \ref{fig:plot_efficientnet_b4} & rys. \ref{fig:confusion_efficientnet_b4} \\
-%            \hline
-%            EfficientNet B5          & 30.0M            & 0.860          & rys. \ref{fig:plot_efficientnet_b5} & rys. \ref{fig:confusion_efficientnet_b5} \\
-%            \hline
-%            DenseNet121              & 8.0M             & 0.850          & rys. \ref{fig:plot_densenet121}     & rys. \ref{fig:confusion_densenet121}     \\
-%            \hline
-%            DenseNet169              & 14.1M            & 0.840          & rys. \ref{fig:plot_densenet169}     & rys. \ref{fig:confusion_densenet169}     \\
-%            \hline
-%            DenseNet201              & 20.0M            & 0.850          & rys. \ref{fig:plot_densenet201}     & rys. \ref{fig:confusion_densenet201}     \\
-%            \hline
-%            ResNet18                 & 11.7M            & 0.840          & rys. \ref{fig:plot_resnet18}        & rys. \ref{fig:confusion_resnet18}        \\
-%            \hline
-%        \end{tabular}
-%    \end{center}
-%    \label{tab:comparison}
-%\end{table}
 \begin{table}
     \caption{Podsumowanie miary F1 dla poszczególnych klas (EfficientNet B4)}
     \begin{center}
@@ -72,7 +41,7 @@ Niniejszy projekt ma za zadanie porównać różne architektury splotowych sieci
 Dla każdej architektury wskazano jej wielkość (ilość parametrów trenowalnych) oraz ważony wynik F1.
 Większy wynik F1 informuje o lepszym zachowaniu modelu w rozpoznawaniu typów komórek.
 
-Warto zauważyć, że \textcolor{red}{często wielkość sieci neuronowej (liczba wag)} \textcolor{red}{nie jest liniowo zależna} z jakością uzyskiwanych predykcji.
+Warto zauważyć, że często wielkość sieci neuronowej (liczba wag) nie jest liniowo zależna z jakością uzyskiwanych predykcji.
 Dzieje się tak ze względu na to, że pojemność zachowania informacji nawet w mniejszej sieci jest wystarczająca, by móc rozpoznawać rodzaje komórek.
 
 \begin{figure}
@@ -298,11 +267,9 @@ Najczęściej mylonymi klasami są MYB (Mielocyt) i PMO (Promielocyt) - rys.~\re
 Najlepsze wyniki uzyskuje model używający architektury \textit{EfficientNet B4}.
 Ważony wynik F1 w jej przypadku wynosi \textit{0.88}.
 
-\textcolor{red}{
-    Na podstawie wykresów funkcji straty i F1, można stwierdzić, że dla wszystkich sieci neuronowych już pierwsza epoka skutkowała rozpoznaniem wzorców.
-    Kolejne epoki nie poprawiały \textcolor{green}{znacząco} skuteczności sieci.
-    Często mylonymi komórkami były promielocyty (\textit{PMO}) i mielocyty (\textit{MYB}), wynika to z tego, że ich wygląd jest podobny.
-}
+Na podstawie wykresów funkcji straty i F1, można stwierdzić, że dla wszystkich sieci neuronowych już pierwsza epoka skutkowała rozpoznaniem wzorców.
+Kolejne epoki nie poprawiały znacząco skuteczności sieci.
+Często mylonymi komórkami były promielocyty (\textit{PMO}) i mielocyty (\textit{MYB}), wynika to z tego, że ich wygląd jest podobny.
 
 
 \section{Porównanie z innymi algorytmami}
@@ -314,7 +281,7 @@ Ważony wynik F1 w jej przypadku wynosi \textit{0.88}.
     \label{fig:resnext_confusion_matrix}
 \end{figure}
 
-Dostawca zbioru danych, w artykule \textit{Highly accurate differentiation of bone marrow cell morphologies using deep neural networks on a large image dataset} \cite{resnext} wykorzystuje architekturę \textit{ResNetXt-50}.
+Dostawca zbioru danych, w artykule \textit{Highly accurate differentiation of bone marrow cell morphologies using deep neural networks on a large image dataset}~\cite{resnext} wykorzystuje architekturę \textit{ResNetXt-50}.
 Model zawierający ponad 23 miliony parametrów był trenowany na \textit{NVIDIA TESLA V100} przez ok. 48 godzin.
 Podobnie jak w niniejszym projekcie, autorzy artykułu wykonali normalizację intensywności kolorów przed trenowaniem sieci neuronowej (z powodu różnic w barwieniu Maya-Grünwalda-Giemsa).
 Uzyskany ważony wynik F1 dla architektury \textit{ResNeXt-50} wyniósł \textit{0.822}.
