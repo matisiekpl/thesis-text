@@ -95,14 +95,14 @@ Akwizycja obrazu polegała na wykonaniu zdjęcia mikroskopią Brightfield'a~\cit
 Producentem mikroskopu było przedsiębiorstwo Fraunhofer IIS.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{images_count}
+    \includegraphics[width=\textwidth]{charts/images_count}
     \caption{Histogram rozkładu próbek w klasach w zbiorze danych}
     \label{fig:images_count_vis}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[height=0.9\textheight]{images_examples}
+    \includegraphics[height=0.9\textheight]{charts/images_examples}
     \caption{Przykładowe zdjęcia komórek ze zbioru danych dla każdej z klas}
     \label{fig:images_examples}
 \end{figure}
@@ -144,7 +144,7 @@ Taka normalizacja zapobiega błędnemu nauczeniu się sieci neuronowej ze wzglę
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{image_transform}
+    \includegraphics[width=\textwidth]{charts/image_transform}
     \caption{Porównanie obrazu wejściowego przed i po transformacji}
     \label{fig:transformations_example}
 \end{figure}
@@ -175,13 +175,13 @@ Uproszczony schemat działania głównej pętli treningowej (kod przestawiony na
     \item Obliczenie metryk dla zbioru walidacyjnego i zapisanie ich.
 \end{enumerate}
 
-\lstinputlisting[label={lst:train}, caption={Kod pętli treningowej w języku Python z wykorzystaniem PyTorch}, language=ipython]{train.py}
+\lstinputlisting[label={lst:train}, caption={Kod pętli treningowej w języku Python z wykorzystaniem PyTorch}, language=ipython]{codes/train.py}
 
 \subsection{Ewaluacja jakości modelu}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{cam}
+    \includegraphics[width=0.5\textwidth]{images/cam}
     \caption{Mapa cieplna GradCAM dla obrazu komórki plazmatycznej}
     \label{fig:cam}
 \end{figure}
@@ -217,7 +217,7 @@ Renderowana jest również mapa cieplna GradCAM informująca użytkownika o regi
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{app}
+    \includegraphics[width=\textwidth]{images/app}
     \caption{Aplikacja internetowa do rozpoznawania komórek}
     \label{fig:ui}
 \end{figure}
@@ -225,7 +225,7 @@ Renderowana jest również mapa cieplna GradCAM informująca użytkownika o regi
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{arch}
+    \includegraphics[width=0.8\textwidth]{images/arch}
     \caption{Architektura klient-serwer aplikacji internetowej i serwera Flask}
     \label{fig:arch}
 \end{figure}
@@ -251,28 +251,28 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{Im060_1}
+    \includegraphics[width=0.8\textwidth]{images/Im060_1}
     \caption{Wejście algorytmu}
     \label{fig:extract_input}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{Im060_1_thresh}
+    \includegraphics[width=0.8\textwidth]{images/Im060_1_thresh}
     \caption{Obrazek po progowaniu}
     \label{fig:extract_thresh}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{Im060_1_contours}
+    \includegraphics[width=0.8\textwidth]{images/Im060_1_contours}
     \caption{Oznaczone kontury wraz z punktami centralnymi}
     \label{fig:extract_contours}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{cells}
+    \includegraphics[width=0.8\textwidth]{images/cells}
     \caption{Wyekstraktowane kwadratowe obrazki}
     \label{fig:extract_squares}
 \end{figure}
@@ -303,4 +303,4 @@ Algorytm wykonuje następujące kroki w celu wyznaczenia komórek z obrazka:
 
 Kod opisanego algorytmu przedstawia listing~\ref{lst:extract}.
 
-\lstinputlisting[label={lst:extract}, caption={Kod wycinający obraz komórki z dużego skanu mikroskopowego}, language=ipython]{extract.py}
+\lstinputlisting[label={lst:extract}, caption={Kod wycinający obraz komórki z dużego skanu mikroskopowego}, language=ipython]{codes/extract.py}

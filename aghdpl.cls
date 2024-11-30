@@ -153,7 +153,7 @@
 	\begin{center}
 		\vspace*{1.5cm}
 		
-		\includegraphics[scale=0.6]{agh}
+		\includegraphics[scale=0.6]{images/agh}
 		
 		\vspace*{2mm}
 		{
