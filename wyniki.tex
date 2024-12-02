@@ -326,30 +326,39 @@ Najczęściej mylonymi klasami są MYB (Mielocyt) i PMO (Promielocyt) - rys.~\re
 
 \subsection{ResNet50}
 \textit{Liczba parametrów: 25.6M}
-% TODO
+Większy wariant architektury ResNet, w porównaniu do ResNet18, dostarcza gorszych rezultatów. Pomimo prawie dwukrotnie większej ilości parametrów model nie radzi sobie z przewidywaniem rodzaju komórki. Przebieg trenowania prezentuje wyk.~\ref{fig:plot_resnet50}. Macierz pomyłek jest widoczna na rys.~\ref{fig:confusion_resnet50}
 \textit{Ważony wynik F1: 0.740}
 
 \subsection{ResNet101}
 \textit{Liczba parametrów: 44.7M}
-% TODO
+\textit{Ważony wynik F1: 0.770}
+
+Architektura ResNet101, zawierająca 44.7M parametrów, oferuje umiarkowaną jakość predykcji z ważonym wynikiem F1 równym 0.77 (wyk.~\ref{fig:plot_resnet101}). Macierz pomyłek widoczny na rys.~\ref{fig:confusion_resnet101}.
+
 \textit{Ważony wynik F1: 0.770}
 
 \subsection{VGG16}
 \textit{Liczba parametrów: 138.4M}
-% TODO
+
+\subsection{VGG16}
+\textit{Liczba parametrów: 138.4M}
+
+\textit{Ważony wynik F1: 0.070}
+
+Architektura VGG16, pomimo dużej liczby parametrów (138.4M), uzyskała najniższy ważony wynik F1 spośród wszystkich testowanych modeli, wynoszący zaledwie 0.07. Model ten nie radzi sobie dobrze z klasyfikacją rodzajów komórek, co może wynikać z jego głębokiej struktury, która może prowadzić do problemów z przetrenowaniem lub trudności w optymalizacji. Na rysunku~\ref{fig:plot_vgg16} przedstawiono wykres zależności funkcji straty i F1 od epoki trenowania, a na rysunku~\ref{fig:confusion_vgg16} zaprezentowano macierz pomyłek dla tego modelu.
+
 \textit{Ważony wynik F1: 0.070}
 
 \subsection{VGG19}
 \textit{Liczba parametrów: 143.7M}
-% TODO
+Architektura VGG19, zawierająca 143.7M parametrów, uzyskała ważony wynik F1 równy 0.07. Model ten, podobnie jak VGG16, nie radzi sobie dobrze z klasyfikacją rodzajów komórek, co może być spowodowane jego głęboką strukturą, prowadzącą do problemów z przetrenowaniem lub trudnościami w optymalizacji. Na rysunku~\ref{fig:plot_vgg19} przedstawiono wykres zależności funkcji straty i F1 od epoki trenowania, a na rysunku~\ref{fig:confusion_vgg19} zaprezentowano macierz pomyłek dla tego modelu.
 \textit{Ważony wynik F1: 0.070}
 
 
 \subsection{AlexNet}
 \textit{Liczba parametrów: 60M}
-% TODO
+Architektura AlexNet, zawierająca 60M parametrów, uzyskała ważony wynik F1 równy 0.07. Podobnie jak wspominane powyżej VGG16 i VGG19, architektura nie radzi sobie z wykrywaniem wzorców wizualnych takich jak jądro komórkowe, jąderka i ziarnistości wymagane do rozpoznania rodzaju komórki. Rys.~\ref{fig:plot_alexnet} przedstawia przebieg trenowania sieci, a na rys.~\ref{fig:confusion_alexnet} pokazuje jakie klasy model najczęściej i najrzadziej mylił.
 \textit{Ważony wynik F1: 0.070}
-
 
 \newline
 \newline
