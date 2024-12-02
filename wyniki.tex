@@ -174,6 +174,71 @@ Dzieje się tak ze względu na to, że pojemność zachowania informacji nawet w
     \label{fig:confusion_resnet18}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/resnet50/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (ResNet50)}
+    \label{fig:plot_resnet50}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/resnet50/confusion_matrix}
+    \caption{Macierz pomyłek modelu ResNet50}
+    \label{fig:confusion_resnet50}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/resnet101/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (ResNet101)}
+    \label{fig:plot_resnet101}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/resnet101/confusion_matrix}
+    \caption{Macierz pomyłek modelu ResNet101}
+    \label{fig:confusion_resnet101}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/vgg16/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (VGG16)}
+    \label{fig:plot_vgg16}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/vgg16/confusion_matrix}
+    \caption{Macierz pomyłek modelu VGG16}
+    \label{fig:confusion_vgg16}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/vgg19/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (VGG19)}
+    \label{fig:plot_vgg19}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/vgg19/confusion_matrix}
+    \caption{Macierz pomyłek modelu VGG19}
+    \label{fig:confusion_vgg19}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/alexnet/combined}
+    \caption{Wykres zależności funkcji straty i F1 od epoki trenowania (AlexNet)}
+    \label{fig:plot_alexnet}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{experiments/alexnet/confusion_matrix}
+    \caption{Macierz pomyłek modelu AlexNet}
+    \label{fig:confusion_alexnet}
+\end{figure}
+
 \subsection{EfficientNet B0}
 \textit{Liczba parametrów: 5.3M}
 
@@ -258,6 +323,33 @@ Po trzeciej epoce nie występuje jednak nadmierne dopasowanie (wyk.~\ref{fig:plo
 
 Architektura ResNet18, zawierając 11.7M parametrów, oferuje gorszą jakość predykcji (wyk.~\ref{fig:plot_resnet18}) niż przykładowo EfficientNet B2, która posiada 9.2M parametrów (ważony wynik F1 sieci ResNet wynosi 0.84 w porównaniu do 0.86 sieci EfficientNet B2).
 Najczęściej mylonymi klasami są MYB (Mielocyt) i PMO (Promielocyt) - rys.~\ref{fig:confusion_resnet18}.
+
+\subsection{ResNet50}
+\textit{Liczba parametrów: 25.6M}
+% TODO
+\textit{Ważony wynik F1: 0.740}
+
+\subsection{ResNet101}
+\textit{Liczba parametrów: 44.7M}
+% TODO
+\textit{Ważony wynik F1: 0.770}
+
+\subsection{VGG16}
+\textit{Liczba parametrów: 138.4M}
+% TODO
+\textit{Ważony wynik F1: 0.070}
+
+\subsection{VGG19}
+\textit{Liczba parametrów: 143.7M}
+% TODO
+\textit{Ważony wynik F1: 0.070}
+
+
+\subsection{AlexNet}
+\textit{Liczba parametrów: 60M}
+% TODO
+\textit{Ważony wynik F1: 0.070}
+
 
 \newline
 \newline
